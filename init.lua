@@ -194,11 +194,15 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- Keybinds to make split resizing easier.
 --  Use CTRL+SHIFT+<hjkl> to in/decrease window size.
 --  Use CTRL+SHIFT+E to equalize window size.
-vim.keymap.set('n', '<C-S-h>', '<C-w><', { desc = 'Decrease editor width.' })
-vim.keymap.set('n', '<C-S-l>', '<C-w>>', { desc = 'Increase editor width.' })
-vim.keymap.set('n', '<C-S-j>', '<C-w>-', { desc = 'Decrease editor height.' })
-vim.keymap.set('n', '<C-S-k>', '<C-w>+', { desc = 'Increase editor height.' })
-vim.keymap.set('n', '<C-S-e>', '<C-w>=', { desc = 'Equalize editor width and height.' })
+--  Uncomment below if your terminal supports CTRL+SHIFT+<char> chords.
+-- vim.keymap.set('n', '<C-S-h>', '<C-w><', { desc = 'Decrease editor width.' })
+-- vim.keymap.set('n', '<C-S-l>', '<C-w>>', { desc = 'Increase editor width.' })
+-- vim.keymap.set('n', '<C-S-j>', '<C-w>-', { desc = 'Decrease editor height.' })
+-- vim.keymap.set('n', '<C-S-k>', '<C-w>+', { desc = 'Increase editor height.' })
+-- vim.keymap.set('n', '<C-S-e>', '<C-w>=', { desc = 'Equalize editor width and height.' })
+
+-- Keybind to set current the dir of the current file as the current working directory.
+vim.keymap.set('n', '<leader>C', ':cd %:p:h<CR>', { desc = 'Set [C]WD as the dir of current buffer.', noremap = true, silent = true })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
