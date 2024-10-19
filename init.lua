@@ -930,6 +930,8 @@ require('lazy').setup({
     enabled = true,
   },
 
+  vim.keymap.set('n', '<leader>T', ':Neotree toggle<CR>', { desc = 'Toggle Neo-[T]ree' }),
+
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
   --
