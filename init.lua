@@ -91,7 +91,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -158,6 +158,9 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- Ensure sessionoptions includes localoptions for proper session restoration
+vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -201,8 +204,11 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set('n', '<C-S-k>', '<C-w>+', { desc = 'Increase editor height.' })
 -- vim.keymap.set('n', '<C-S-e>', '<C-w>=', { desc = 'Equalize editor width and height.' })
 
--- Keybind to set current the dir of the current file as the current working directory.
+-- Keybind to set the dir of the current file as the current working directory.
 vim.keymap.set('n', '<leader>C', ':cd %:p:h<CR>', { desc = 'Set [C]WD as the dir of current buffer.', noremap = true, silent = true })
+
+-- Keybind to toggle Neotree.
+vim.keymap.set('n', '<leader>T', ':Neotree toggle<CR>', { desc = 'Toggle Neo-[T]ree' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -943,9 +949,43 @@ require('lazy').setup({
     enabled = true,
   },
 
-  vim.keymap.set('n', '<leader>T', ':Neotree toggle<CR>', { desc = 'Toggle Neo-[T]ree' }),
+  {
+    'alexghergh/nvim-tmux-navigation',
+    config = function()
+      local nvim_tmux_nav = require 'nvim-tmux-navigation'
 
-  { 'alexghergh/nvim-tmux-navigation' },
+      nvim_tmux_nav.setup {
+        disable_when_zoomed = true, -- defaults to false
+      }
+
+      vim.keymap.set('n', '<C-h>', nvim_tmux_nav.NvimTmuxNavigateLeft)
+      vim.keymap.set('n', '<C-j>', nvim_tmux_nav.NvimTmuxNavigateDown)
+      vim.keymap.set('n', '<C-k>', nvim_tmux_nav.NvimTmuxNavigateUp)
+      vim.keymap.set('n', '<C-l>', nvim_tmux_nav.NvimTmuxNavigateRight)
+      vim.keymap.set('n', '<C-\\>', nvim_tmux_nav.NvimTmuxNavigateLastActive)
+      vim.keymap.set('n', '<C-Space>', nvim_tmux_nav.NvimTmuxNavigateNext)
+    end,
+  },
+
+  {
+    'rmagatti/auto-session',
+    lazy = false,
+
+    config = function()
+      require('auto-session').setup {
+        log_level = 'info', -- Set to 'debug' if you want more verbose logging
+        auto_session_suppress_dirs = { '~/Downloads' },
+      }
+    end,
+
+    ---enables autocomplete for opts
+    ---@module "auto-session"
+    ---@type AutoSession.Config
+    opts = {
+      suppressed_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
+      -- log_level = 'debug',
+    },
+  },
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
