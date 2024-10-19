@@ -191,6 +191,15 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- Keybinds to make split resizing easier.
+--  Use CTRL+SHIFT+<hjkl> to in/decrease window size.
+--  Use CTRL+SHIFT+E to equalize window size.
+vim.keymap.set('n', '<C-S-h>', '<C-w><', { desc = 'Decrease editor width.' })
+vim.keymap.set('n', '<C-S-l>', '<C-w>>', { desc = 'Increase editor width.' })
+vim.keymap.set('n', '<C-S-j>', '<C-w>-', { desc = 'Decrease editor height.' })
+vim.keymap.set('n', '<C-S-k>', '<C-w>+', { desc = 'Increase editor height.' })
+vim.keymap.set('n', '<C-S-e>', '<C-w>=', { desc = 'Equalize editor width and height.' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -931,6 +940,8 @@ require('lazy').setup({
   },
 
   vim.keymap.set('n', '<leader>T', ':Neotree toggle<CR>', { desc = 'Toggle Neo-[T]ree' }),
+
+  { 'alexghergh/nvim-tmux-navigation' },
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
