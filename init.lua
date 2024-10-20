@@ -1046,6 +1046,12 @@ require('lazy').setup({
     'pocco81/autosave.nvim',
   },
 
+  -- {
+  --   'barrett-ruth/live-server.nvim',
+  --   build = 'pnpm add -g live-server',
+  --   cmd = { 'LiveServerStart', 'LiveServerStop' },
+  --   config = true;59;28mcpPG;60;28M;60;28U!  -- },
+
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
   --
