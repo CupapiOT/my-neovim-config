@@ -252,8 +252,14 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
+-- Colorcolumns with unobtrusive borders.
 vim.api.nvim_create_autocmd('VimEnter', {
   command = 'hi colorcolumn ctermbg=gray guibg=#20212D',
+})
+
+-- Unobtrusive split panel borders
+vim.api.nvim_create_autocmd('VimEnter', {
+  command = 'hi WinSeparator guibg=None guifg=#3f3f3f',
 })
 
 -- [[ Configure and install plugins ]]
@@ -967,7 +973,7 @@ require('lazy').setup({
 
   {
     'nvim-tree/nvim-web-devicons',
-    enabled = true,
+    enabled = vim.g.have_nerd_font,
   },
 
   {
