@@ -1015,6 +1015,11 @@ require('lazy').setup({
   },
 
   {
+    'tpope/vim-surround',
+    -- Any additional options can be specified here
+  },
+
+  {
     'numToStr/Comment.nvim',
     opts = {
       -- add any options here
