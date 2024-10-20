@@ -213,7 +213,12 @@ vim.keymap.set('n', '<leader>Cb', ':cd ..<CR>', { desc = '[C]hange CWD [b]ackwar
 vim.keymap.set('n', '<leader>Ch', ':cd<CR>', { desc = '[C]hange CWD to the home dir.', noremap = true, silent = true })
 
 -- Keybind to toggle Neotree.
-vim.keymap.set('n', '<leader>T', ':Neotree toggle<CR>', { desc = 'Toggle Neo-[T]ree', noremap = true, silent = true })
+vim.keymap.set(
+  'n',
+  '<leader>T',
+  ':Neotree toggle source=filesystem reveal=true position=right<CR>',
+  { desc = 'Toggle Neo-[T]ree', noremap = true, silent = true }
+)
 
 -- Keybinds for fugtitive.vim
 vim.keymap.set('n', '<leader>gd', ':Gdiff<CR>', { desc = 'Fu[g]itive [d]iff.' })
