@@ -210,6 +210,15 @@ vim.keymap.set('n', '<leader>C', ':cd %:p:h<CR>', { desc = 'Set [C]WD as the dir
 -- Keybind to toggle Neotree.
 vim.keymap.set('n', '<leader>T', ':Neotree toggle<CR>', { desc = 'Toggle Neo-[T]ree' })
 
+-- Keybind for fugtitive.vim
+vim.keymap.set('n', '<leader>gd', ':Gdiff<CR>', { desc = 'Fu[g]itive [d]iff.' })
+vim.keymap.set('n', '<leader>gw', ':Gwrite<CR>', { desc = 'Fu[g]itive [w]rite (stage).' })
+vim.keymap.set('n', '<leader>gr', ':Gread<CR>', { desc = 'Fu[g]itive [r]ead (unstage).' })
+vim.keymap.set('n', '<leader>gc', ':Git commit<CR>', { desc = 'Fu[g]itive [c]ommit.' })
+vim.keymap.set('n', '<leader>gp', ':Gpush<CR>', { desc = 'Fu[g]itive [p]ush.' })
+vim.keymap.set('n', '<leader>gP', ':Gpull<CR>', { desc = 'Fu[g]itive [P]ull.' })
+vim.keymap.set('n', '<leader>gR', ':Grebase<CR>', { desc = 'Fu[g]itive [R]ebase.' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -341,6 +350,7 @@ require('lazy').setup({
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>g', group = 'Fu[g]itive' },
       },
     },
   },
@@ -984,6 +994,18 @@ require('lazy').setup({
     opts = {
       suppressed_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
       -- log_level = 'debug',
+    },
+  },
+
+  {
+    'tpope/vim-fugitive',
+    -- Any additional options can be specified here
+  },
+
+  {
+    'numToStr/Comment.nvim',
+    opts = {
+      -- add any options here
     },
   },
 
