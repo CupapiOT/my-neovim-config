@@ -224,9 +224,9 @@ vim.keymap.set(
 vim.keymap.set('n', '<leader>gd', ':Gdiff<CR>', { desc = 'Fu[g]itive [d]iff.' })
 vim.keymap.set('n', '<leader>gw', ':Gwrite<CR>', { desc = 'Fu[g]itive [w]rite (stage).' })
 vim.keymap.set('n', '<leader>gr', ':Gread<CR>', { desc = 'Fu[g]itive [r]ead (unstage).' })
-vim.keymap.set('n', '<leader>gc', ':Git commit<CR>', { desc = 'Fu[g]itive [c]ommit.' })
+vim.keymap.set('n', '<leader>gc', ':Git commit -S<CR>', { desc = 'Fu[g]itive [c]ommit.' })
 vim.keymap.set('n', '<leader>gp', ':Git push<CR>', { desc = 'Fu[g]itive [p]ush.' })
-vim.keymap.set('n', '<leader>gP', ':Gpull<CR>', { desc = 'Fu[g]itive [P]ull.' })
+vim.keymap.set('n', '<leader>gP', ':Git pull<CR>', { desc = 'Fu[g]itive [P]ull.' })
 vim.keymap.set('n', '<leader>gR', ':Grebase<CR>', { desc = 'Fu[g]itive [R]ebase.' })
 vim.keymap.set('n', '<leader>gS', ':Git<CR>', { desc = 'Fu[g]itive [S]tatus.' })
 
