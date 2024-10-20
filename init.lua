@@ -229,7 +229,6 @@ vim.keymap.set('n', '<leader>gp', ':Git push<CR>', { desc = 'Fu[g]itive [p]ush.'
 vim.keymap.set('n', '<leader>gP', ':Git pull<CR>', { desc = 'Fu[g]itive [P]ull.' })
 vim.keymap.set('n', '<leader>gR', ':Grebase<CR>', { desc = 'Fu[g]itive [R]ebase.' })
 vim.keymap.set('n', '<leader>gS', ':Git<CR>', { desc = 'Fu[g]itive [S]tatus.' })
--- test commit dummy
 
 -- Keybind for line-wrap toggling
 vim.keymap.set('n', '<M-z>', ':set wrap!<CR>', { desc = 'Toggle line wrap.', noremap = true, silent = true })
