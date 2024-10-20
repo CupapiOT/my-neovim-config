@@ -216,7 +216,7 @@ vim.keymap.set('n', '<leader>Ch', ':cd<CR>', { desc = '[C]hange CWD to the home 
 vim.keymap.set(
   'n',
   '<leader>T',
-  ':Neotree toggle source=filesystem reveal=true position=right<CR>',
+  ':Neotree toggle source=filesystem reveal=true position=left<CR>',
   { desc = 'Toggle Neo-[T]ree', noremap = true, silent = true }
 )
 
@@ -978,6 +978,8 @@ require('lazy').setup({
   require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+
+  -- My custom plugins start here.
 
   {
     'nvim-tree/nvim-web-devicons',
