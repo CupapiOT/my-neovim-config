@@ -208,7 +208,7 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 vim.keymap.set('n', '<leader>C', ':cd %:p:h<CR>', { desc = 'Set [C]WD as the dir of current buffer.', noremap = true, silent = true })
 
 -- Keybind to toggle Neotree.
-vim.keymap.set('n', '<leader>T', ':Neotree toggle<CR>', { desc = 'Toggle Neo-[T]ree' })
+vim.keymap.set('n', '<leader>T', ':Neotree toggle<CR>', { desc = 'Toggle Neo-[T]ree', noremap = true, silent = true  })
 
 -- Keybind for fugtitive.vim
 vim.keymap.set('n', '<leader>gd', ':Gdiff<CR>', { desc = 'Fu[g]itive [d]iff.' })
@@ -218,6 +218,7 @@ vim.keymap.set('n', '<leader>gc', ':Git commit<CR>', { desc = 'Fu[g]itive [c]omm
 vim.keymap.set('n', '<leader>gp', ':Gpush<CR>', { desc = 'Fu[g]itive [p]ush.' })
 vim.keymap.set('n', '<leader>gP', ':Gpull<CR>', { desc = 'Fu[g]itive [P]ull.' })
 vim.keymap.set('n', '<leader>gR', ':Grebase<CR>', { desc = 'Fu[g]itive [R]ebase.' })
+vim.keymap.set('n', '<leader>gS', ':Git<CR>', { desc = 'Fu[g]itive [S]tatus.' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
