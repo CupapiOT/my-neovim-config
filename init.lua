@@ -161,6 +161,9 @@ vim.opt.scrolloff = 10
 -- Ensure sessionoptions includes localoptions for proper session restoration
 vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
 
+-- Set colored columns for comment lenghts and 80 chars.
+vim.opt.colorcolumn = '72,80'
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -210,7 +213,7 @@ vim.keymap.set('n', '<leader>C', ':cd %:p:h<CR>', { desc = 'Set [C]WD as the dir
 -- Keybind to toggle Neotree.
 vim.keymap.set('n', '<leader>T', ':Neotree toggle<CR>', { desc = 'Toggle Neo-[T]ree', noremap = true, silent = true })
 
--- Keybind for fugtitive.vim
+-- Keybinds for fugtitive.vim
 vim.keymap.set('n', '<leader>gd', ':Gdiff<CR>', { desc = 'Fu[g]itive [d]iff.' })
 vim.keymap.set('n', '<leader>gw', ':Gwrite<CR>', { desc = 'Fu[g]itive [w]rite (stage).' })
 vim.keymap.set('n', '<leader>gr', ':Gread<CR>', { desc = 'Fu[g]itive [r]ead (unstage).' })
@@ -219,6 +222,9 @@ vim.keymap.set('n', '<leader>gp', ':Git push<CR>', { desc = 'Fu[g]itive [p]ush.'
 vim.keymap.set('n', '<leader>gP', ':Gpull<CR>', { desc = 'Fu[g]itive [P]ull.' })
 vim.keymap.set('n', '<leader>gR', ':Grebase<CR>', { desc = 'Fu[g]itive [R]ebase.' })
 vim.keymap.set('n', '<leader>gS', ':Git<CR>', { desc = 'Fu[g]itive [S]tatus.' })
+
+-- Keybind for line-wrap toggling
+vim.keymap.set('n', '<M-z>', ':set wrap!<CR>', { desc = 'Toggle line wrap.', noremap = true, silent = true })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -245,6 +251,10 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   end
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
+
+vim.api.nvim_create_autocmd('VimEnter', {
+  command = 'hi colorcolumn ctermbg=gray guibg=#20212D',
+})
 
 -- [[ Configure and install plugins ]]
 --
@@ -986,6 +996,7 @@ require('lazy').setup({
       require('auto-session').setup {
         log_level = 'info', -- Set to 'debug' if you want more verbose logging
         auto_session_suppress_dirs = { '~/Downloads' },
+        pre_save_cmds = { 'silent! Neotree close' },
       }
     end,
 
