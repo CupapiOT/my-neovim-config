@@ -30,6 +30,8 @@ return {
       window = {
         mappings = {
           ['\\'] = 'close_window',
+          ['C'] = 'set_root', -- change root directory to the selected folder
+          ['U'] = 'navigate_up',
         },
       },
     },
