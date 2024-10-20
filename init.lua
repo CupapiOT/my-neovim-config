@@ -207,8 +207,10 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set('n', '<C-S-k>', '<C-w>+', { desc = 'Increase editor height.' })
 -- vim.keymap.set('n', '<C-S-e>', '<C-w>=', { desc = 'Equalize editor width and height.' })
 
--- Keybind to set the dir of the current file as the current working directory.
-vim.keymap.set('n', '<leader>C', ':cd %:p:h<CR>', { desc = 'Set [C]WD as the dir of current buffer.', noremap = true, silent = true })
+-- Keybinds for common cd commands
+vim.keymap.set('n', '<leader>Cc', ':cd %:p:h<CR>', { desc = '[C]hange CWD to the dir of [c]urrent buffer.', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>Cb', ':cd ..<CR>', { desc = '[C]hange CWD [b]ackwards to parent dir.', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>Ch', ':cd<CR>', { desc = '[C]hange CWD to the home dir.', noremap = true, silent = true })
 
 -- Keybind to toggle Neotree.
 vim.keymap.set('n', '<leader>T', ':Neotree toggle<CR>', { desc = 'Toggle Neo-[T]ree', noremap = true, silent = true })
@@ -368,6 +370,7 @@ require('lazy').setup({
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
         { '<leader>g', group = 'Fu[g]itive' },
+        { '<leader>C', group = 'Change [C]WD' },
       },
     },
   },
