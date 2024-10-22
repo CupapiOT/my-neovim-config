@@ -198,6 +198,10 @@ vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower win
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 -- Keybinds to make split resizing easier.
+vim.keymap.set('n', '<C-w>>', '3<C-w>+', { desc = 'Multiply height increase amount by 3.', noremap = true, silent = true })
+vim.keymap.set('n', '<C-w><', '3<C-w>-', { desc = 'Multiply height decrease amount by 3.', noremap = true, silent = true })
+vim.keymap.set('n', '<C-w>>', '5<C-w>>', { desc = 'Multiply width increase amount by 5.', noremap = true, silent = true })
+vim.keymap.set('n', '<C-w><', '5<C-w><', { desc = 'Multiply width decrease amount by 5.', noremap = true, silent = true })
 --  Use CTRL+SHIFT+<hjkl> to in/decrease window size.
 --  Use CTRL+SHIFT+E to equalize window size.
 --  Uncomment below if your terminal supports CTRL+SHIFT+<char> chords.
@@ -232,6 +236,9 @@ vim.keymap.set('n', '<leader>gS', ':Git<CR>', { desc = 'Fu[g]itive [S]tatus.' })
 
 -- Keybind for line-wrap toggling
 vim.keymap.set('n', '<M-z>', ':set wrap!<CR>', { desc = 'Toggle line wrap.', noremap = true, silent = true })
+
+-- Undotree Toggle
+vim.keymap.set('n', '<leader>tu', ':UndotreeToggle<CR>', { desc = '[T]oggle [u]ndotree.', noremap = true, silent = true })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -1012,7 +1019,7 @@ require('lazy').setup({
       require('auto-session').setup {
         log_level = 'info', -- Set to 'debug' if you want more verbose logging
         auto_session_suppress_dirs = { '~/Downloads' },
-        pre_save_cmds = { 'silent! Neotree close' },
+        pre_save_cmds = { 'silent! Neotree close', 'silent! UndotreeHide' },
       }
     end,
 
@@ -1044,6 +1051,10 @@ require('lazy').setup({
 
   {
     'pocco81/autosave.nvim',
+  },
+
+  {
+    'mbbil/undotree',
   },
 
   -- {
