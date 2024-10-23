@@ -1059,6 +1059,10 @@ require('lazy').setup({
     'mbbil/undotree',
   },
 
+  {
+    'kdheepak/lazygit.nvim',
+  },
+
   -- {
   --   'barrett-ruth/live-server.nvim',
   --   build = 'pnpm add -g live-server',
