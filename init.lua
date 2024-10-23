@@ -244,6 +244,9 @@ vim.keymap.set('n', '<leader>tu', ':UndotreeToggle<CR>', { desc = '[T]oggle [u]n
 -- Make it so `x` outputs to the underscore register so it doesn't interfere.
 vim.keymap.set('n', 'x', '"_x', { desc = 'Delete character under cursor, outputs to underscore register.' })
 
+-- Quit keymaps.
+vim.keymap.set('n', '<leader>QW', ':SessionSave<CR>:wqa<CR>', { desc = '[Q]uit, [W]rite all and save session.', noremap = true, silent = true })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -387,6 +390,7 @@ require('lazy').setup({
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
         { '<leader>g', group = 'Fu[g]itive' },
         { '<leader>C', group = 'Change [C]WD' },
+        { '<leader>Q', group = '[Q]uit...' },
       },
     },
   },
