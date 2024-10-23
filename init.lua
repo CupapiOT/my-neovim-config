@@ -190,7 +190,6 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
---
 --  See `:help wincmd` for a list of all window commands
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
@@ -198,10 +197,10 @@ vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower win
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 -- Keybinds to make split resizing easier.
-vim.keymap.set('n', '<C-w>>', '3<C-w>+', { desc = 'Multiply height increase amount by 3.', noremap = true, silent = true })
-vim.keymap.set('n', '<C-w><', '3<C-w>-', { desc = 'Multiply height decrease amount by 3.', noremap = true, silent = true })
-vim.keymap.set('n', '<C-w>>', '5<C-w>>', { desc = 'Multiply width increase amount by 5.', noremap = true, silent = true })
-vim.keymap.set('n', '<C-w><', '5<C-w><', { desc = 'Multiply width decrease amount by 5.', noremap = true, silent = true })
+vim.keymap.set('n', '<C-w>+', '3<C-w>+', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-w>-', '3<C-w>-', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-w>>', '5<C-w>>', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-w><', '5<C-w><', { noremap = true, silent = true })
 --  Use CTRL+SHIFT+<hjkl> to in/decrease window size.
 --  Use CTRL+SHIFT+E to equalize window size.
 --  Uncomment below if your terminal supports CTRL+SHIFT+<char> chords.
@@ -213,7 +212,7 @@ vim.keymap.set('n', '<C-w><', '5<C-w><', { desc = 'Multiply width decrease amoun
 
 -- Keybinds for common cd commands
 vim.keymap.set('n', '<leader>Cc', ':cd %:p:h<CR>', { desc = '[C]hange CWD to the dir of [c]urrent buffer.', noremap = true, silent = true })
-vim.keymap.set('n', '<leader>Cb', ':cd ..<CR>', { desc = '[C]hange CWD [b]ackwards to parent dir.', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>Cu', ':cd ..<CR>', { desc = '[C]hange CWD [u]pwards to parent dir.', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>Ch', ':cd<CR>', { desc = '[C]hange CWD to the home dir.', noremap = true, silent = true })
 
 -- Keybind to toggle Neotree.
@@ -239,6 +238,9 @@ vim.keymap.set('n', '<M-z>', ':set wrap!<CR>', { desc = 'Toggle line wrap.', nor
 
 -- Undotree Toggle
 vim.keymap.set('n', '<leader>tu', ':UndotreeToggle<CR>', { desc = '[T]oggle [u]ndotree.', noremap = true, silent = true })
+
+-- Make it so `x` outputs to the underscore register so it doesn't interfere.
+vim.keymap.set('n', 'x', '"_x', { desc = 'Delete character under cursor, outputs to underscore register.' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
