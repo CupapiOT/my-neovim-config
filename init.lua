@@ -223,15 +223,17 @@ vim.keymap.set(
   { desc = 'Toggle Neo-[T]ree', noremap = true, silent = true }
 )
 
--- Keybinds for fugtitive.vim
+-- Keybinds for fugtitive.vim and lazygit
 vim.keymap.set('n', '<leader>gd', ':Gdiff<CR>', { desc = 'Fu[g]itive [d]iff.' })
 vim.keymap.set('n', '<leader>gw', ':Gwrite<CR>', { desc = 'Fu[g]itive [w]rite (stage).' })
 vim.keymap.set('n', '<leader>gr', ':Gread<CR>', { desc = 'Fu[g]itive [r]ead (unstage).' })
 vim.keymap.set('n', '<leader>gc', ':Git commit -S<CR>', { desc = 'Fu[g]itive [c]ommit.' })
 vim.keymap.set('n', '<leader>gp', ':Git push<CR>', { desc = 'Fu[g]itive [p]ush.' })
 vim.keymap.set('n', '<leader>gP', ':Git pull<CR>', { desc = 'Fu[g]itive [P]ull.' })
-vim.keymap.set('n', '<leader>gR', ':Grebase<CR>', { desc = 'Fu[g]itive [R]ebase.' })
+vim.keymap.set('n', '<leader>gR', ':Git rebase<CR>', { desc = 'Fu[g]itive [R]ebase.' })
 vim.keymap.set('n', '<leader>gS', ':Git<CR>', { desc = 'Fu[g]itive [S]tatus.' })
+vim.keymap.set('n', '<leader>gI', ':Git init<CR>', { desc = 'Fu[g]itive [I]nitiate.' })
+vim.keymap.set('n', '<leader>gl', ':LazyGit<CR>', { desc = 'Toggle [l]azygit.' })
 
 -- Keybind for line-wrap toggling
 vim.keymap.set('n', '<M-z>', ':set wrap!<CR>', { desc = 'Toggle line wrap.', noremap = true, silent = true })
