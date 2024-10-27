@@ -246,6 +246,8 @@ vim.keymap.set('n', 'x', '"_x', { desc = 'Delete character under cursor, outputs
 
 -- Session keymaps.
 vim.keymap.set('n', '<leader>SQ', ':SessionSave main<CR>:wqa<CR>', { desc = '[S]ession save as main, then write-[Q]uit-all.', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>SS', ':SessionSearch<CR>', { desc = '[S]ession [S]earch.', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>SA', ':SessionToggleAutoSave<CR>', { desc = '[S]ession toggle [A]utosave..', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>SR', ':SessionRestore main<CR>', { desc = '[S]ession [R]estore main.', noremap = true, silent = true })
 
 -- Opening files in specific apps.
