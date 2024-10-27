@@ -246,9 +246,15 @@ vim.keymap.set('n', 'x', '"_x', { desc = 'Delete character under cursor, outputs
 
 -- Session keymaps.
 vim.keymap.set('n', '<leader>SQ', ':SessionSave main<CR>:wqa<CR>', { desc = '[S]ession save as main, then write-[Q]uit-all.', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>SW', ':wqa<CR>', { desc = '[S]ession not-save, just [W]rite-quit-all.', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>Sw', ':wq<CR>', { desc = '[S]ession not-save, just [w]rite-quit current buffer.', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>S!', ':qa!<CR>', { desc = '[S]ession not-save, just quit-all-[!] without saving.', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>Ss', ':SessionSave main<CR>', { desc = '[S]ession [s]ave as main.', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>SD', ':SessionDelete<CR>', { desc = '[S]ession [D]elete.', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>SS', ':SessionSearch<CR>', { desc = '[S]ession [S]earch.', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>SA', ':SessionToggleAutoSave<CR>', { desc = '[S]ession toggle [A]utosave..', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>SR', ':SessionRestore main<CR>', { desc = '[S]ession [R]estore main.', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>SP', ':SessionPurgeOrphaned<CR>', { desc = '[S]ession [P]urge orphaned.', noremap = true, silent = true })
 
 -- Opening files in specific apps.
 vim.keymap.set('n', '<leader>ob', ':!brave "$(wslpath -w $(realpath %))"<CR>', { desc = '[O]pen with [b]rave browser.', noremap = true, silent = true })
@@ -1035,6 +1041,7 @@ require('lazy').setup({
         log_level = 'info', -- Set to 'debug' if you want more verbose logging
         auto_session_suppress_dirs = { '~/Downloads' },
         pre_save_cmds = { 'silent! Neotree close', 'silent! UndotreeHide' },
+        auto_restore_last_session = true,
       }
     end,
 
