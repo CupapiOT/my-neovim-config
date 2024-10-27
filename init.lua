@@ -247,6 +247,9 @@ vim.keymap.set('n', 'x', '"_x', { desc = 'Delete character under cursor, outputs
 -- Quit keymaps.
 vim.keymap.set('n', '<leader>QW', ':SessionSave<CR>:wqa<CR>', { desc = '[Q]uit, [W]rite all and save session.', noremap = true, silent = true })
 
+-- Opening files in specific apps.
+vim.keymap.set('n', '<leader>ob', ':!brave "$(wslpath -w $(realpath %))"<CR>', { desc = '[O]pen with [b]rave browser.', noremap = true, silent = true })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -391,6 +394,7 @@ require('lazy').setup({
         { '<leader>g', group = 'Fu[g]itive' },
         { '<leader>C', group = 'Change [C]WD' },
         { '<leader>Q', group = '[Q]uit...' },
+        { '<leader>o', group = '[O]pen with...' },
       },
     },
   },
