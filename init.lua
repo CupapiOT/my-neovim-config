@@ -295,6 +295,24 @@ vim.api.nvim_create_autocmd('VimEnter', {
   command = 'hi WinSeparator guibg=None guifg=#3f3f3f',
 })
 
+-- Relative line numbers on focus,...
+vim.api.nvim_create_autocmd({ 'BufEnter', 'WinEnter' }, {
+  pattern = '*',
+  callback = function()
+    vim.wo.relativenumber = true
+    vim.wo.number = true
+  end,
+})
+
+-- ...absolute line numbers on unfocus.
+vim.api.nvim_create_autocmd({ 'BufLeave', 'WinLeave' }, {
+  pattern = '*',
+  callback = function()
+    vim.wo.relativenumber = false
+    vim.wo.number = true
+  end,
+})
+
 -- [[ Configure and install plugins ]]
 --
 --  To check the current status of your plugins, run
