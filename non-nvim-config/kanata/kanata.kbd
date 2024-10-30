@@ -1,0 +1,73 @@
+;; Kanata made by jtroo in https://github.com/jtroo/kanata
+;; simpler Kanata configuration for caps to esc+ctrl
+;; (defsrc
+;;   caps
+;; )
+;; 
+;; (defalias
+;;   escctrl (tap-hold 100 150 esc lctrl)
+;; )
+;; 
+;; (deflayer base
+;;   @esccaps
+;; )
+
+;; Implements partial/modified vim motions
+
+;; Define base layer as a source.
+(defsrc
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  del
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \    pause
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt rmet rctl
+)
+
+;; Define every alias that will be used.
+(defalias
+  ;; capslock to esc-ctrl
+  cec (tap-hold 200 200 esc lctl)
+
+  ;; start and end modified vim motions
+  vims (tap-hold 150 150 tab (layer-switch modified-vimmotions)) ;; vimstart
+  vime (layer-switch default) ;; vimend
+
+  ;; select word
+  swf (tap-dance 5 (S-C-right)) ;; forward
+  swb (tap-dance 5 (S-C-left)) ;; backward
+
+  ;; delete word (doesn't work for some reason)
+  dwf (tap-dance-eager 5 (S-C-right bspc)) ;; forward
+  dwb (tap-dance-eager 5 (S-C-left bspc)) ;; backward
+  
+  ;; open line above
+  ola (macro up end ret)
+
+  ;; hold shift
+  hs (one-shot 10 lsft)
+
+  ;; Select all that is able to be selected in current text window.
+  sa (macro C-home 10 C-S-end)
+)
+
+;; Define the new base layer.
+(deflayer default
+  esc   f1   f2     f3   f4  f5   f6   f7   f8   f9   f10  f11  f12  del
+  grv   1    2      3    4   5    6    7    8    9    0    -    =    bspc   
+  @vims q    w      e    r   t    y    u    i    o    p    [    ]    \      caps
+  @cec  a    s      d    f   g    h    j    k    l    ;    '    ret         
+  lsft  z    x      c    v   b    n    m    ,    .    /    rsft             
+  lctl  lmet lalt            spc            ralt rmet rctl                  
+)
+
+;; Define the modified vim motions layer. XX means "do nothing when pressed."
+(deflayer modified-vimmotions
+  _     _    _      _    _    _      _    _    _    _       _    _    _    _
+  _     S-1  S-2    S-3  S-4  S-5    S-6  S-7  S-8  S-9     S-0  _    _    _
+  @vime S-5  C-rght S-9  S-0  A-tab  C-c  C-z  home @ola    C-v  pgup pgdn _   _
+  @cec  end  @swb   bspc C-f  C-tab  left down up   rght    _    _    _
+  _     @sa  del    @swf @hs  C-left XX   XX   _    rpt-any _    _
+  _     _    _                @vime                _    _       _
+)
+
