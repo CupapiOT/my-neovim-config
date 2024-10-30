@@ -218,10 +218,14 @@ vim.keymap.set('n', '<leader>Ch', ':cd<CR>', { desc = '[C]hange CWD to the home 
 -- Keybind to toggle Neotree.
 vim.keymap.set(
   'n',
-  '<leader>T',
+  '<leader>tt',
   ':Neotree toggle source=filesystem reveal=true position=left<CR>',
-  { desc = 'Toggle Neo-[T]ree', noremap = true, silent = true }
+  { desc = '[T]oggle neo-[t]ree', noremap = true, silent = true }
 )
+
+-- Tabbing keymaps.
+vim.keymap.set('n', '<leader>TN', ':tabnew ', { desc = '[T]ab-[n]ew without carriage return.' })
+vim.keymap.set('n', '<leader>TC', ':tabclose<CR>', { desc = '[T]ab-[c]lose.' })
 
 -- Keybinds for fugtitive.vim and lazygit
 vim.keymap.set('n', '<leader>gd', ':Gdiff<CR>', { desc = 'Fu[g]itive [d]iff.' })
