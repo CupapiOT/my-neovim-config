@@ -20,7 +20,7 @@
 ;; Define base layer as a source.
 (defsrc
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  del
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc ins
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \    pause
   caps a    s    d    f    g    h    j    k    l    ;    '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft
@@ -57,16 +57,16 @@
   sa (macro C-home 10 C-S-end)
 
   ;; Mouse movement
-  mms (layer-switch mouse-movement)
-  mu (movemouse-accel-up 3 1200 1 5)
+  mms (layer-switch mouse-movement) ;; mouse movement switch
+  mu (movemouse-accel-up 3 1200 1 5) ;; mouse-x
   md (movemouse-accel-down 3 1200 1 5)
   ml (movemouse-accel-left 3 1200 1 5)
   mr (movemouse-accel-right 3 1200 1 5)
-  mou (movemouse-accel-up 50 1500 40 80)
+  mou (movemouse-accel-up 50 1500 40 80) ;; mouse once x
   mod (movemouse-accel-down 50 1500 40 80)
   mol (movemouse-accel-left 50 1500 40 80)
   mor (movemouse-accel-right 50 1500 40 80)
-  mwu (mwheel-up 50 120)
+  mwu (mwheel-up 50 120) ;; mouse wheel x
   mwd (mwheel-down 50 120)
   mwl (mwheel-left 50 120)
   mwr (mwheel-right 50 120)
@@ -75,30 +75,30 @@
 ;; Define the new base layer.
 (deflayer default
   esc   f1   f2     f3   f4  f5     f6   f7   f8   f9   f10  f11  f12  del
-  grv   1    2      3    4   5      6    7    8    9    0    -    =    bspc   
+  grv   1    2      3    4   5      6    7    8    9    0    -    =    bspc   @mms
   @tvim q    w      e    r   t      y    u    i    o    p    [    ]    \      caps
-  @cec  a    s      d    f   g      h    j    k    l    ;    '    ret         
-  lsft  z    x      c    v   b      n    m    ,    .    /    rsft             
-  lctl  lmet lalt            spc              ralt rmet rctl                  
+  @cec  a    s      d    f   g      h    j    k    l    ;    '    ret
+  lsft  z    x      c    v   b      n    m    ,    .    /    rsft
+  lctl  lmet lalt            spc              ralt rmet rctl
 )
 
 ;; Define the modified vim motions layer. XX means "do nothing when pressed."
 (deflayer modified-vimmotions
   _     _    _      _    _   _      _    _    _    _       _    _    _    _
-  _     S-1  S-2    S-3  S-4 S-5    S-6  S-7  S-8  S-9     S-0  _    _    _
-  @base S-5  C-rght S-9  S-0 A-tab  C-c  C-z  home @ola    C-v  pgup pgdn _   _
+  _     S-1  S-2    S-3  S-4 S-5    S-6  S-7  S-8  S-9     S-0  _    _    _   @mms
+  @base S-5  C-rght S-9  S-0 A-tab  C-c  C-z  home @ola    C-v  pgup pgdn _   caps
   @cec  end  @swb   bspc C-f C-tab  left down up   rght    _    _    _
   _     @sa  del    @swf @hs C-left XX   XX   _    rpt-any _    _
-  _     @mms _               @base                 _       _    _
+  _     _    _               @base                 _       _    _
 )
 
 ;; Define the mouse-movement layer.
 (deflayer mouse-movement
   _     _     _      _    _    _     _    _    _    _      _    _    _    _
-  _     S-1   S-2    S-3  S-4  S-5   S-6  S-7  S-8  S-9    S-0  _    _    _
-  @vims lctl  A-tab  mlft mmid mrgt  C-c  C-z  XX   XX     C-v  pgup pgdn _   _
+  _     S-1   S-2    S-3  S-4  S-5   S-6  S-7  S-8  S-9    S-0  _    _    _   @mms
+  @vims lctl  A-tab  mlft mmid mrgt  C-c  C-z  XX   XX     C-v  pgup pgdn _   caps
   @cec  @mwl  @mwd   @mwu @mwl mfwd  @ml  @md  @mu  @mr    _    _    _
   _     XX    XX     XX   XX   mbck  @mol @mod @mou @mor   _    _
-  _     @vims _                @base                _      _    _
+  _     _     _                @base                _      _    _
 )
 
