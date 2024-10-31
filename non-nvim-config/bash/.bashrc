@@ -152,3 +152,4 @@ export TEMPDIR="/home/cup/TEMPorary-DIRectory"
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
+export KANATACFG="mnt/c/Users/dep/AppData/Roaming/kanata/kanata.kbd"
