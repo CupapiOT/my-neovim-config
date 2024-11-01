@@ -261,7 +261,7 @@ vim.keymap.set('n', '<leader>SR', ':SessionRestore main<CR>', { desc = '[S]essio
 vim.keymap.set('n', '<leader>SP', ':SessionPurgeOrphaned<CR>', { desc = '[S]ession [P]urge orphaned.', noremap = true, silent = true })
 
 -- Opening files in specific apps.
-vim.keymap.set('n', '<leader>ob', ':!brave "$(wslpath -w $(realpath %))"<CR>', { desc = '[O]pen with [b]rave browser.', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ob', [[:!brave "$(wslpath -w "$(realpath '%')")"<CR>]], { desc = '[O]pen with [b]rave browser.', noremap = true, silent = true })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
