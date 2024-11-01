@@ -263,6 +263,9 @@ vim.keymap.set('n', '<leader>SP', ':SessionPurgeOrphaned<CR>', { desc = '[S]essi
 -- Opening files in specific apps.
 vim.keymap.set('n', '<leader>ob', [[:!brave "$(wslpath -w "$(realpath '%')")"<CR>]], { desc = '[O]pen with [b]rave browser.', noremap = true, silent = true })
 
+-- Refresh screen (redraw)
+vim.keymap.set('n', 'M-r', ':mode<CR>', { desc = '[R]efreshes the screen.' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
