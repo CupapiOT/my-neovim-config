@@ -283,13 +283,21 @@ vim.keymap.set('n', '<leader>SS', ':SessionSearch<CR>', { desc = '[S]ession [S]e
 vim.keymap.set('n', '<leader>SA', ':SessionToggleAutoSave<CR>', { desc = '[S]ession toggle [A]utosave.', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>SRM', ':SessionRestore main<CR>', { desc = '[S]ession [R]estore [m]ain.', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>SRC', ':SessionRestore config<CR>', { desc = '[S]ession [R]estore [c]onfig.', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>SRC', ':SessionRestore config<CR>', { desc = '[S]ession [R]estore [c]onfig.', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>SP', ':SessionPurgeOrphaned<CR>', { desc = '[S]ession [P]urge orphaned.', noremap = true, silent = true })
 
 -- Opening files in specific apps.
 vim.keymap.set('n', '<leader>ob', [[:!brave "$(wslpath -w "$(realpath '%')")"<CR>]], { desc = '[O]pen with [b]rave browser.', noremap = true, silent = true })
 
--- Refresh screen (redraw)
-vim.keymap.set('n', 'M-r', ':mode<CR>', { desc = '[R]efreshes the screen.' })
+-- Refresh screen (redraw).
+vim.keymap.set('n', '<M-r>', ':mode<CR>', { desc = '[R]efreshes the screen.', noremap = true, silent = true })
+
+-- Select all.
+vim.keymap.set('n', '<M-a>', 'ggVG', { desc = 'Selects [a]ll.' })
+
+-- LSP commands
+vim.keymap.set('n', '<leader>li', ':LspInnstall ', { desc = '[L]SP [i]nstall for...' })
+vim.keymap.set('n', '<leader>lI', ':LspInfo<CR>', { desc = '[L]SP show [I]nfo' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -459,11 +467,12 @@ require('lazy').setup({
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
         { '<leader>g', group = 'Fu[g]itive' },
         { '<leader>C', group = 'Change [C]WD' },
-        { '<leader>S', group = '[S]ession...' },
+        { '<leader>S', group = '[S]ession' },
         { '<leader>SQ', group = '[S]ession save as ..., then write-[Q]uit-all.' },
         { '<leader>SR', group = '[S]ession [R]estore...' },
         { '<leader>Ss', group = '[S]ession [s]ave as...' },
         { '<leader>o', group = '[O]pen with...' },
+        { '<leader>l', group = '[L]SP' },
       },
     },
   },
