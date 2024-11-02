@@ -295,9 +295,12 @@ vim.keymap.set('n', '<M-r>', ':mode<CR>', { desc = '[R]efreshes the screen.', no
 -- Select all.
 vim.keymap.set('n', '<M-a>', 'ggVG', { desc = 'Selects [a]ll.' })
 
--- LSP commands
-vim.keymap.set('n', '<leader>li', ':LspInnstall ', { desc = '[L]SP [i]nstall for...' })
-vim.keymap.set('n', '<leader>lI', ':LspInfo<CR>', { desc = '[L]SP show [I]nfo' })
+-- LSP keymaps
+vim.keymap.set('n', '<leader>li', ':LspInstall ', { desc = '[L]SP [i]nstall for...' })
+vim.keymap.set('n', '<leader>lI', ':LspInfo<CR>', { desc = '[L]SP show [I]nfo.', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ls', ':LspStart<CR>', { desc = '[L]SP [s]tart.', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>lS', ':LspStop<CR>', { desc = '[L]SP [S]top.', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>lr', ':LspRestart<CR>', { desc = '[L]SP [S]top.', noremap = true, silent = true })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
