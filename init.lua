@@ -215,34 +215,36 @@ vim.keymap.set('n', '<leader>Cc', ':cd %:p:h<CR>', { desc = '[C]hange CWD to the
 vim.keymap.set('n', '<leader>Cu', ':cd ..<CR>', { desc = '[C]hange CWD [u]pwards to parent dir.', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>Ch', ':cd<CR>', { desc = '[C]hange CWD to the home dir.', noremap = true, silent = true })
 
--- Keybind to toggle Neotree.
+-- Tabbing keymaps.
+vim.keymap.set('n', '<leader>TN', ':tabnew ', { desc = '[T]ab-[n]ew without carriage return.' })
+vim.keymap.set('n', '<leader>TC', ':tabclose<CR>', { desc = '[T]ab-[c]lose.', noremap = true, silent = true })
+
+-- Keybinds for fugtitive.vim and lazygit
+vim.keymap.set('n', '<leader>GD', ':Gdiff<CR>', { desc = 'Fu[g]itive [d]iff.' })
+vim.keymap.set('n', '<leader>GW', ':Gwrite<CR>', { desc = 'Fu[g]itive [w]rite (stage).' })
+vim.keymap.set('n', '<leader>GR', ':Gread<CR>', { desc = 'Fu[g]itive [r]ead (unstage).' })
+vim.keymap.set('n', '<leader>Gc', ':Git commit -S<CR>', { desc = 'Fu[g]itive [c]ommit.' })
+vim.keymap.set('n', '<leader>GP', ':Git push<CR>', { desc = 'Fu[g]itive [p]ush.' })
+vim.keymap.set('n', '<leader>Gp', ':Git pull<CR>', { desc = 'Fu[g]itive [P]ull.' })
+vim.keymap.set('n', '<leader>Gr', ':Git rebase<CR>', { desc = 'Fu[g]itive [R]ebase.' })
+vim.keymap.set('n', '<leader>GS', ':Git<CR>', { desc = 'Fu[g]itive [S]tatus.' })
+vim.keymap.set('n', '<leader>GI', ':Git init<CR>', { desc = 'Fu[g]itive [I]nitiate.' })
+
+-- Toggle Keybinds
+--  Neotree Toggle
 vim.keymap.set(
   'n',
   '<leader>tt',
   ':Neotree toggle source=filesystem reveal=true position=left<CR>',
   { desc = '[T]oggle neo-[t]ree', noremap = true, silent = true }
 )
-
--- Tabbing keymaps.
-vim.keymap.set('n', '<leader>TN', ':tabnew ', { desc = '[T]ab-[n]ew without carriage return.' })
-vim.keymap.set('n', '<leader>TC', ':tabclose<CR>', { desc = '[T]ab-[c]lose.' })
-
--- Keybinds for fugtitive.vim and lazygit
-vim.keymap.set('n', '<leader>gd', ':Gdiff<CR>', { desc = 'Fu[g]itive [d]iff.' })
-vim.keymap.set('n', '<leader>gw', ':Gwrite<CR>', { desc = 'Fu[g]itive [w]rite (stage).' })
-vim.keymap.set('n', '<leader>gr', ':Gread<CR>', { desc = 'Fu[g]itive [r]ead (unstage).' })
-vim.keymap.set('n', '<leader>gc', ':Git commit -S<CR>', { desc = 'Fu[g]itive [c]ommit.' })
-vim.keymap.set('n', '<leader>gp', ':Git push<CR>', { desc = 'Fu[g]itive [p]ush.' })
-vim.keymap.set('n', '<leader>gP', ':Git pull<CR>', { desc = 'Fu[g]itive [P]ull.' })
-vim.keymap.set('n', '<leader>gR', ':Git rebase<CR>', { desc = 'Fu[g]itive [R]ebase.' })
-vim.keymap.set('n', '<leader>gS', ':Git<CR>', { desc = 'Fu[g]itive [S]tatus.' })
-vim.keymap.set('n', '<leader>gI', ':Git init<CR>', { desc = 'Fu[g]itive [I]nitiate.' })
-vim.keymap.set('n', '<leader>gl', ':LazyGit<CR>', { desc = 'Toggle [l]azygit.' })
-
--- Keybind for line-wrap toggling
+--  Lazygit Toggle
+vim.keymap.set('n', '<leader>tl', ':LazyGit<CR>', { desc = '[T]oggle [l]azygit.', noremap = true, silent = true })
+--  AutoSave Toggle
+vim.keymap.set('n', '<leader>tA', ':ASToggle<CR>', { desc = '[T]oggle [A]utoSave.', noremap = true, silent = true })
+--  Line-wrap Toggle
 vim.keymap.set('n', '<M-z>', ':set wrap!<CR>', { desc = 'Toggle line wrap.', noremap = true, silent = true })
-
--- Undotree Toggle
+--  Undotree Toggle
 vim.keymap.set('n', '<leader>tu', ':UndotreeToggle<CR>', { desc = '[T]oggle [u]ndotree.', noremap = true, silent = true })
 
 -- Make it so `x` outputs to the underscore register so it doesn't interfere.
@@ -468,7 +470,7 @@ require('lazy').setup({
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
-        { '<leader>g', group = 'Fu[g]itive' },
+        { '<leader>G', group = 'Fu[G]itive' },
         { '<leader>C', group = 'Change [C]WD' },
         { '<leader>S', group = '[S]ession' },
         { '<leader>SQ', group = '[S]ession save as ..., then write-[Q]uit-all.' },
@@ -476,6 +478,7 @@ require('lazy').setup({
         { '<leader>Ss', group = '[S]ession [s]ave as...' },
         { '<leader>o', group = '[O]pen with...' },
         { '<leader>l', group = '[L]SP' },
+        { '<leader>T', group = '[T]ab' },
       },
     },
   },
