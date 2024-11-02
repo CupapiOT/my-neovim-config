@@ -220,15 +220,15 @@ vim.keymap.set('n', '<leader>TN', ':tabnew ', { desc = '[T]ab-[n]ew without carr
 vim.keymap.set('n', '<leader>TC', ':tabclose<CR>', { desc = '[T]ab-[c]lose.', noremap = true, silent = true })
 
 -- Keybinds for fugtitive.vim and lazygit
-vim.keymap.set('n', '<leader>GD', ':Gdiff<CR>', { desc = 'Fu[g]itive [d]iff.' })
-vim.keymap.set('n', '<leader>GW', ':Gwrite<CR>', { desc = 'Fu[g]itive [w]rite (stage).' })
-vim.keymap.set('n', '<leader>GR', ':Gread<CR>', { desc = 'Fu[g]itive [r]ead (unstage).' })
-vim.keymap.set('n', '<leader>Gc', ':Git commit -S<CR>', { desc = 'Fu[g]itive [c]ommit.' })
-vim.keymap.set('n', '<leader>GP', ':Git push<CR>', { desc = 'Fu[g]itive [p]ush.' })
-vim.keymap.set('n', '<leader>Gp', ':Git pull<CR>', { desc = 'Fu[g]itive [P]ull.' })
-vim.keymap.set('n', '<leader>Gr', ':Git rebase<CR>', { desc = 'Fu[g]itive [R]ebase.' })
-vim.keymap.set('n', '<leader>GS', ':Git<CR>', { desc = 'Fu[g]itive [S]tatus.' })
-vim.keymap.set('n', '<leader>GI', ':Git init<CR>', { desc = 'Fu[g]itive [I]nitiate.' })
+vim.keymap.set('n', '<leader>gd', ':Gdiff<CR>', { desc = 'Fu[g]itive [d]iff.' })
+vim.keymap.set('n', '<leader>gw', ':Gwrite<CR>', { desc = 'Fu[g]itive [w]rite (stage).' })
+vim.keymap.set('n', '<leader>gr', ':Gread<CR>', { desc = 'Fu[g]itive [r]ead (unstage).' })
+vim.keymap.set('n', '<leader>gc', ':Git commit -S<CR>', { desc = 'Fu[g]itive [c]ommit.' })
+vim.keymap.set('n', '<leader>gp', ':Git push<CR>', { desc = 'Fu[g]itive [p]ush.' })
+vim.keymap.set('n', '<leader>gP', ':Git pull<CR>', { desc = 'Fu[g]itive [P]ull.' })
+vim.keymap.set('n', '<leader>gR', ':Git rebase<CR>', { desc = 'Fu[g]itive [R]ebase.' })
+vim.keymap.set('n', '<leader>gs', ':Git<CR>', { desc = 'Fu[g]itive [s]tatus.' })
+vim.keymap.set('n', '<leader>gi', ':Git init<CR>', { desc = 'Fu[g]itive [I]nitiate.' })
 
 -- Toggle keymaps
 --  Neotree Toggle
@@ -475,7 +475,7 @@ require('lazy').setup({
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
-        { '<leader>G', group = 'Fu[G]itive' },
+        { '<leader>g', group = 'Fu[g]itive' },
         { '<leader>C', group = 'Change [C]WD' },
         { '<leader>S', group = '[S]ession' },
         { '<leader>SQ', group = '[S]ession save as ..., then write-[Q]uit-all.' },
