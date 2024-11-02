@@ -814,7 +814,7 @@ require('lazy').setup({
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
-        handler = {
+        handlers = {
           function(server_name)
             local server = servers[server_name] or {}
             -- This handles overriding only values explicitly passed
