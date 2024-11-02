@@ -261,14 +261,24 @@ vim.keymap.set(
   ':SessionSave config<CR>:wqa<CR>',
   { desc = '[S]ession save as [c]onfig, then write-[Q]uit-all.', noremap = true, silent = true }
 )
--- vim.keymap.set('n', '<leader>SQ;', ':SessionSave ', { desc = '[S]ession save as ..., then write-[Q]uit-all.', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>SQ;', function()
+  -- Prompt user for a session name
+  local session_name = vim.fn.input 'Session name to quit as: '
+
+  if session_name ~= '' then
+    vim.cmd('SessionSave ' .. session_name)
+    vim.cmd 'wqa'
+  else
+    print 'Session name cannot be empty.'
+  end
+end, { desc = '[S]ession save as ..., then write-[Q]uit-all.', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>SW', ':wqa<CR>', { desc = '[S]ession not-save, just [W]rite-quit-all.', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>Sw', ':wq<CR>', { desc = '[S]ession not-save, just [w]rite-quit current buffer.', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>S!', ':qa!<CR>', { desc = '[S]ession not-save, just quit-all-[!] without saving.', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>Ssm', ':SessionSave main<CR>', { desc = '[S]ession [s]ave as [m]ain.', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>Ssc', ':SessionSave config<CR>', { desc = '[S]ession [s]ave as [c]onfig.', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>Ss;', ':SessionSave ', { desc = '[S]ession [s]ave as...', noremap = true, silent = true })
-vim.keymap.set('n', '<leader>SD', ':SessionDelete<CR>', { desc = '[S]ession [D]elete.', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>SD', ':SessionDelete ', { desc = '[S]ession [D]elete...', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>SS', ':SessionSearch<CR>', { desc = '[S]ession [S]earch.', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>SA', ':SessionToggleAutoSave<CR>', { desc = '[S]ession toggle [A]utosave.', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>SRM', ':SessionRestore main<CR>', { desc = '[S]ession [R]estore [m]ain.', noremap = true, silent = true })
