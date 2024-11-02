@@ -249,15 +249,30 @@ vim.keymap.set('n', '<leader>tu', ':UndotreeToggle<CR>', { desc = '[T]oggle [u]n
 vim.keymap.set('n', 'x', '"_x', { desc = 'Delete character under cursor, outputs to underscore register.' })
 
 -- Session keymaps.
-vim.keymap.set('n', '<leader>SQ', ':SessionSave main<CR>:wqa<CR>', { desc = '[S]ession save as main, then write-[Q]uit-all.', noremap = true, silent = true })
+vim.keymap.set(
+  'n',
+  '<leader>SQM',
+  ':SessionSave main<CR>:wqa<CR>',
+  { desc = '[S]ession save as [m]ain, then write-[Q]uit-all.', noremap = true, silent = true }
+)
+vim.keymap.set(
+  'n',
+  '<leader>SQC',
+  ':SessionSave config<CR>:wqa<CR>',
+  { desc = '[S]ession save as [c]onfig, then write-[Q]uit-all.', noremap = true, silent = true }
+)
+-- vim.keymap.set('n', '<leader>SQ;', ':SessionSave ', { desc = '[S]ession save as ..., then write-[Q]uit-all.', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>SW', ':wqa<CR>', { desc = '[S]ession not-save, just [W]rite-quit-all.', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>Sw', ':wq<CR>', { desc = '[S]ession not-save, just [w]rite-quit current buffer.', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>S!', ':qa!<CR>', { desc = '[S]ession not-save, just quit-all-[!] without saving.', noremap = true, silent = true })
-vim.keymap.set('n', '<leader>Ss', ':SessionSave main<CR>', { desc = '[S]ession [s]ave as main.', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>Ssm', ':SessionSave main<CR>', { desc = '[S]ession [s]ave as [m]ain.', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>Ssc', ':SessionSave config<CR>', { desc = '[S]ession [s]ave as [c]onfig.', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>Ss;', ':SessionSave ', { desc = '[S]ession [s]ave as...', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>SD', ':SessionDelete<CR>', { desc = '[S]ession [D]elete.', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>SS', ':SessionSearch<CR>', { desc = '[S]ession [S]earch.', noremap = true, silent = true })
-vim.keymap.set('n', '<leader>SA', ':SessionToggleAutoSave<CR>', { desc = '[S]ession toggle [A]utosave..', noremap = true, silent = true })
-vim.keymap.set('n', '<leader>SR', ':SessionRestore main<CR>', { desc = '[S]ession [R]estore main.', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>SA', ':SessionToggleAutoSave<CR>', { desc = '[S]ession toggle [A]utosave.', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>SRM', ':SessionRestore main<CR>', { desc = '[S]ession [R]estore [m]ain.', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>SRC', ':SessionRestore config<CR>', { desc = '[S]ession [R]estore [c]onfig.', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>SP', ':SessionPurgeOrphaned<CR>', { desc = '[S]ession [P]urge orphaned.', noremap = true, silent = true })
 
 -- Opening files in specific apps.
@@ -428,6 +443,9 @@ require('lazy').setup({
         { '<leader>g', group = 'Fu[g]itive' },
         { '<leader>C', group = 'Change [C]WD' },
         { '<leader>S', group = '[S]ession...' },
+        { '<leader>SQ', group = '[S]ession save as ..., then write-[Q]uit-all.' },
+        { '<leader>SR', group = '[S]ession [R]estore...' },
+        { '<leader>Ss', group = '[S]ession [s]ave as...' },
         { '<leader>o', group = '[O]pen with...' },
       },
     },
