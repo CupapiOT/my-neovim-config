@@ -230,7 +230,7 @@ vim.keymap.set('n', '<leader>Gr', ':Git rebase<CR>', { desc = 'Fu[g]itive [R]eba
 vim.keymap.set('n', '<leader>GS', ':Git<CR>', { desc = 'Fu[g]itive [S]tatus.' })
 vim.keymap.set('n', '<leader>GI', ':Git init<CR>', { desc = 'Fu[g]itive [I]nitiate.' })
 
--- Toggle Keybinds
+-- Toggle keymaps
 --  Neotree Toggle
 vim.keymap.set(
   'n',
@@ -385,6 +385,11 @@ require('lazy').setup({
   --
   -- Use `opts = {}` to force a plugin to be loaded.
   --
+  --  This is equivalent to:
+  --    require('Comment').setup({})
+
+  -- "gc" to comment visual regions/lines
+  { 'numToStr/Comment.nvim', opts = {} },
 
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
@@ -1140,13 +1145,6 @@ require('lazy').setup({
   {
     'tpope/vim-surround',
     -- Any additional options can be specified here
-  },
-
-  {
-    'numToStr/Comment.nvim',
-    opts = {
-      -- add any options here
-    },
   },
 
   {
