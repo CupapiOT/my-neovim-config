@@ -98,7 +98,7 @@
   _     S-1   S-2    S-3  S-4  S-5   S-6  S-7  S-8  S-9    S-0  _    _    _   @mms
   @vims lctl  A-tab  mlft mmid mrgt  C-c  C-z  XX   XX     C-v  pgup pgdn _   caps
   @cec  @mwl  @mwd   @mwu @mwl mfwd  @ml  @md  @mu  @mr    _    _    _
-  _     XX    XX     XX   XX   mbck  @mol @mod @mou @mor   _    _
+  _     @ml   @md    @mu  @mr  mbck  @mol @mod @mou @mor   _    _
   _     _     _                @base                _      _    _
 )
 
