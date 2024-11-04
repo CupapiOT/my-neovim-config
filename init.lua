@@ -302,7 +302,7 @@ vim.keymap.set('n', '<leader>li', ':LspInstall ', { desc = '[L]SP [i]nstall for.
 vim.keymap.set('n', '<leader>lI', ':LspInfo<CR>', { desc = '[L]SP show [I]nfo.', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>ls', ':LspStart<CR>', { desc = '[L]SP [s]tart.', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>lS', ':LspStop<CR>', { desc = '[L]SP [S]top.', noremap = true, silent = true })
-vim.keymap.set('n', '<leader>lr', ':LspRestart<CR>', { desc = '[L]SP [S]top.', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>lr', ':LspRestart<CR>', { desc = '[L]SP [R]estart.', noremap = true, silent = true })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -862,6 +862,13 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        python = { 'black', 'prettier', stop_after_first = true },
+        css = { 'prettier' },
+        html = { 'prettier' },
+        javascript = { 'prettier' },
+        markdown = { 'prettier' },
+        c = { 'clang-formatter' },
+        cpp = { 'clang-formatter' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
