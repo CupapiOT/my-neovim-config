@@ -1100,6 +1100,10 @@ require('lazy').setup({
   -- My custom plugins start here.
 
   {
+    'nvim-treesitter/nvim-treesitter-context',
+  },
+
+  {
     'nvim-tree/nvim-web-devicons',
     enabled = vim.g.have_nerd_font,
   },
