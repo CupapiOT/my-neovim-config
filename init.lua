@@ -191,7 +191,7 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 -- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
 -- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
--- Keybinds to make split navigation easier.
+-- Keymaps to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
 --  See `:help wincmd` for a list of all window commands
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
@@ -199,7 +199,7 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
--- Keybinds to make split resizing easier.
+-- Keymaps to make split resizing easier.
 vim.keymap.set('n', '<C-w>+', '3<C-w>+', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-w>-', '3<C-w>-', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-w>>', '5<C-w>>', { noremap = true, silent = true })
@@ -213,7 +213,7 @@ vim.keymap.set('n', '<C-w><', '5<C-w><', { noremap = true, silent = true })
 -- vim.keymap.set('n', '<C-S-k>', '<C-w>+', { desc = 'Increase editor height.' })
 -- vim.keymap.set('n', '<C-S-e>', '<C-w>=', { desc = 'Equalize editor width and height.' })
 
--- Keybinds for common cd commands
+-- Keymaps for common cd commands
 vim.keymap.set('n', '<leader>Cc', ':cd %:p:h<CR>', { desc = '[C]hange CWD to the dir of [c]urrent buffer.', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>Cu', ':cd ..<CR>', { desc = '[C]hange CWD [u]pwards to parent dir.', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>Ch', ':cd<CR>', { desc = '[C]hange CWD to the home dir.', noremap = true, silent = true })
@@ -222,7 +222,7 @@ vim.keymap.set('n', '<leader>Ch', ':cd<CR>', { desc = '[C]hange CWD to the home 
 vim.keymap.set('n', '<leader>TN', ':tabnew ', { desc = '[T]ab-[n]ew without carriage return.' })
 vim.keymap.set('n', '<leader>TC', ':tabclose<CR>', { desc = '[T]ab-[c]lose.', noremap = true, silent = true })
 
--- Keybinds for fugtitive.vim and lazygit
+-- Keymaps for fugtitive.vim and lazygit
 vim.keymap.set('n', '<leader>gd', ':Gdiff<CR>', { desc = 'Fu[g]itive [d]iff.' })
 vim.keymap.set('n', '<leader>gw', ':Gwrite<CR>', { desc = 'Fu[g]itive [w]rite (stage).' })
 vim.keymap.set('n', '<leader>gr', ':Gread<CR>', { desc = 'Fu[g]itive [r]ead (unstage).' })
