@@ -283,6 +283,7 @@ vim.keymap.set('n', '<leader>S!', ':qa!<CR>', { desc = '[S]ession not-save, just
 vim.keymap.set('n', '<leader>Ssm', ':SessionSave main<CR>', { desc = '[S]ession [s]ave as [m]ain.', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>Ssc', ':SessionSave config<CR>', { desc = '[S]ession [s]ave as [c]onfig.', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>Ssl', ':SessionSave learn<CR>', { desc = '[S]ession [s]ave as [l]earn.', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>Sst', ':SessionSave tempdir<CR>', { desc = '[S]ession [s]ave as [t]empdir.', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>Ss;', ':SessionSave ', { desc = '[S]ession [s]ave as...', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>SD', ':SessionDelete ', { desc = '[S]ession [D]elete...', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>SS', ':SessionSearch<CR>', { desc = '[S]ession [S]earch.', noremap = true, silent = true })
@@ -290,6 +291,7 @@ vim.keymap.set('n', '<leader>SA', ':SessionToggleAutoSave<CR>', { desc = '[S]ess
 vim.keymap.set('n', '<leader>SRM', ':SessionRestore main<CR>', { desc = '[S]ession [R]estore [m]ain.', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>SRC', ':SessionRestore config<CR>', { desc = '[S]ession [R]estore [c]onfig.', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>SRL', ':SessionRestore learn<CR>', { desc = '[S]ession [R]estore [l]earn.', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>SRT', ':SessionRestore tempdir<CR>', { desc = '[S]ession [R]estore [t]empdir.', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>SP', ':SessionPurgeOrphaned<CR>', { desc = '[S]ession [P]urge orphaned.', noremap = true, silent = true })
 
 -- Opening files in specific apps.
