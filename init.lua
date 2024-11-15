@@ -310,6 +310,18 @@ vim.keymap.set('n', '<leader>ls', ':LspStart<CR>', { desc = '[L]SP [s]tart.', no
 vim.keymap.set('n', '<leader>lS', ':LspStop<CR>', { desc = '[L]SP [S]top.', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>lr', ':LspRestart<CR>', { desc = '[L]SP [R]estart.', noremap = true, silent = true })
 
+-- Refactor Keymaps.
+vim.keymap.set('x', '<leader>re', ':Refactor extract ', { desc = '[R]efactor [e]xtract (will prompt).', noremap = true, silent = true }) -- 'x' == visual mode
+vim.keymap.set('x', '<leader>rf', ':Refactor extract_to_file ', { desc = '[R]efactor [e]xtract to [f]ile (will prompt).', noremap = true, silent = true })
+-- Extract function supports only visual mode
+vim.keymap.set('x', '<leader>rv', ':Refactor extract_var ', { desc = '[R]efactor extract [v]ariable (will prompt).', noremap = true, silent = true })
+-- Extract variable supports only visual mode
+vim.keymap.set({ 'n', 'x' }, '<leader>ri', ':Refactor inline_var', { desc = '[R]efactor [i]nline variable.', noremap = true, silent = true })
+-- Inline func supports only normal mode
+vim.keymap.set('n', '<leader>rI', ':Refactor inline_func', { desc = '[R]efactor [I]nline function.', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>rbb', ':Refactor extract_block', { desc = '[R]efactor extract [b]lock.', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>rbf', ':Refactor extract_block_to_file', { desc = '[R]efactor extract [b]lock to [f]ile.', noremap = true, silent = true })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -476,7 +488,8 @@ require('lazy').setup({
       spec = {
         { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
         { '<leader>d', group = '[D]ocument' },
-        { '<leader>r', group = '[R]ename' },
+        { '<leader>r', group = '[R]efactor' },
+        { '<leader>rb', group = '[R]efactor extract [b]lock' },
         { '<leader>s', group = '[S]earch' },
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
@@ -1244,6 +1257,18 @@ require('lazy').setup({
       vim.keymap.set('n', '<C-n>', function()
         harpoon:list():next()
       end)
+    end,
+  },
+
+  {
+    'ThePrimeagen/refactoring.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-treesitter/nvim-treesitter',
+    },
+    lazy = false,
+    config = function()
+      require('refactoring').setup {}
     end,
   },
 
