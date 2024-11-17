@@ -325,11 +325,11 @@ vim.keymap.set('n', '<leader>lr', ':LspRestart<CR>', { desc = '[L]SP [R]estart.'
 -- Refactor Keymaps.
 vim.keymap.set('x', '<leader>re', ':Refactor extract ', { desc = '[R]efactor [e]xtract (will prompt).', noremap = true, silent = true }) -- 'x' == visual mode
 vim.keymap.set('x', '<leader>rf', ':Refactor extract_to_file ', { desc = '[R]efactor [e]xtract to [f]ile (will prompt).', noremap = true, silent = true })
--- Extract function supports only visual mode
+--  Extract function supports only visual mode
 vim.keymap.set('x', '<leader>rv', ':Refactor extract_var ', { desc = '[R]efactor extract [v]ariable (will prompt).', noremap = true, silent = true })
--- Extract variable supports only visual mode
+--  Extract variable supports only visual mode
 vim.keymap.set({ 'n', 'x' }, '<leader>ri', ':Refactor inline_var', { desc = '[R]efactor [i]nline variable.', noremap = true, silent = true })
--- Inline func supports only normal mode
+--  Inline func supports only normal mode
 vim.keymap.set('n', '<leader>rI', ':Refactor inline_func', { desc = '[R]efactor [I]nline function.', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>rbb', ':Refactor extract_block', { desc = '[R]efactor extract [b]lock.', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>rbf', ':Refactor extract_block_to_file', { desc = '[R]efactor extract [b]lock to [f]ile.', noremap = true, silent = true })
@@ -381,8 +381,7 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'WinEnter' }, {
     vim.wo.number = true
   end,
 })
-
--- ...absolute line numbers on unfocus.
+--  ...absolute line numbers on unfocus.
 vim.api.nvim_create_autocmd({ 'BufLeave', 'WinLeave' }, {
   pattern = '*',
   callback = function()
