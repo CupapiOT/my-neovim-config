@@ -334,6 +334,9 @@ vim.keymap.set('n', '<leader>rI', ':Refactor inline_func', { desc = '[R]efactor 
 vim.keymap.set('n', '<leader>rbb', ':Refactor extract_block', { desc = '[R]efactor extract [b]lock.', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>rbf', ':Refactor extract_block_to_file', { desc = '[R]efactor extract [b]lock to [f]ile.', noremap = true, silent = true })
 
+-- Trigger vim-sleuth manually to fix tabs being 8 spaces.
+vim.keymap.set('n', '<M-s>', ':Sleuth<CR>', { desc = 'Trigger vim-[S]leuth', noremap = true, silent = true })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
