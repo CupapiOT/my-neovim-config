@@ -294,8 +294,20 @@ vim.keymap.set('n', '<leader>SRL', ':SessionRestore learn<CR>', { desc = '[S]ess
 vim.keymap.set('n', '<leader>SRT', ':SessionRestore tempdir<CR>', { desc = '[S]ession [R]estore [t]empdir.', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>SP', ':SessionPurgeOrphaned<CR>', { desc = '[S]ession [P]urge orphaned.', noremap = true, silent = true })
 
--- Opening files in specific apps.
+-- Opening files with specific apps/tools.
 vim.keymap.set('n', '<leader>ob', [[:!brave "$(wslpath -w "$(realpath '%')")"<CR>]], { desc = '[O]pen with [b]rave browser.', noremap = true, silent = true })
+vim.keymap.set(
+  'n',
+  '<leader>cco',
+  [[:!gcc -Wall -Wextra -Werror -O2 -pedantic -std=c99 % -o %.out<CR>]],
+  { desc = '[C]ode [c]ompile [o]nefile with gcc (output: %.out).', noremap = true, silent = true }
+)
+vim.keymap.set(
+  'n',
+  '<leader>ccO',
+  [[:!gcc -Wall -Wextra -Werror -O2 -pedantic -std=c99 % -o ]],
+  { desc = '[C]ode [c]ompile with gcc (specify [O]utput).', noremap = true, silent = true }
+)
 
 -- Refresh screen (redraw).
 vim.keymap.set('n', '<M-r>', ':mode<CR>', { desc = '[R]efreshes the screen.', noremap = true, silent = true })
@@ -886,8 +898,8 @@ require('lazy').setup({
         html = { 'prettier' },
         javascript = { 'prettier' },
         markdown = { 'prettier' },
-        c = { 'clang-formatter' },
-        cpp = { 'clang-formatter' },
+        c = { 'clang-format' },
+        cpp = { 'clang-format' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
