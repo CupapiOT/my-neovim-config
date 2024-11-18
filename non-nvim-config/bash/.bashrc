@@ -132,7 +132,7 @@ export GPG_TTY=$(tty)
 # NeoVim alias.
 alias nv='nvim'
 
-# Start NeoVim in tmux automatically.
+# Start tmux automatically.
 if [ -z "$TMUX" ]; then # checks if currently in tmux sessiion.
     tmux new-session
 fi
