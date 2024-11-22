@@ -308,6 +308,7 @@ vim.keymap.set(
   [[:!gcc -Wall -Wextra -Werror -O2 -pedantic -std=c99 % -o ]],
   { desc = '[C]ode [c]ompile with gcc (specify [O]utput).', noremap = true, silent = true }
 )
+vim.keymap.set('n', '<leader>op', [[:!python3 %<CR>]], { desc = '[O]pen with [p]ython3.', noremap = true, silent = true })
 
 -- Refresh screen (redraw).
 vim.keymap.set('n', '<M-r>', ':mode<CR>', { desc = '[R]efreshes the screen.', noremap = true, silent = true })
@@ -854,6 +855,7 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'basedpyright', -- Used to format Python code
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
