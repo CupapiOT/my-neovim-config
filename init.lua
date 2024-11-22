@@ -266,6 +266,18 @@ vim.keymap.set(
   ':SessionSave config<CR>:wqa<CR>',
   { desc = '[S]ession save as [c]onfig, then write-[Q]uit-all.', noremap = true, silent = true }
 )
+vim.keymap.set(
+  'n',
+  '<leader>SQL',
+  ':SessionSave learn<CR>:wqa<CR>',
+  { desc = '[S]ession save as [l]earn, then write-[Q]uit-all.', noremap = true, silent = true }
+)
+vim.keymap.set(
+  'n',
+  '<leader>SQT',
+  ':SessionSave tempdir<CR>:wqa<CR>',
+  { desc = '[S]ession save as [t]empdir, then write-[Q]uit-all.', noremap = true, silent = true }
+)
 vim.keymap.set('n', '<leader>SQ;', function()
   -- Prompt user for a session name
   local session_name = vim.fn.input 'Session name to quit as: '
