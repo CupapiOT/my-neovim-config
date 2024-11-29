@@ -123,18 +123,33 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # neovim config
 export NVIMCFG="/home/cup/.config/nvim"
 
-# start ssh agent
-eval "$(ssh-agent -s)"
-
-# GPG signing key bugfix.
-export GPG_TTY=$(tty)
-
 # NeoVim alias.
 alias nv='nvim'
 
 # Start tmux automatically.
 if [ -z "$TMUX" ]; then # checks if currently in tmux sessiion.
     tmux new-session
+fi 
+
+# start SSH agent if not running
+if ! pgrep -u $USER ssh-agent > /dev/null; then
+    eval "$(ssh-agent -s)"
+    ssh-add ~/.ssh/id_ed25519
+fi
+# make sure it works across panels.
+if [ -n "$SSH_AUTH_SOCK" ]; then 
+    export SSH_AUTH_SOCK
+    export SSH_AGENT_PID
+fi
+
+# GPG agent start automatically
+if ! pgrep -u $USER gpg-agent > /dev/null; then
+    eval $(gpg-agent --daemon)
+fi
+export GPG_TTY=$(tty)
+# export the env variables if gpg agnet is running
+if [ -n "$GPG_AGENT_INFO" ]; then
+    export GPG_AGENT_INFO
 fi
 
 # Set brave browser as the one on windows.
