@@ -350,6 +350,42 @@ vim.keymap.set('n', '<leader>rbf', ':Refactor extract_block_to_file', { desc = '
 -- Trigger vim-sleuth manually to fix tabs being 8 spaces.
 vim.keymap.set('n', '<M-s>', ':Sleuth<CR>', { desc = 'Trigger vim-[S]leuth', noremap = true, silent = true })
 
+-- Term Toggle Function
+-- (
+-- Thank you u/SlagTheRisen on Reddit
+-- Link Credit:
+-- https://www.reddit.com/r/vim/comments/8n5bzs/comment/ljkp8re/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+-- )
+local term_buf = nil
+local term_win = nil
+
+function TermToggle(height)
+  if term_win and vim.api.nvim_win_is_valid(term_win) then
+    vim.cmd 'hide'
+  else
+    vim.cmd 'botright new'
+    local new_buf = vim.api.nvim_get_current_buf()
+    vim.cmd('resize ' .. height)
+    if term_buf and vim.api.nvim_buf_is_valid(term_buf) then
+      vim.cmd('buffer ' .. term_buf) -- go to terminal buffer
+      vim.cmd('bd ' .. new_buf) -- cleanup new buffer
+    else
+      vim.cmd 'terminal'
+      term_buf = vim.api.nvim_get_current_buf()
+      vim.wo.number = false
+      vim.wo.relativenumber = false
+      vim.wo.signcolumn = 'no'
+    end
+    vim.cmd 'startinsert!'
+    term_win = vim.api.nvim_get_current_win()
+  end
+end
+
+-- Term Toggle Keymaps
+vim.keymap.set('n', '<M-t>', ':lua TermToggle(10)<CR>', { noremap = true, silent = true })
+vim.keymap.set('i', '<M-t>', '<Esc>:lua TermToggle(10)<CR>', { noremap = true, silent = true })
+vim.keymap.set('t', '<M-t>', '<C-\\><C-n>:lua TermToggle(10)<CR>', { noremap = true, silent = true })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
