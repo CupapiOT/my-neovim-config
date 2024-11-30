@@ -428,15 +428,20 @@ vim.api.nvim_create_autocmd('VimEnter', {
   command = 'hi WinSeparator guibg=None guifg=#3f3f3f',
 })
 
--- -- Easier to see Line Numbers
+-- Easier to see Line Numbers
 vim.api.nvim_create_autocmd('VimEnter', { -- Absolute Line Numbers
-  command = 'hi LineNr guifg=#505C7F',
+  command = 'hi LineNr guifg=#606f99',
 })
-vim.api.nvim_create_autocmd('VimEnter', { -- Absolute Line Numbers
-  command = 'hi LineNrAbove guifg=#505C7F',
+vim.api.nvim_create_autocmd('VimEnter', { -- Relative Line Numbers Above
+  command = 'hi LineNrAbove guifg=#606f99',
 })
-vim.api.nvim_create_autocmd('VimEnter', { -- Absolute Line Numbers
-  command = 'hi LineNrBelow guifg=#505C7F',
+vim.api.nvim_create_autocmd('VimEnter', { -- Relative Line Numbers Below
+  command = 'hi LineNrBelow guifg=#606f99',
+})
+
+-- Easier to see Comments
+vim.api.nvim_create_autocmd('VimEnter', {
+  command = 'hi Comment guifg=#606f99',
 })
 
 -- Relative line numbers on focus,...
