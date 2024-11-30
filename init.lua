@@ -213,6 +213,12 @@ vim.keymap.set('n', '<C-w><', '5<C-w><', { noremap = true, silent = true })
 -- vim.keymap.set('n', '<C-S-k>', '<C-w>+', { desc = 'Increase editor height.' })
 -- vim.keymap.set('n', '<C-S-e>', '<C-w>=', { desc = 'Equalize editor width and height.' })
 
+-- Keymaps to make C-d and C-u, n and N easier to work with; for easier code scanning.
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Make `<C-u>` center the cursor every time.', noremap = true, silent = true })
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Make `<C-d>` center the cursor every time.', noremap = true, silent = true })
+vim.keymap.set('n', 'n', 'nzz', { desc = 'Make `n` center the cursor every time.', noremap = true, silent = true })
+vim.keymap.set('n', 'N', 'Nzz', { desc = 'Make `N` center the cursor every time.', noremap = true, silent = true })
+
 -- Keymaps for common cd commands
 vim.keymap.set('n', '<leader>Cc', ':cd %:p:h<CR>', { desc = '[C]hange CWD to the dir of [c]urrent buffer.', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>Cu', ':cd ..<CR>', { desc = '[C]hange CWD [u]pwards to parent dir.', noremap = true, silent = true })
