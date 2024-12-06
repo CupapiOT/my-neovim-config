@@ -51,8 +51,8 @@
   dwf (tap-dance-eager 5 (S-C-right bspc)) ;; forward
   dwb (tap-dance-eager 5 (S-C-left bspc)) ;; backward
   
-  ;; open line above
-  ola (macro up end S-ret)
+  ;;   open line below
+  olb (macro end S-ret)
 
   ;;   hold shift
   hs (one-shot 10 lsft)
@@ -60,6 +60,15 @@
   ;;   Select all that is able to be selected in current text window.
   sa (macro C-home 10 S-C-end)
 
+  ;;   Shift Vim Motions Layer
+  vshf (layer-while-held shift-modified-vimmotions)
+  ola (macro home S-ret up) ;; Open Line Above
+  END (tap-dance 5 (C-end))
+  
+  ;;   g-keys
+  vGky (layer-switch gkey-modified-vimmotions)
+  HOME (tap-dance 5 (C-home))
+  
   ;; Mouse movement
   mms (layer-switch mouse-movement) ;; mouse movement switch
   mu (movemouse-accel-up 3 1200 1 5) ;; mouse-x
@@ -88,21 +97,42 @@
 
 ;; Define the modified vim motions layer. XX means "do nothing when pressed."
 (deflayer modified-vimmotions
-  _     _    _      _    _   _      _    _    _    _       _    _    _    _
-  _     S-1  S-2    S-3  S-4 S-5    S-6  S-7  S-8  S-9     S-0  _    _    _   @mms
-  @base S-5  C-rght S-9  S-0 A-tab  C-c  C-z  home @ola    C-v  pgup pgdn _   caps
-  @cec  end  @swb   bspc C-f C-tab  left down up   rght    _    _    S-ret
-  _     @sa  del    @swf @hs C-left XX   XX   _    rpt-any _    _
+  _     _    _      _     _   _      _    _    _    _       _    _    _    _
+  _     S-1  S-2    S-3   S-4 S-5    S-6  S-7  S-8  S-9     S-0  _    _    _   @mms
+  @base S-5  C-rght S-C-z S-0 A-tab  C-c  C-z  home @ola    C-v  pgup pgdn _   caps
+  @cec  end  @swb   bspc  C-f @vGky  left down up   rght    _    _    S-ret
+  @vshf @sa  del    @swf  @hs C-left XX   XX   _    rpt-any _    @vshf
   _     _    _               @base                 _       _    _
 )
+;; Vim Motions Shift Layer
+(deflayer shift-modified-vimmotions
+  _     _    _      _     _   _        _    _    _    _       _    _    _    _
+  _     S-1  S-2    S-3   S-4 S-5      S-6  S-7  S-8  S-9     S-0  _    _    _   @mms
+  @base S-5  C-rght S-C-z S-0 S-A-tab  C-c  C-z  home @ola    C-v  pgup pgdn _   caps
+  @cec  end  @swb   bspc  C-f @END     left down up   rght    _    _    S-ret
+  _     @sa  del    @swf  @hs C-left   XX   XX   _    rpt-any _    _
+  _     _    _                @base                 _       _    _
+)
+;; Vim Motions g-key Layer
+(deflayer gkey-modified-vimmotions
+  _     _    _      _    _     _      _    _    _    _         _    _    _      _
+  _     1    2      3    4     5      6    7    8    9    0    -    =    bspc   @mms
+  @vims q    w      e    S-C-z C-tab  y    u    i    o    p    [    ]    \      caps
+  @cec  a    s      d    f     @HOME  h    j    k    l    ;    '    @rec
+  _     z    x      c    v     b      n    m    ,    .    /    rsft
+  _     lmet lalt              @base              ralt rmet rctl
+)
+
 
 ;; Define the mouse-movement layer.
 (deflayer mouse-movement
   _     _     _      _    _    _     _    _    _    _      _    _    _    _
-  _     S-1   S-2    S-3  S-4  S-5   S-6  S-7  S-8  S-9    S-0  _    _    _   @mms
+  _     S-1   S-2    S-3  S-4  S-5   S-6  S-7  S-8  S-9    S-0  _    _    _   @base
   @vims lctl  A-tab  mlft mmid mrgt  C-c  C-z  XX   XX     C-v  pgup pgdn _   caps
   @cec  @mwl  @mwd   @mwu @mwl mfwd  @ml  @md  @mu  @mr    _    _    @rec
   _     @ml   @md    @mu  @mr  mbck  @mol @mod @mou @mor   _    _
   _     _     _                @base                _      _    _
 )
+
+
 
