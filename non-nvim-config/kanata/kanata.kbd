@@ -32,6 +32,9 @@
   ;; capslock to esc-ctrl
   cec (tap-hold 150 150 esc lctl)
 
+  ;; ret to ret-ctrl
+  rec (tap-hold 150 150 ret lctl)
+
   ;; change back to default layer
   base (layer-switch default)
   vims (layer-switch modified-vimmotions)
@@ -77,7 +80,7 @@
   esc   f1   f2     f3   f4  f5     f6   f7   f8   f9   f10  f11  f12  del
   grv   1    2      3    4   5      6    7    8    9    0    -    =    bspc   @mms
   @tvim q    w      e    r   t      y    u    i    o    p    [    ]    \      caps
-  @cec  a    s      d    f   g      h    j    k    l    ;    '    ret
+  @cec  a    s      d    f   g      h    j    k    l    ;    '    @rec
   lsft  z    x      c    v   b      n    m    ,    .    /    rsft
   lctl  lmet lalt            spc              ralt rmet rctl
 )
@@ -97,7 +100,7 @@
   _     _     _      _    _    _     _    _    _    _      _    _    _    _
   _     S-1   S-2    S-3  S-4  S-5   S-6  S-7  S-8  S-9    S-0  _    _    _   @mms
   @vims lctl  A-tab  mlft mmid mrgt  C-c  C-z  XX   XX     C-v  pgup pgdn _   caps
-  @cec  @mwl  @mwd   @mwu @mwl mfwd  @ml  @md  @mu  @mr    _    _    _
+  @cec  @mwl  @mwd   @mwu @mwl mfwd  @ml  @md  @mu  @mr    _    _    @rec
   _     @ml   @md    @mu  @mr  mbck  @mol @mod @mou @mor   _    _
   _     _     _                @base                _      _    _
 )
