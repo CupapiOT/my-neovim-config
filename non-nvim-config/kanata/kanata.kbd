@@ -39,25 +39,26 @@
   base (layer-switch default)
   vims (layer-switch modified-vimmotions)
 
-  ;; start modified vim motions with tab
+  ;; Modified Vim Motions
+  ;;   start modified vim motions with tab
   tvim (tap-hold 150 150 tab (layer-switch modified-vimmotions)) ;; tabvim
 
-  ;; select word
+  ;;   select word
   swf (tap-dance 5 (S-C-right)) ;; forward
   swb (tap-dance 5 (S-C-left)) ;; backward
 
-  ;; delete word (doesn't work for some reason)
+  ;;   delete word (doesn't work for some reason)
   dwf (tap-dance-eager 5 (S-C-right bspc)) ;; forward
   dwb (tap-dance-eager 5 (S-C-left bspc)) ;; backward
   
   ;; open line above
   ola (macro up end S-ret)
 
-  ;; hold shift
+  ;;   hold shift
   hs (one-shot 10 lsft)
 
-  ;; Select all that is able to be selected in current text window.
-  sa (macro C-home 10 C-S-end)
+  ;;   Select all that is able to be selected in current text window.
+  sa (macro C-home 10 S-C-end)
 
   ;; Mouse movement
   mms (layer-switch mouse-movement) ;; mouse movement switch
