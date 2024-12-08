@@ -229,6 +229,7 @@ vim.keymap.set('n', '<leader>TN', ':tabnew ', { desc = '[T]ab-[n]ew without carr
 vim.keymap.set('n', '<leader>TC', ':tabclose<CR>', { desc = '[T]ab-[c]lose.', noremap = true, silent = true })
 
 -- Keymaps for fugtitive.vim and lazygit
+vim.keymap.set('n', '<leader>ga', ':Git add .<CR>', { desc = 'Fu[g]itive [a]dd all files.' })
 vim.keymap.set('n', '<leader>gd', ':Gdiff<CR>', { desc = 'Fu[g]itive [d]iff.' })
 vim.keymap.set('n', '<leader>gw', ':Gwrite<CR>', { desc = 'Fu[g]itive [w]rite (stage).' })
 vim.keymap.set('n', '<leader>gr', ':Gread<CR>', { desc = 'Fu[g]itive [r]ead (unstage).' })
