@@ -392,7 +392,7 @@ end
 -- Term Toggle Keymaps
 vim.keymap.set('n', '<M-t>', ':lua TermToggle(15)<CR>', { desc = 'Toggles the terminal from normal mode.', noremap = true, silent = true })
 vim.keymap.set('i', '<M-t>', '<Esc>:lua TermToggle(15)<CR>', { desc = 'Toggles the terminal from insert mode.', noremap = true, silent = true })
-vim.keymap.set('t', '<M-t>', '<C-\\><C-n>:lua TermToggle(15)<CR>', { desc = 'Toggles the terminal from terminal mode.',  noremap = true, silent = true })
+vim.keymap.set('t', '<M-t>', '<C-\\><C-n>:lua TermToggle(15)<CR>', { desc = 'Toggles the terminal from terminal mode.', noremap = true, silent = true })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -1086,7 +1086,7 @@ require('lazy').setup({
             if luasnip.locally_jumpable(-1) then
               luasnip.jump(-1)
             end
-          end, { 'i', 's' }),
+          end, { 's' }), -- Removed 'i' in favor of backspace keymap.
 
           -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
           --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
