@@ -1038,6 +1038,36 @@ require('lazy').setup({
             ]]
             ),
           })
+          ls.add_snippets('c', {
+            parse_snippet(
+              'compg', -- Compare generic.
+              'int compare_$1(const void *left, const void *right) {\n  if ($2)\n    return 1;\n  if ($0)\n    return -1;\n  return 0;\n}'
+              --[[
+              int compare_$1(const void *left, const void *right) {
+                if ($2)
+                  return 1;
+                if ($0)
+                  return -1;
+                return 0;
+              }
+              --]]
+            ),
+            parse_snippet(
+              'compint', -- Compare ints.
+              'int compare_int(const void *left, const void *right) {\n  if (*(int *)left > *(int *)right)\n    return 1;\n  if (*(int *)left < *(int *)right)\n    return -1;\n  return 0;\n}'
+              --[[
+              int compare_int(const void *left, const void *right) {
+              if (*(int *)left > *(int *)right) {
+                return 1;
+              }
+              if (*(int *)left < *(int *)right) {
+                return -1;
+              }
+              return 0;
+              }
+              --]]
+            ),
+          })
         end,
       },
       'saadparwaiz1/cmp_luasnip',
