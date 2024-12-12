@@ -1025,6 +1025,19 @@ require('lazy').setup({
             history = true,
             updateevents = 'TextChanged, TextChangedI',
           }
+          ls.add_snippets('python', {
+            parse_snippet(
+              'inem',
+              [[
+              def main():
+                  $pass
+
+
+              if __name__ == '__main__':
+                  main()
+            ]]
+            ),
+          })
         end,
       },
       'saadparwaiz1/cmp_luasnip',
