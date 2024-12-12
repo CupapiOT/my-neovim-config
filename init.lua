@@ -1015,6 +1015,17 @@ require('lazy').setup({
             end,
           },
         },
+        config = function()
+          local ls = require 'luasnip'
+          local parse_snippet = require('luasnip').parser.parse_snippet
+
+          ls.config.set_config {
+            -- This tells luasnip to keep the last snippet, letting you jump
+            -- back into it even after you leave it.
+            history = true,
+            updateevents = 'TextChanged, TextChangedI',
+          }
+        end,
       },
       'saadparwaiz1/cmp_luasnip',
 
@@ -1069,6 +1080,13 @@ require('lazy').setup({
           --  completions whenever it has completion options available.
           ['<C-Space>'] = cmp.mapping.complete {},
 
+          -- This will expand the current line or jump to the next item within the snippet.
+          ['<C-k>'] = cmp.mapping(function()
+            if luasnip.expand() then
+              luasnip.expand()
+            end
+          end, { 'i', 's' }),
+
           -- Think of <c-l> as moving to the right of your snippet expansion.
           --  So if you have a snippet that's like:
           --  function $name($args)
@@ -1082,11 +1100,13 @@ require('lazy').setup({
               luasnip.expand_or_jump()
             end
           end, { 'i', 's' }),
-          ['<C-h>'] = cmp.mapping(function()
+          ['<C-h>'] = cmp.mapping(function(fallback)
             if luasnip.locally_jumpable(-1) then
               luasnip.jump(-1)
+            else
+              fallback() -- Acts as backspace if there is nothing to jump to.
             end
-          end, { 's' }), -- Removed 'i' in favor of backspace keymap.
+          end, { 'i', 's' }),
 
           -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
           --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
