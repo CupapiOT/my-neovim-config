@@ -99,11 +99,10 @@ return { -- Autocompletion
             {}
 
             fclose({});
-          ]],
-              { i(1, 'fptr'), i(2, 'FILE_NAME'), i(3, 'path/to/file'), rep(1), rep(2), i(4, 'mode'), rep(2), i(5, 'rest_of_your_code'), rep(1) }
+              ]],
+              { i(1, 'fptr'), i(2, 'FILE_NAME'), i(3, 'path/to/file'), rep(1), rep(2), i(4, 'mode'), rep(2), i(5, '//rest_of_your_code'), rep(1) }
             )
-          ),
-          --[[
+            --[[
             FILE *{fptr};
             char {FILE_NAME}[] = "{path/to/file}";
             {fptr} = fopen({FILE_NAME}, "{mode}");
@@ -112,11 +111,12 @@ return { -- Autocompletion
               return -1;
             }
 
-            {rest_of_your_code}
+            {//rest_of_your_code}
 
             fclose({fptr});
             --]]
-          -- ),
+            -- ),
+          ),
         })
       end,
     },
