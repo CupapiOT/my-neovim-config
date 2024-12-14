@@ -30,6 +30,10 @@ require("lazy").setup("plugins", {
       lazy = '💤 ',
     },
   },
+  change_detection = {
+    enabled = false,     -- Disable automatic config reloading
+    notify = false,      -- Turn off the popup notification
+  },
 })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
