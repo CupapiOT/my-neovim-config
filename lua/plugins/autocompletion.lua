@@ -31,9 +31,10 @@ return { -- Autocompletion
         local ls = require 'luasnip'
         local parse_snippet = require('luasnip').parser.parse_snippet
         local s = ls.snippet
-        local t = ls.text_node
+        -- local t = ls.text_node
         local i = ls.insert_node
-        -- local fmt = require('luasnip.extras.fmt').fmt
+        local fmt = require('luasnip.extras.fmt').fmt
+        local rep = require('luasnip.extras').rep
 
         ls.config.set_config {
           -- This tells luasnip to keep the last snippet, letting you jump
@@ -83,14 +84,25 @@ return { -- Autocompletion
               }
               --]]
           ),
-          -- s("openfile", {
-          --   t("FILE *"), i(1, "fptr"), t({";", ""}),  -- Placeholder for file pointer variable
-          --   t('char '), i(2, "FILE_NAME"), t('[] = "'), i(3, "path/to/file"), t({ '";', "" }),
-          --   t(""), i(1), t(" = fopen("), i(2), t(', "'), i(4, "r"), t('");'),  -- Placeholder for fopen
-          --   t({"", "if (!"}), i(1), t({") {", "\tprintf(\"Failed to open file: %s\\n\", "}), i(2), t({");", "\treturn 1;", "}", ""}),
-          --   t({"", "{rest_of_your_code}", ""}),  -- Placeholder for additional code
-          --   t({"", "fclose("}), i(1), t({");", ""}),
-          -- }
+          s(
+            'openfile',
+            fmt(
+              [[
+            FILE *{};
+            char {}[] = "{}";
+            {} = fopen({}, "{}");
+            if (!fptr) {{
+              printf("Failed to open file: %s\n", {});
+              return -1;
+            }}
+
+            {}
+
+            fclose({});
+          ]],
+              { i(1, 'fptr'), i(2, 'FILE_NAME'), i(3, 'path/to/file'), rep(1), rep(2), i(4, 'mode'), rep(2), i(5, 'rest_of_your_code'), rep(1) }
+            )
+          ),
           --[[
             FILE *{fptr};
             char {FILE_NAME}[] = "{path/to/file}";
