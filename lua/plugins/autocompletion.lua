@@ -117,6 +117,27 @@ return { -- Autocompletion
             --]]
             -- ),
           ),
+          s(
+            'read-file-linebyline',
+            fmt(
+              [[
+            char {}[{}];
+            while (fgets({}, {}, {}) != NULL) {{
+              {}
+            }}
+
+              ]],
+              -- 256 is a common default buffer size.
+              { i(1, 'line_buffer'), i(2, '256'), rep(1), rep(2), i(3, 'fptr'), i(4, '//rest_of_your_code') }
+            )
+            --[[
+            char {line_buffer}[{256}];
+            while (fgets({line_buffer}, {256}, {fptr}) != NULL) {
+              {//rest_of_your_code}
+            }
+
+          --]]
+          ),
         })
       end,
     },
