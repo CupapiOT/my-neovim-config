@@ -138,7 +138,7 @@ g_keymap(
   [[:!gcc -Wall -Wextra -Werror -O2 -pedantic -std=c99 % -o ]],
   { desc = '[C]ode [c]ompile with gcc (specify [O]utput).', noremap = true, silent = true }
 )
-g_keymap('n', '<leader>oc', [[:!./%.out]], { desc = '[O]pen c.[o]ut executable file.', noremap = true })
+g_keymap('n', '<leader>oc', [[:!./%.out<CR>]], { desc = '[O]pen [c].out executable file.', noremap = true })
 g_keymap('n', '<leader>op', [[:!python3 %<CR>]], { desc = '[O]pen with [p]ython3.', noremap = true, silent = true })
 
 -- LSP keymaps
