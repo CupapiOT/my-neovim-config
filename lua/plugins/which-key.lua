@@ -42,6 +42,7 @@ return { -- Useful plugin to show you pending keybinds.
     -- Document existing key chains
     spec = {
       { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
+      { '<leader>cc', group = '[C]ode [c]ompile', mode = { 'n' } },
       { '<leader>d', group = '[D]ocument' },
       { '<leader>r', group = '[R]efactor' },
       { '<leader>rb', group = '[R]efactor extract [b]lock' },

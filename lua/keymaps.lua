@@ -80,8 +80,6 @@ g_keymap('n', '<leader>tt', ':Neotree toggle source=filesystem reveal=true posit
 g_keymap('n', '<leader>tl', ':LazyGit<CR>', { desc = '[T]oggle [l]azygit.', noremap = true, silent = true })
 --  AutoSave Toggle
 g_keymap('n', '<leader>tA', ':ASToggle<CR>', { desc = '[T]oggle [A]utoSave.', noremap = true, silent = true })
---  Line-wrap Toggle
-g_keymap('n', '<M-z>', ':set wrap!<CR>', { desc = 'Toggle line wrap.', noremap = true, silent = true })
 --  Undotree Toggle
 g_keymap('n', '<leader>tu', ':UndotreeToggle<CR>', { desc = '[T]oggle [u]ndotree.', noremap = true, silent = true })
 
@@ -142,12 +140,6 @@ g_keymap(
 )
 g_keymap('n', '<leader>op', [[:!python3 %<CR>]], { desc = '[O]pen with [p]ython3.', noremap = true, silent = true })
 
--- Refresh screen (redraw).
-g_keymap('n', '<M-r>', ':mode<CR>', { desc = '[R]efreshes the screen.', noremap = true, silent = true })
-
--- Select all.
-g_keymap('n', '<M-a>', 'ggVG', { desc = 'Selects [a]ll.' })
-
 -- LSP keymaps
 g_keymap('n', '<leader>li', ':LspInstall ', { desc = '[L]SP [i]nstall for...' })
 g_keymap('n', '<leader>lI', ':LspInfo<CR>', { desc = '[L]SP show [I]nfo.', noremap = true, silent = true })
@@ -168,9 +160,6 @@ g_keymap('n', '<leader>rI', ':Refactor inline_func ', { desc = '[R]efactor [I]nl
 g_keymap('n', '<leader>rbb', ':Refactor extract_block ', { desc = '[R]efactor extract [b]lock (will prompt).', noremap = true })
 g_keymap('n', '<leader>rbf', ':Refactor extract_block_to_file ', { desc = '[R]efactor extract [b]lock to [f]ile (will prompt).', noremap = true })
 
--- Trigger vim-sleuth manually to fix tabs being 8 spaces.
-g_keymap('n', '<M-s>', ':Sleuth<CR>', { desc = 'Trigger vim-[S]leuth', noremap = true, silent = true })
-
 -- Remove `^M` end-of-line registers and preserve cursor position explicitly.
 g_keymap(
   'n',
@@ -188,7 +177,7 @@ g_keymap(
   { desc = '[C]ode [r]emove [c]arriage return.', noremap = true, silent = true }
 )
 --[[ 
-g_keymap( -- Does not work consistently, so it's unused.
+g_keymap( -- Does not work consistently nor is it essential, so it's unused.
    'x',
    '<leader>crc',
    function()
@@ -246,4 +235,14 @@ end
 vim.keymap.set('n', '<M-t>', ':lua TermToggle(15)<CR>', { desc = 'Toggles the [t]erminal from normal mode.', noremap = true, silent = true })
 vim.keymap.set('i', '<M-t>', '<Esc>:lua TermToggle(15)<CR>', { desc = 'Toggles the [t]erminal from insert mode.', noremap = true, silent = true })
 vim.keymap.set('t', '<M-t>', '<C-\\><C-n>:lua TermToggle(15)<CR>', { desc = 'Toggles the [t]erminal from terminal mode.', noremap = true, silent = true })
+
+-- Meta-key (lalt) keymaps.
+--  Select all.
+g_keymap('n', '<M-a>', 'ggVG', { desc = 'Selects [a]ll.' })
+--  Refresh screen (redraw).
+g_keymap('n', '<M-r>', ':mode<CR>', { desc = '[R]efreshes the screen.', noremap = true, silent = true })
+--  Trigger vim-sleuth manually to fix tabs being 8 spaces.
+g_keymap('n', '<M-s>', ':Sleuth<CR>', { desc = 'Trigger vim-[S]leuth', noremap = true, silent = true })
+--  Line-wrap toggle.
+g_keymap('n', '<M-z>', ':set wrap!<CR>', { desc = 'Toggle line wrap.', noremap = true, silent = true })
 
