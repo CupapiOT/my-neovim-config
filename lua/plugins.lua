@@ -44,30 +44,5 @@ require("lazy").setup("plugins", {
   },
 })
 
-require('lspconfig').harper_ls.setup {
-  settings = {
-    ['harper-ls'] = {
-      linters = {
-        -- spell_check = true,
-        -- spelled_numbers = false,
-        -- an_a = true,
-        sentence_capitalization = false, -- Non-default.
-        -- unclosed_quotes = true,
-        -- wrong_quotes = false,
-        -- long_sentences = true,
-        -- repeated_words = true,
-        spaces = false, -- Non-default.
-        -- matcher = true,
-        -- correct_number_suffix = true,
-        -- number_suffix_capitalization = true,
-        -- multiple_sequential_pronouns = true,
-        -- linking_verbs = false,
-        -- avoid_curses = true,
-        -- terminating_conjunctions = true,
-      },
-    },
-  },
-}
-
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

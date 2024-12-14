@@ -450,6 +450,31 @@ return {
           end,
         },
       }
+
+      require('lspconfig').harper_ls.setup {
+        settings = {
+          ['harper-ls'] = {
+            linters = {
+              -- spell_check = true,
+              -- spelled_numbers = false,
+              -- an_a = true,
+              sentence_capitalization = false, -- Non-default.
+              -- unclosed_quotes = true,
+              -- wrong_quotes = false,
+              -- long_sentences = true,
+              -- repeated_words = true,
+              spaces = false, -- Non-default.
+              -- matcher = true,
+              -- correct_number_suffix = true,
+              -- number_suffix_capitalization = true,
+              -- multiple_sequential_pronouns = true,
+              -- linking_verbs = false,
+              -- avoid_curses = true,
+              -- terminating_conjunctions = true,
+            },
+          },
+        },
+      }
     end,
   },
 
@@ -972,7 +997,8 @@ return {
   --   'barrett-ruth/live-server.nvim',
   --   build = 'pnpm add -g live-server',
   --   cmd = { 'LiveServerStart', 'LiveServerStop' },
-  --   config = true;59;28mcpPG;60;28M;60;28U!  -- },
+  --   config = true;59;28mcpPG;60;28M;60;28U!  --
+  -- },
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
@@ -1001,4 +1027,3 @@ return {
     },
   },
 }
-
