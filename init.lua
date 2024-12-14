@@ -278,9 +278,9 @@ g_keymap('n', '<leader>SQ;', function()
     print 'Session name cannot be empty.'
   end
 end, { desc = '[S]ession save as ..., then write-[Q]uit-all.', noremap = true, silent = true })
-g_keymap('n', '<leader>SW', ':wqa<CR>', { desc = '[S]ession not-save, just [W]rite-quit-all.', noremap = true, silent = true })
-g_keymap('n', '<leader>Sw', ':wq<CR>', { desc = '[S]ession not-save, just [w]rite-quit current buffer.', noremap = true, silent = true })
-g_keymap('n', '<leader>S!', ':qa!<CR>', { desc = '[S]ession not-save, just quit-all-[!] without saving.', noremap = true, silent = true })
+-- g_keymap('n', '<leader>SW', ':wqa<CR>', { desc = '[S]ession not-save, just [W]rite-quit-all.', noremap = true, silent = true })
+-- g_keymap('n', '<leader>Sw', ':wq<CR>', { desc = '[S]ession not-save, just [w]rite-quit current buffer.', noremap = true, silent = true })
+-- g_keymap('n', '<leader>S!', ':qa!<CR>', { desc = '[S]ession not-save, just quit-all-[!] without saving.', noremap = true, silent = true })
 g_keymap('n', '<leader>Ssm', ':SessionSave main<CR>', { desc = '[S]ession [s]ave as [m]ain.', noremap = true, silent = true })
 g_keymap('n', '<leader>Ssc', ':SessionSave config<CR>', { desc = '[S]ession [s]ave as [c]onfig.', noremap = true, silent = true })
 g_keymap('n', '<leader>Ssl', ':SessionSave learn<CR>', { desc = '[S]ession [s]ave as [l]earn.', noremap = true, silent = true })
@@ -325,16 +325,16 @@ g_keymap('n', '<leader>lS', ':LspStop<CR>', { desc = '[L]SP [S]top.', noremap = 
 g_keymap('n', '<leader>lr', ':LspRestart<CR>', { desc = '[L]SP [R]estart.', noremap = true, silent = true })
 
 -- Refactor Keymaps.
-g_keymap('x', '<leader>re', ':Refactor extract ', { desc = '[R]efactor [e]xtract (will prompt).', noremap = true, silent = true }) -- 'x' == visual mode
-g_keymap('x', '<leader>rf', ':Refactor extract_to_file ', { desc = '[R]efactor [e]xtract to [f]ile (will prompt).', noremap = true, silent = true })
+g_keymap('x', '<leader>re', ':Refactor extract ', { desc = '[R]efactor [e]xtract (will prompt).', noremap = true }) -- 'x' == visual mode
+g_keymap('x', '<leader>rf', ':Refactor extract_to_file ', { desc = '[R]efactor [e]xtract to [f]ile (will prompt).', noremap = true })
 --  Extract function supports only visual mode
-g_keymap('x', '<leader>rv', ':Refactor extract_var ', { desc = '[R]efactor extract [v]ariable (will prompt).', noremap = true, silent = true })
+g_keymap('x', '<leader>rv', ':Refactor extract_var ', { desc = '[R]efactor extract [v]ariable (will prompt).', noremap = true })
 --  Extract variable supports only visual mode
-g_keymap({ 'n', 'x' }, '<leader>ri', ':Refactor inline_var', { desc = '[R]efactor [i]nline variable.', noremap = true, silent = true })
+g_keymap({ 'n', 'x' }, '<leader>ri', ':Refactor inline_var ', { desc = '[R]efactor [i]nline variable (will prompt).' })
 --  Inline func supports only normal mode
-g_keymap('n', '<leader>rI', ':Refactor inline_func', { desc = '[R]efactor [I]nline function.', noremap = true, silent = true })
-g_keymap('n', '<leader>rbb', ':Refactor extract_block', { desc = '[R]efactor extract [b]lock.', noremap = true, silent = true })
-g_keymap('n', '<leader>rbf', ':Refactor extract_block_to_file', { desc = '[R]efactor extract [b]lock to [f]ile.', noremap = true, silent = true })
+g_keymap('n', '<leader>rI', ':Refactor inline_func ', { desc = '[R]efactor [I]nline function (will prompt).', noremap = true })
+g_keymap('n', '<leader>rbb', ':Refactor extract_block ', { desc = '[R]efactor extract [b]lock (will prompt).', noremap = true })
+g_keymap('n', '<leader>rbf', ':Refactor extract_block_to_file ', { desc = '[R]efactor extract [b]lock to [f]ile (will prompt).', noremap = true })
 
 -- Trigger vim-sleuth manually to fix tabs being 8 spaces.
 g_keymap('n', '<M-s>', ':Sleuth<CR>', { desc = 'Trigger vim-[S]leuth', noremap = true, silent = true })
