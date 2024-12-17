@@ -126,16 +126,17 @@ g_keymap('n', '<leader>SP', ':SessionPurgeOrphaned<CR>', { desc = '[S]ession [P]
 
 -- Opening files with specific apps/tools.
 g_keymap('n', '<leader>ob', [[:!brave "$(wslpath -w "$(realpath '%')")"<CR>]], { desc = '[O]pen with [b]rave browser.', noremap = true, silent = true })
+local gcc_flags = '-Wall -Wextra -Wshadow -Wfloat-equal -Wformat=2 -g -O2 -pedantic -std=c99'
 g_keymap(
   'n',
   '<leader>cco',
-  [[:!gcc -Wall -Wextra -Werror -O2 -pedantic -std=c99 % -o %.out<CR>]],
+  ':!gcc ' .. gcc_flags .. ' % -o %.out<CR>',
   { desc = '[C]ode [c]ompile [o]nefile with gcc (output: %.out).', noremap = true, silent = true }
 )
 g_keymap(
   'n',
   '<leader>ccO',
-  [[:!gcc -Wall -Wextra -Werror -O2 -pedantic -std=c99 % -o ]],
+  ':!gcc ' .. gcc_flags .. ' % -o %.out',
   { desc = '[C]ode [c]ompile with gcc (specify [O]utput).', noremap = true, silent = true }
 )
 g_keymap('n', '<leader>oc', [[:!./%.out<CR>]], { desc = '[O]pen [c].out executable file.', noremap = true })
