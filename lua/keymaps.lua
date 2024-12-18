@@ -83,8 +83,9 @@ g_keymap('n', '<leader>tA', ':ASToggle<CR>', { desc = '[T]oggle [A]utoSave.', no
 --  Undotree Toggle
 g_keymap('n', '<leader>tu', ':UndotreeToggle<CR>', { desc = '[T]oggle [u]ndotree.', noremap = true, silent = true })
 
--- Make it so `x` outputs to the underscore register so it doesn't interfere.
+-- Make it so `x` and bare `s` outputs to the underscore register so it doesn't interfere.
 g_keymap('n', 'x', '"_x', { desc = 'Delete character under cursor, outputs to underscore register.' })
+g_keymap('n', 's', '"_s', { desc = '[S]ubstitute character under cursor, outputs to underscore register.' })
 
 -- Session keymaps.
 g_keymap('n', '<leader>SQM', ':SessionSave main<CR>:wqa<CR>', { desc = '[S]ession save as [m]ain, then write-[Q]uit-all.', noremap = true, silent = true })
