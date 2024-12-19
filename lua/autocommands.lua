@@ -35,6 +35,10 @@ vim.api.nvim_create_autocmd('VimEnter', { -- Relative Line Numbers Below
 vim.api.nvim_create_autocmd('VimEnter', {
   command = 'hi Comment guifg=#7082b2',
 })
+--  Easier to see Unnecessary Diagnostics.
+vim.api.nvim_create_autocmd('VimEnter', {
+  command = 'hi DiagnosticUnnecessary guifg=#6873a5',
+})
 
 -- Relative line numbers on focus,...
 vim.api.nvim_create_autocmd({ 'BufEnter', 'WinEnter' }, {
@@ -53,7 +57,7 @@ vim.api.nvim_create_autocmd({ 'BufLeave', 'WinLeave' }, {
   end,
 })
 
--- For autocompletion's sake.
+-- For auto-completion's sake.
 vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
   pattern = '*.js',
   command = 'set filetype=javascriptreact',
