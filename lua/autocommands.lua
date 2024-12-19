@@ -12,30 +12,28 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
--- Colorcolumns with unobtrusive borders.
+-- Highlighting Changes.
+--  Color-columns with unobtrusive borders.
 vim.api.nvim_create_autocmd('VimEnter', {
   command = 'hi colorcolumn ctermbg=gray guibg=#20212D',
 })
-
--- Unobtrusive split panel borders
+--  Unobtrusive split panel borders
 vim.api.nvim_create_autocmd('VimEnter', {
   command = 'hi WinSeparator guibg=None guifg=#3f3f3f',
 })
-
--- Easier to see Line Numbers
+--  Easier to see Line Numbers
 vim.api.nvim_create_autocmd('VimEnter', { -- Absolute Line Numbers
-  command = 'hi LineNr guifg=#606f99',
+  command = 'hi LineNr guifg=#7082b2',
 })
 vim.api.nvim_create_autocmd('VimEnter', { -- Relative Line Numbers Above
-  command = 'hi LineNrAbove guifg=#606f99',
+  command = 'hi LineNrAbove guifg=#7082b2',
 })
 vim.api.nvim_create_autocmd('VimEnter', { -- Relative Line Numbers Below
-  command = 'hi LineNrBelow guifg=#606f99',
+  command = 'hi LineNrBelow guifg=#7082b2',
 })
-
--- Easier to see Comments
+--  Easier to see Comments
 vim.api.nvim_create_autocmd('VimEnter', {
-  command = 'hi Comment guifg=#606f99',
+  command = 'hi Comment guifg=#7082b2',
 })
 
 -- Relative line numbers on focus,...
@@ -60,4 +58,3 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
   pattern = '*.js',
   command = 'set filetype=javascriptreact',
 })
-
