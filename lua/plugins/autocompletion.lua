@@ -140,7 +140,23 @@ return { -- Autocompletion
               {//rest_of_your_code}
             }
 
-          --]]
+            --]]
+          ),
+          s(
+            'print-array',
+            fmt(
+              [[
+            for (size_t i = 0; i < {}; i++) {{
+              printf("{}[%zu] = %{}\n", i, {}[i]);
+            }}
+              ]],
+              { i(1, 'ARR_SIZE'), rep(2), i(0, 'd'), i(2, 'ARR_NAME')}
+            )
+            --[[
+            for (size_t i = 0; i < {ARR_SIZE}; i++) {
+              printf("{ARR_NAME}[%zu] = %{d}\n", i, {ARR_NAME}[i]);
+            }
+            --]]
           ),
         })
       end,
