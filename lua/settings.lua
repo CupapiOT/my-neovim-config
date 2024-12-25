@@ -69,6 +69,5 @@ vim.opt.scrolloff = 10
 -- Ensure sessionoptions includes localoptions for proper session restoration
 vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
 
--- Set colored columns for comment lenghts and 80 chars.
+-- Set colored columns for comment lengths and 80 chars.
 vim.opt.colorcolumn = '72,80'
-
