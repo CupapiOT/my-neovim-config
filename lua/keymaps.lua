@@ -134,12 +134,7 @@ g_keymap(
   ':!gcc ' .. gcc_flags .. ' % -o %.out<CR>',
   { desc = '[C]ode [c]ompile [o]nefile with gcc (output: %.out).', noremap = true, silent = true }
 )
-g_keymap(
-  'n',
-  '<leader>ccO',
-  ':!gcc ' .. gcc_flags .. ' % -o %.out',
-  { desc = '[C]ode [c]ompile with gcc (specify [O]utput).', noremap = true, silent = true }
-)
+g_keymap('n', '<leader>ccO', ':!gcc ' .. gcc_flags .. ' % -o %.out', { desc = '[C]ode [c]ompile with gcc (specify [O]utput).', noremap = true, silent = true })
 g_keymap('n', '<leader>oc', [[:!./%.out<CR>]], { desc = '[O]pen [c].out executable file.', noremap = true })
 g_keymap('n', '<leader>op', [[:!python3 %<CR>]], { desc = '[O]pen with [p]ython3.', noremap = true, silent = true })
 
@@ -242,3 +237,6 @@ g_keymap('n', '<M-r>', ':mode<CR>', { desc = '[R]efreshes the screen.', noremap 
 g_keymap('n', '<M-s>', ':Sleuth<CR>', { desc = 'Trigger vim-[S]leuth', noremap = true, silent = true })
 --  Line-wrap toggle.
 g_keymap('n', '<M-z>', ':set wrap!<CR>', { desc = 'Toggle line wrap.', noremap = true, silent = true })
+
+-- Append semicolon to the end of a line.
+g_keymap('i', '<M-;>', '<Esc>mQA;<Esc>`Qa', { desc = 'Append [;] to the end of a line.', noremap = true, silent = true })
