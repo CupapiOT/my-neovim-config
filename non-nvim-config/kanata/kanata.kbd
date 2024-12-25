@@ -99,7 +99,7 @@
 (deflayer modified-vimmotions
   _     _    _      _     _   _      _    _    _    _       _    _    _    _
   _     S-1  S-2    S-3   S-4 S-5    S-6  S-7  S-8  S-9     S-0  _    _    _   @mms
-  @base S-5  C-rght S-C-z S-0 A-tab  C-c  C-z  home @ola    C-v  pgup pgdn _   caps
+  @base S-5  C-rght S-C-z S-0 A-tab  C-c  C-z  home @olb    C-v  pgup pgdn _   caps
   @cec  end  @swb   bspc  C-f @vGky  left down up   rght    _    _    S-ret
   @vshf @sa  del    @swf  @hs C-left XX   XX   _    rpt-any _    @vshf
   _     _    _               @base                 _       _    _
@@ -133,6 +133,7 @@
   _     @ml   @md    @mu  @mr  mbck  @mol @mod @mou @mor   _    _
   _     _     _                @base                _      _    _
 )
+
 
 
 
