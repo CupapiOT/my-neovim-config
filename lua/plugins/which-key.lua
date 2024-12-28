@@ -59,6 +59,7 @@ return { -- Useful plugin to show you pending keybinds.
       { '<leader>o', group = '[O]pen with...' },
       { '<leader>l', group = '[L]SP' },
       { '<leader>T', group = '[T]ab' },
+      { '<leader>m', group = '[M]ake' },
     },
   },
 }
