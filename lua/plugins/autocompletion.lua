@@ -60,6 +60,7 @@ return { -- Autocompletion
         ls.add_snippets('c', {
           parse_snippet('ping', 'printf("Ping!\\n");'),
           parse_snippet('pong', 'printf("Pong!\\n");'),
+          parse_snippet('newline', 'printf("\\n");'),
           parse_snippet(
             'compg', -- Compare generic.
             'int compare_$1(const void *left, const void *right) {\n  if ($2)\n    return 1;\n  if ($0)\n    return -1;\n  return 0;\n}'
