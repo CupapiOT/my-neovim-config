@@ -151,15 +151,30 @@ return { -- Autocompletion
             'print-array',
             fmt(
               [[
-            for (size_t i = 0; i < {}; i++) {{
-              printf("{}[%zu] = %{}\n", i, {}[i]);
+            for ({} {} = {}; {} {} {}; {}{}) {{
+              printf("{}[%{}] = %{}\n", {}, {}[{}]);
             }}
               ]],
-              { i(1, 'ARR_SIZE'), rep(2), i(0, 'd'), i(2, 'ARR_NAME')}
+              { -- Ordered in terms of most to least considerable (to be important).
+                i(8, 'size_t'),
+                i(1, 'i'),
+                i(5, '0'),
+                rep(1),
+                i(6, '<'),
+                i(2, 'count'),
+                rep(1),
+                i(7, '++'),
+                rep(),
+                i(0, 'zu'),
+                i(4, 'd'),
+                rep(1),
+                i(3, 'ARR_NAME'),
+                rep(1),
+              }
             )
             --[[
-            for (size_t i = 0; i < {ARR_SIZE}; i++) {
-              printf("{ARR_NAME}[%zu] = %{d}\n", i, {ARR_NAME}[i]);
+            for ({size_t} {i} = {0}; {i} {<} {ARR_SIZE}; {i}{++}) {
+              printf("{ARR_NAME}[%{zu}] = %{d}\n", {i}, {ARR_NAME}[{i}]);
             }
             --]]
           ),
