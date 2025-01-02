@@ -45,6 +45,8 @@ return { -- Autocompletion
         ls.add_snippets('python', {
           parse_snippet('ping', 'print("Ping!")'),
           parse_snippet('pong', 'print("Pong!")'),
+          parse_snippet('before', 'print("===== BEFORE =====")'),
+          parse_snippet('after', 'print("===== AFTER  =====")'),
           parse_snippet(
             'inem',
             [[
@@ -60,6 +62,8 @@ return { -- Autocompletion
         ls.add_snippets('c', {
           parse_snippet('ping', 'printf("Ping!\\n");'),
           parse_snippet('pong', 'printf("Pong!\\n");'),
+          parse_snippet('before', 'printf("===== BEFORE =====\\n");'),
+          parse_snippet('after', 'printf("===== AFTER  =====\\n");'),
           parse_snippet('newline', 'printf("\\n");'),
           parse_snippet(
             'compg', -- Compare generic.
