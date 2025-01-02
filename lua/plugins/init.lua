@@ -125,6 +125,9 @@ return {
   -- Adds several more refactoring options.
   require 'plugins.refactoring',
 
+  -- Add ability to move selected lines up or down in visual mode.
+  require 'plugins.move-lines',
+
   -- Enables Live Server like in VS-code (Unused).
   -- {
   --   'barrett-ruth/live-server.nvim',
