@@ -178,6 +178,18 @@ return { -- Autocompletion
             }
             --]]
           ),
+          s(
+            'print-multiline',
+            fmt(
+              [[
+              printf("{} = \n\"\"\"\n%{}\n\"\"\"\n", {});
+              ]],
+              { rep(1), i(0, 's'), i(1, 'var') }
+            )
+            --[[
+              printf("{var} = \n\"\"\"\n%{s}\n\"\"\"\n", {var});
+            --]]
+          ),
         })
         ls.add_snippets('html', {
           s(
