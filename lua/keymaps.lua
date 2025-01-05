@@ -249,8 +249,9 @@ g_keymap('n', '<M-z>', ':set wrap!<CR>', { desc = 'Toggle line wrap.', noremap =
 -- Insert-mode keymaps.
 --  Append semicolon to the end of a line.
 g_keymap('i', '<M-;>', '<Esc>mQA;<Esc>`Qa', { desc = 'Append [;] to the end of a line.', noremap = true, silent = true })
---  Go to the end of the line in insert mode.
-g_keymap('i', '<C-e>', '<C-o>A', { desc = 'Go to [e]nd of current line.', noremap = true, silent = true })
+--  Go to the start/end of the line in insert mode.
+g_keymap('i', '<C-s>', '<C-o>I', { desc = 'Go to [s]tart (of the first character) of the current line.', noremap = true, silent = true })
+g_keymap('i', '<C-e>', '<End>', { desc = 'Go to [e]nd of current line.', noremap = true, silent = true })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
