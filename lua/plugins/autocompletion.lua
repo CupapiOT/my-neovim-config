@@ -164,7 +164,7 @@ return { -- Autocompletion
                 i(2, 'count'),
                 rep(1),
                 i(7, '++'),
-                rep(),
+                rep(3),
                 i(0, 'zu'),
                 i(4, 'd'),
                 rep(1),
