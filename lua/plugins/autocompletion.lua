@@ -31,8 +31,9 @@ return { -- Autocompletion
         local ls = require 'luasnip'
         local parse_snippet = require('luasnip').parser.parse_snippet
         local s = ls.snippet
-        -- local t = ls.text_node
         local i = ls.insert_node
+        local c = ls.choice_node
+        local t = ls.text_node
         local fmt = require('luasnip.extras.fmt').fmt
         local rep = require('luasnip.extras').rep
 
@@ -45,6 +46,8 @@ return { -- Autocompletion
         ls.add_snippets('python', {
           parse_snippet('ping', 'print("Ping!")'),
           parse_snippet('pong', 'print("Pong!")'),
+          parse_snippet('pang', 'print("Pang!")'),
+          parse_snippet('peng', 'print("Peng!")'),
           parse_snippet('before', 'print("===== BEFORE =====")'),
           parse_snippet('after', 'print("===== AFTER  =====")'),
           parse_snippet(
@@ -62,6 +65,8 @@ return { -- Autocompletion
         ls.add_snippets('c', {
           parse_snippet('ping', 'printf("Ping!\\n");'),
           parse_snippet('pong', 'printf("Pong!\\n");'),
+          parse_snippet('pang', 'printf("Pang!\\n");'),
+          parse_snippet('peng', 'printf("Peng!\\n");'),
           parse_snippet('before', 'printf("===== BEFORE =====\\n");'),
           parse_snippet('after', 'printf("===== AFTER  =====\\n");'),
           parse_snippet('newline', 'printf("\\n");'),
@@ -93,6 +98,7 @@ return { -- Autocompletion
               }
               --]]
           ),
+          s('fflush-std', { t 'fflush(', c(1, { t 'stdout', t 'stderr', i(nil, 'FILE *stream') }), t ');' }),
           s(
             'openfile',
             fmt(
@@ -304,8 +310,8 @@ return { -- Autocompletion
 
         -- This will expand the current line or jump to the next item within the snippet.
         ['<C-k>'] = cmp.mapping(function()
-          if luasnip.expand() then
-            luasnip.expand()
+          if luasnip.choice_active() then
+            luasnip.change_choice(1)
           end
         end, { 'i', 's' }),
 
