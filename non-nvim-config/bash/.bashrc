@@ -178,3 +178,7 @@ export PATH="$PATH:~/.config/composer/vendor/bin"
 alias aptupt="sudo apt-get update"
 alias aptupg="sudo apt-get upgrade"
 alias aptuptg="sudo apt-get update && sudo apt-get upgrade"
+
+# Cowsay and Fortune
+
+fortune | cowsay -f `ls /usr/share/cowsay/cows/ | grep -v kiss.cow | shuf -n 1`
