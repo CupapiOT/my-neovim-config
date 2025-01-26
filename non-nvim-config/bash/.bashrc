@@ -163,8 +163,18 @@ export PATH=$PATH:$(go env GOPATH)/bin
 # Quick-access, unorganized temporary folder.
 export TEMPDIR="/home/cup/TEMPorary-DIRectory"
 
-. "$HOME/.cargo/env"
+# Quick-access, unorganized temporary folder.
+export TEMPDIR="/home/cup/TEMPorary-DIRectory"
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
-export KANATACFG="mnt/c/Users/dep/AppData/Roaming/kanata/kanata.kbd"
+export KANATACFG="/mnt/c/Users/dep/AppData/Roaming/kanata/kanata.kbd"
+
+export PATH="$PATH:~/.config/composer/vendor/bin"
+
+. "$HOME/.cargo/env"
+
+# Convenience.
+alias aptupt="sudo apt-get update"
+alias aptupg="sudo apt-get upgrade"
+alias aptuptg="sudo apt-get update && sudo apt-get upgrade"
