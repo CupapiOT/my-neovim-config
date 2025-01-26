@@ -135,6 +135,9 @@ fi
 if ! pgrep -u $USER ssh-agent > /dev/null; then
     eval "$(ssh-agent -s)"
     ssh-add ~/.ssh/id_ed25519
+
+    # Cowsay and Fortune (Make sure it only runs once every session) + Lolcat
+    fortune | cowsay -f `ls /usr/share/cowsay/cows/ | grep -v kiss.cow | shuf -n 1` | lolcat
 fi
 # make sure it works across panels.
 if [ -n "$SSH_AUTH_SOCK" ]; then 
@@ -163,9 +166,6 @@ export PATH=$PATH:$(go env GOPATH)/bin
 # Quick-access, unorganized temporary folder.
 export TEMPDIR="/home/cup/TEMPorary-DIRectory"
 
-# Quick-access, unorganized temporary folder.
-export TEMPDIR="/home/cup/TEMPorary-DIRectory"
-
 export XDG_CONFIG_HOME="$HOME/.config"
 
 export KANATACFG="/mnt/c/Users/dep/AppData/Roaming/kanata/kanata.kbd"
@@ -179,6 +179,8 @@ alias aptupt="sudo apt-get update"
 alias aptupg="sudo apt-get upgrade"
 alias aptuptg="sudo apt-get update && sudo apt-get upgrade"
 
-# Cowsay and Fortune
-
-fortune | cowsay -f `ls /usr/share/cowsay/cows/ | grep -v kiss.cow | shuf -n 1`
+# Fortune + randomized coy-say + lolcat.
+fortunecowlol() {
+  cowfile=$(find /usr/share/cowsay/cows/ -name '*.cow' ! -name 'kiss.cow' | shuf -n 1)
+  fortune | cowsay -f "$cowfile" | lolcat
+}
