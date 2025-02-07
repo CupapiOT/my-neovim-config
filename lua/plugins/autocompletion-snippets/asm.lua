@@ -16,7 +16,7 @@ return {
     _start:
         $1
 
-        mov $60, %rax
+        mov \$60, %rax
         xor %rdi, %rdi
         syscall
     ]]
@@ -63,9 +63,9 @@ return {
     ]]
   ),
   parse_snippet(
-    'exit-program-intel',
+    'exit-program-at&t',
     [[
-    mov $60, %rax
+    mov \$60, %rax
     xor %rdi, %rdi
     syscall
     ]]
