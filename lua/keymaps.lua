@@ -137,6 +137,7 @@ g_keymap(
 g_keymap('n', '<leader>ccO', ':!gcc ' .. gcc_flags .. ' % -o %.out', { desc = '[C]ode [c]ompile with gcc (specify [O]utput).', noremap = true, silent = true })
 g_keymap('n', '<leader>oc', [[:!./%.out<CR>]], { desc = '[O]pen [c].out executable file.', noremap = true })
 g_keymap('n', '<leader>op', [[:!python3 %<CR>]], { desc = '[O]pen with [p]ython3.', noremap = true, silent = true })
+g_keymap('n', '<leader>otp', [[:!python3 -m unittest -v %<CR>]], { desc = '[O]pen [t]est (verbose) with [p]ython3.', noremap = true, silent = true })
 
 -- Make commands.
 g_keymap('n', '<leader>mm', ':!make<CR>', { desc = '[M]ake.', noremap = true })

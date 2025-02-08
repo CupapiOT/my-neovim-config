@@ -57,6 +57,7 @@ return { -- Useful plugin to show you pending keybinds.
       { '<leader>SR', group = '[S]ession [R]estore...' },
       { '<leader>Ss', group = '[S]ession [s]ave as...' },
       { '<leader>o', group = '[O]pen with...' },
+      { '<leader>ot', group = '[O]pen [t]est with...' },
       { '<leader>l', group = '[L]SP' },
       { '<leader>T', group = '[T]ab' },
       { '<leader>m', group = '[M]ake' },
