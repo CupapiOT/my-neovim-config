@@ -153,7 +153,7 @@ return { -- Main LSP Configuration
     local servers = {
       clangd = {},
       -- gopls = {},
-      basedpyright = {},
+      pyright = {},
       -- rust_analyzer = {},
       -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
       --
@@ -193,7 +193,7 @@ return { -- Main LSP Configuration
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
       'stylua', -- Used to format Lua code
-      'basedpyright', -- Used to format Python code
+      'pyright', -- Used to format Python code
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -236,7 +236,7 @@ return { -- Main LSP Configuration
     }
 
     require('lspconfig').intelephense.setup {
-      capabilities = capabilities
+      capabilities = capabilities,
     }
   end,
 }
