@@ -135,7 +135,13 @@ g_keymap(
   { desc = '[C]ode [c]ompile [o]nefile with gcc (output: %.out).', noremap = true, silent = true }
 )
 g_keymap('n', '<leader>ccO', ':!gcc ' .. gcc_flags .. ' % -o %.out', { desc = '[C]ode [c]ompile with gcc (specify [O]utput).', noremap = true, silent = true })
-g_keymap('n', '<leader>oc', [[:!./%.out<CR>]], { desc = '[O]pen [c].out executable file.', noremap = true })
+g_keymap(
+  'n',
+  '<leader>ccs',
+  ':!as -g -o %.o % && ld -g -o %.out %.o<CR>',
+  { desc = '[C]ode [c]ompile a[s]sembly code (debug friendly).', noremap = true, silent = true }
+)
+g_keymap('n', '<leader>oo', [[:!./%.out<CR>]], { desc = '[O]pen .[o]ut executable file.', noremap = true })
 g_keymap('n', '<leader>op', [[:!python3 %<CR>]], { desc = '[O]pen with [p]ython3.', noremap = true, silent = true })
 g_keymap('n', '<leader>otp', [[:!python3 -m unittest -v %<CR>]], { desc = '[O]pen [t]est (verbose) with [p]ython3.', noremap = true, silent = true })
 
