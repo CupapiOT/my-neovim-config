@@ -62,3 +62,39 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
   pattern = '*.js',
   command = 'set filetype=javascriptreact',
 })
+
+-- Auto-source python virtual environment.
+-- * Checks for a virtual environment in the current project directory.
+-- * Sources it automatically when the terminal opens.
+vim.api.nvim_create_autocmd('TermOpen', {
+  pattern = '*',
+  callback = function()
+    -- Exclude terminals opened by LazyGit or other plugins
+    local bufname = vim.api.nvim_buf_get_name(0)
+    if bufname:match 'lazygit' or bufname:match 'floatterm' then
+      return
+    end
+
+    local cwd = vim.fn.getcwd()
+    local venv_path = ''
+
+    if vim.fn.isdirectory(cwd .. '/venv') == 1 then
+      venv_path = cwd .. '/venv/bin/activate'
+    elseif vim.fn.isdirectory(cwd .. '/.venv') == 1 then
+      venv_path = cwd .. '/.venv/bin/activate'
+    end
+
+    if venv_path ~= '' then
+      -- Get the current buffer ID
+      local term_buf = vim.api.nvim_get_current_buf()
+
+      -- Wait for the terminal to fully initialize before sending commands
+      vim.defer_fn(function()
+        vim.fn.chansend(vim.api.nvim_buf_get_option(term_buf, 'channel'), 'source ' .. venv_path .. '\n')
+      end, 100)
+    end
+  end,
+})
+
+-- The line beneath this is called `modeline`. See `:help modeline`
+-- vim: ts=2 sts=2 sw=2 et

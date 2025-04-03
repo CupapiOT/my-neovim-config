@@ -179,6 +179,31 @@ alias aptupt="sudo apt-get update"
 alias aptupg="sudo apt-get upgrade"
 alias aptuptg="sudo apt-get update && sudo apt-get upgrade"
 
+# Projects Navigation.
+alias proj="cd ~/Projects"
+
+# Python Projects
+function gopyproj() {
+    local project_path="$HOME/Projects/$1"
+
+    if [[ -d "$project_path" ]]; then
+        cd "$project_path" || return
+
+        # Find and activate virtual environment
+        if [[ -f "venv/bin/activate" ]]; then
+            source venv/bin/activate
+        elif [[ -f ".venv/bin/activate" ]]; then
+            source .venv/bin/activate
+        else
+            echo "No virtual environment found in $project_path"
+        fi
+
+        nvim .
+    else
+        echo "Project $1 not found."
+    fi
+}
+
 # Fortune + randomized coy-say + lolcat.
 fortunecowlol() {
   cowfile=$(find /usr/share/cowsay/cows/ -name '*.cow' ! -name 'kiss.cow' | shuf -n 1)
