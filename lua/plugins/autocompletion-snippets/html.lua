@@ -32,13 +32,13 @@ return {
       </html>
       ]],
       { -- Ordered top-down, save for the HTML language part.
+        i(0, 'en'),
         i(1, 'Title for Page'),
         i(2, 'DESCRIPTION'),
         i(3, 'favicon.ico'),
         i(4, 'css/style.css'),
         i(5, '<h1>Hello, world!</h1>'),
         i(6, 'js/script.js'),
-        i(0, 'en'),
       }
     )
     --[[
