@@ -37,6 +37,7 @@ return { -- Autoformat
       css = { 'prettier' },
       html = { 'prettier' },
       javascript = { 'prettier' },
+      javascriptreact = { 'prettier' },
       markdown = { 'prettier' },
       c = { 'clang-format' },
       cpp = { 'clang-format' },
