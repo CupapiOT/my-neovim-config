@@ -218,7 +218,9 @@ local term_win = nil
 
 function TermToggle(height)
   if term_win and vim.api.nvim_win_is_valid(term_win) then
-    vim.cmd 'hide'
+    vim.api.nvim_win_close(term_win, true)   -- close the terminal window
+    term_win = nil                           -- clear our state
+    return
   else
     vim.cmd 'botright new'
     local new_buf = vim.api.nvim_get_current_buf()
