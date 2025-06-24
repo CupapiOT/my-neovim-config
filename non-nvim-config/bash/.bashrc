@@ -117,14 +117,16 @@ if ! shopt -oq posix; then
 fi
 
 # install neovim
-export PATH="$PATH:/opt/nvim-linux64/bin"
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+export PATH="/opt/nvim:$PATH"
 
 # neovim config
 export NVIMCFG="/home/cup/.config/nvim"
 
 # NeoVim alias.
 alias nv='nvim'
+
+# Node
+export PATH=/opt/node/bin:$PATH
 
 # Start tmux automatically.
 if [ -z "$TMUX" ]; then # checks if currently in tmux sessiion.
@@ -209,3 +211,4 @@ fortunecowlol() {
   cowfile=$(find /usr/share/cowsay/cows/ -name '*.cow' ! -name 'kiss.cow' | shuf -n 1)
   fortune | cowsay -f "$cowfile" | lolcat
 }
+
