@@ -38,6 +38,7 @@ return { -- Autoformat
       html = { 'prettier' },
       javascript = { 'prettier' },
       javascriptreact = { 'prettier' },
+      typescriptreact = { 'prettier' },
       markdown = { 'prettier' },
       c = { 'clang-format' },
       cpp = { 'clang-format' },
