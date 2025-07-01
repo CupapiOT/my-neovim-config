@@ -41,7 +41,7 @@
 
   ;; Modified Vim Motions
   ;;   start modified vim motions with tab
-  tvim (tap-hold 150 150 tab (layer-switch modified-vimmotions)) ;; tabvim
+  tvim (tap-hold 150 150 tab (layer-toggle modified-vimmotions)) ;; tabvim
 
   ;;   select word
   swf (tap-dance 5 (S-C-right)) ;; forward
@@ -96,13 +96,20 @@
 )
 
 ;; Define the modified vim motions layer. XX means "do nothing when pressed."
+;; Due to how tab needs to be held down while this is happening, and I want to
+;; minimialize the number of control-[key] commands (which wouldn't be any more
+;; convenient than just pressing control instead of tab), all the useful
+;; commands will be on the left side of the keyboard.
+;; There will be some commands left over from me configuring this a while ago
+;; in a real attempt to emulate vim motions with kanata (which wasn't worth the 
+;; effort sadly)
 (deflayer modified-vimmotions
-  _     _    _      _     _   _      _    _    _    _       _    _    _    _
-  _     S-1  S-2    S-3   S-4 S-5    S-6  S-7  S-8  S-9     S-0  _    _    _   @mms
-  @base S-5  C-rght S-C-z S-0 A-tab  C-c  C-z  home @olb    C-v  pgup pgdn _   caps
-  @cec  end  @swb   bspc  C-f @vGky  left down up   rght    _    _    S-ret
-  @vshf @sa  del    @swf  @hs C-left XX   XX   _    rpt-any _    @vshf
-  _     _    _               @base                 _       _    _
+  _     _    _      _     _   _      _      _      _    _       _    _    _    _
+  _     S-1  S-2    S-3   S-4 S-5    S-6    S-7    S-8  S-9     S-0  _    _    _   @mms
+  @base S-5  C-rght S-C-z S-0 A-tab  pgup   home   end  pgdn    @olb pgup pgdn _   caps
+  @cec  end  @swb   bspc  C-f @vGky  left   down   up   rght    _    _    S-ret
+  @vshf @sa  del    @swf  @hs C-left C-left C-down C-up C-right _    @vshf
+  _     _    _               @base                 _    _       _
 )
 ;; Vim Motions Shift Layer
 (deflayer shift-modified-vimmotions
