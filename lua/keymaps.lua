@@ -60,24 +60,24 @@ g_keymap('n', '<leader>Ch', ':cd<CR>', { desc = '[C]hange CWD to the home dir.',
 g_keymap('n', '<leader>TN', ':tabnew ', { desc = '[T]ab-[n]ew without carriage return.' })
 g_keymap('n', '<leader>TC', ':tabclose<CR>', { desc = '[T]ab-[c]lose.', noremap = true, silent = true })
 
--- Keymaps for fugtitive.vim and lazygit
-g_keymap('n', '<leader>ga', ':Git add .<CR>', { desc = 'Fu[g]itive [a]dd all files.' })
-g_keymap('n', '<leader>gd', ':Gdiff<CR>', { desc = 'Fu[g]itive [d]iff.' })
-g_keymap('n', '<leader>gw', ':Gwrite<CR>', { desc = 'Fu[g]itive [w]rite (stage).' })
-g_keymap('n', '<leader>gr', ':Gread<CR>', { desc = 'Fu[g]itive [r]ead (unstage).' })
-g_keymap('n', '<leader>gc', ':Git commit -S<CR>', { desc = 'Fu[g]itive [c]ommit.' })
-g_keymap('n', '<leader>gp', ':Git push<CR>', { desc = 'Fu[g]itive [p]ush.' })
-g_keymap('n', '<leader>gf', ':Git fetch<CR>', { desc = 'Fu[g]itive [f]etch.' })
-g_keymap('n', '<leader>gP', ':Git pull<CR>', { desc = 'Fu[g]itive [P]ull.' })
-g_keymap('n', '<leader>gR', ':Git rebase<CR>', { desc = 'Fu[g]itive [R]ebase.' })
-g_keymap('n', '<leader>gs', ':Git<CR>', { desc = 'Fu[g]itive [s]tatus.' })
-g_keymap('n', '<leader>gi', ':Git init<CR>', { desc = 'Fu[g]itive [I]nitiate.' })
+-- -- Keymaps for fugtitive.vim
+-- g_keymap('n', '<leader>ga', ':Git add .<CR>', { desc = 'Fu[g]itive [a]dd all files.' })
+-- g_keymap('n', '<leader>gd', ':Gdiff<CR>', { desc = 'Fu[g]itive [d]iff.' })
+-- g_keymap('n', '<leader>gw', ':Gwrite<CR>', { desc = 'Fu[g]itive [w]rite (stage).' })
+-- g_keymap('n', '<leader>gr', ':Gread<CR>', { desc = 'Fu[g]itive [r]ead (unstage).' })
+-- g_keymap('n', '<leader>gc', ':Git commit -S<CR>', { desc = 'Fu[g]itive [c]ommit.' })
+-- g_keymap('n', '<leader>gp', ':Git push<CR>', { desc = 'Fu[g]itive [p]ush.' })
+-- g_keymap('n', '<leader>gf', ':Git fetch<CR>', { desc = 'Fu[g]itive [f]etch.' })
+-- g_keymap('n', '<leader>gP', ':Git pull<CR>', { desc = 'Fu[g]itive [P]ull.' })
+-- g_keymap('n', '<leader>gR', ':Git rebase<CR>', { desc = 'Fu[g]itive [R]ebase.' })
+-- g_keymap('n', '<leader>gs', ':Git<CR>', { desc = 'Fu[g]itive [s]tatus.' })
+-- g_keymap('n', '<leader>gi', ':Git init<CR>', { desc = 'Fu[g]itive [I]nitiate.' })
 
 -- Toggle keymaps
 --  Neotree Toggle
 g_keymap('n', '<leader>tt', ':Neotree toggle source=filesystem reveal=true position=left<CR>', { desc = '[T]oggle neo-[t]ree', noremap = true, silent = true })
 --  Lazygit Toggle
-g_keymap('n', '<leader>tl', ':LazyGit<CR>', { desc = '[T]oggle [l]azygit.', noremap = true, silent = true })
+g_keymap('n', '<leader>g', ':LazyGit<CR>', { desc = 'Toggle lazy[g]it.', noremap = true, silent = true })
 --  AutoSave Toggle
 g_keymap('n', '<leader>tA', ':ASToggle<CR>', { desc = '[T]oggle [A]utoSave.', noremap = true, silent = true })
 --  Undotree Toggle

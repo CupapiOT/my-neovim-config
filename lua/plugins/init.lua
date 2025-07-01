@@ -100,8 +100,8 @@ return {
   -- Enables saving, auto-saving, and reloading multiple different sessions.
   require 'plugins.auto-session',
 
-  -- Adds powerful git commands.
-  { 'tpope/vim-fugitive' },
+  -- -- Adds powerful git commands.
+  -- { 'tpope/vim-fugitive' },
 
   -- Builds on top of mini.nvim's surrounding features.
   { 'tpope/vim-surround' },
