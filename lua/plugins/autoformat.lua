@@ -37,6 +37,7 @@ return { -- Autoformat
       css = { 'prettier' },
       html = { 'prettier' },
       javascript = { 'prettier' },
+      typescript = { 'prettier' },
       javascriptreact = { 'prettier' },
       typescriptreact = { 'prettier' },
       markdown = { 'prettier' },

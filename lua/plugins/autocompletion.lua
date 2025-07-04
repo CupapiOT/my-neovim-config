@@ -42,6 +42,7 @@ return { -- Autocompletion
         ls.add_snippets('asm', require 'plugins.autocompletion-snippets.asm')
         ls.add_snippets('html', require 'plugins.autocompletion-snippets.html')
         ls.add_snippets('javascript', require 'plugins.autocompletion-snippets.js')
+        ls.add_snippets('typescript', require 'plugins.autocompletion-snippets.js')
         ls.add_snippets('javascriptreact', require 'plugins.autocompletion-snippets.js')
         ls.add_snippets('typescriptreact', require 'plugins.autocompletion-snippets.js')
       end,
