@@ -50,7 +50,7 @@ return { -- Useful plugin to show you pending keybinds.
       { '<leader>w', group = '[W]orkspace' },
       { '<leader>t', group = '[T]oggle' },
       { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
-      { '<leader>g', group = 'Fu[g]itive' },
+      -- { '<leader>g', group = 'Fu[g]itive' },
       { '<leader>C', group = 'Change [C]WD' },
       { '<leader>S', group = '[S]ession' },
       { '<leader>SQ', group = '[S]ession save as ..., then write-[Q]uit-all.' },

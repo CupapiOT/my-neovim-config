@@ -128,6 +128,9 @@ return {
   -- Add ability to move selected lines up or down in visual mode.
   require 'plugins.move-lines',
 
+  -- Gives modern and automatic code-folding.
+  require 'plugins.nvim-ufo'
+
   -- Enables Live Server like in VS-code (Unused).
   -- {
   --   'barrett-ruth/live-server.nvim',

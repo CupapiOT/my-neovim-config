@@ -241,9 +241,9 @@ function TermToggle(height)
 end
 
 -- Term Toggle Keymaps
-vim.keymap.set('n', '<M-t>', ':lua TermToggle(15)<CR>', { desc = 'Toggles the [t]erminal from normal mode.', noremap = true, silent = true })
-vim.keymap.set('i', '<M-t>', '<Esc>:lua TermToggle(15)<CR>', { desc = 'Toggles the [t]erminal from insert mode.', noremap = true, silent = true })
-vim.keymap.set('t', '<M-t>', '<C-\\><C-n>:lua TermToggle(15)<CR>', { desc = 'Toggles the [t]erminal from terminal mode.', noremap = true, silent = true })
+g_keymap('n', '<M-t>', ':lua TermToggle(15)<CR>', { desc = 'Toggles the [t]erminal from normal mode.', noremap = true, silent = true })
+g_keymap('i', '<M-t>', '<Esc>:lua TermToggle(15)<CR>', { desc = 'Toggles the [t]erminal from insert mode.', noremap = true, silent = true })
+g_keymap('t', '<M-t>', '<C-\\><C-n>:lua TermToggle(15)<CR>', { desc = 'Toggles the [t]erminal from terminal mode.', noremap = true, silent = true })
 
 -- Meta-key (lalt) keymaps.
 --  Select all.
@@ -261,6 +261,11 @@ g_keymap('i', '<M-;>', '<Esc>mQA;<Esc>`Qa', { desc = 'Append [;] to the end of a
 --  Go to the start/end of the line in insert mode.
 g_keymap('i', '<C-s>', '<C-o>I', { desc = 'Go to [s]tart (of the first character) of the current line.', noremap = true, silent = true })
 g_keymap('i', '<C-e>', '<End>', { desc = 'Go to [e]nd of current line.', noremap = true, silent = true })
+
+-- Code fold keymaps (Flipping two keymaps to make more mnemonic sense.)
+g_keymap('n', 'za', 'zf', { desc = '[A]dd fold.', noremap = true, silent = true })
+g_keymap('n', 'zf', 'za', { desc = 'Toggle [f]old under cursor.', noremap = true, silent = true })
+g_keymap('n', 'zF', 'zA', { desc = 'Toggle all [F]olds under cursor.', noremap = true, silent = true })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
