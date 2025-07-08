@@ -43,6 +43,8 @@ return { -- Autoformat
       markdown = { 'prettier' },
       c = { 'clang-format' },
       cpp = { 'clang-format' },
+      nasm = { 'asmfmt' },
+      asm = { 'asmfmt' },
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },
       --
