@@ -130,16 +130,22 @@ g_keymap('n', '<leader>ob', [[:!brave "$(wslpath -w "$(realpath '%')")"<CR>]], {
 local gcc_flags = '-Wall -Wextra -Wshadow -Wfloat-equal -Wformat=2 -g -O2 -pedantic -std=c99'
 g_keymap(
   'n',
-  '<leader>cco',
+  '<leader>ccc',
   ':!gcc ' .. gcc_flags .. ' % -o %.out<CR>',
-  { desc = '[C]ode [c]ompile [o]nefile with gcc (output: %.out).', noremap = true, silent = true }
+  { desc = '[C]ode [c]ompile [c]-lang with gcc (output: %.out).', noremap = true, silent = true }
 )
 g_keymap('n', '<leader>ccO', ':!gcc ' .. gcc_flags .. ' % -o %.out', { desc = '[C]ode [c]ompile with gcc (specify [O]utput).', noremap = true, silent = true })
 g_keymap(
   'n',
-  '<leader>ccs',
+  '<leader>cca',
   ':!as -g -o %.o % && ld -g -o %.out %.o<CR>',
-  { desc = '[C]ode [c]ompile a[s]sembly code (debug friendly).', noremap = true, silent = true }
+  { desc = '[C]ode [c]ompile [a]t&t assembly code (debug friendly) (output: %.out).', noremap = true, silent = true }
+)
+g_keymap(
+  'n',
+  '<leader>ccn',
+  ":!nasm -f elf64 -g -o %.o % && ld -g -o %.out %.o<CR>",
+  { desc = '[C]ode [c]ompile [n]etwide assembly code (debug friendly) (output: %.out).', noremap = true, silent = true }
 )
 g_keymap('n', '<leader>oo', [[:!./%.out<CR>]], { desc = '[O]pen .[o]ut executable file.', noremap = true })
 g_keymap('n', '<leader>op', [[:!python3 %<CR>]], { desc = '[O]pen with [p]ython3.', noremap = true, silent = true })
@@ -218,8 +224,8 @@ local term_win = nil
 
 function TermToggle(height)
   if term_win and vim.api.nvim_win_is_valid(term_win) then
-    vim.api.nvim_win_close(term_win, true)   -- close the terminal window
-    term_win = nil                           -- clear our state
+    vim.api.nvim_win_close(term_win, true) -- close the terminal window
+    term_win = nil -- clear our state
     return
   else
     vim.cmd 'botright new'
