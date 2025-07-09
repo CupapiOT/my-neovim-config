@@ -255,6 +255,9 @@ g_keymap('n', '<M-s>', ':Sleuth<CR>', { desc = 'Trigger vim-[S]leuth', noremap =
 --  Line-wrap toggle.
 g_keymap('n', '<M-z>', ':set wrap!<CR>', { desc = 'Toggle line wrap.', noremap = true, silent = true })
 
+-- Visual-mode keymaps.
+g_keymap('x', 'D', 'ygP', { desc = '[D]uplicate selected region.', noremap = true, silent = true })
+
 -- Insert-mode keymaps.
 --  Append semicolon to the end of a line.
 g_keymap('i', '<M-;>', '<Esc>mQA;<Esc>`Qa', { desc = 'Append [;] to the end of a line.', noremap = true, silent = true })
