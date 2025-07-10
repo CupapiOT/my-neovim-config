@@ -91,6 +91,7 @@ g_keymap('n', 's', '"_s', { desc = '[S]ubstitute character under cursor, outputs
 g_keymap('n', '<leader>SQM', ':SessionSave main<CR>:wqa<CR>', { desc = '[S]ession save as [m]ain, then write-[Q]uit-all.', noremap = true, silent = true })
 g_keymap('n', '<leader>SQC', ':SessionSave config<CR>:wqa<CR>', { desc = '[S]ession save as [c]onfig, then write-[Q]uit-all.', noremap = true, silent = true })
 g_keymap('n', '<leader>SQL', ':SessionSave learn<CR>:wqa<CR>', { desc = '[S]ession save as [l]earn, then write-[Q]uit-all.', noremap = true, silent = true })
+g_keymap('n', '<leader>SQl', ':SessionSave learn2<CR>:wqa<CR>', { desc = '[S]ession save as [l]earn2, then write-[Q]uit-all.', noremap = true, silent = true })
 g_keymap(
   'n',
   '<leader>SQT',
@@ -108,12 +109,11 @@ g_keymap('n', '<leader>SQ;', function()
     print 'Session name cannot be empty.'
   end
 end, { desc = '[S]ession save as ..., then write-[Q]uit-all.', noremap = true, silent = true })
--- g_keymap('n', '<leader>SW', ':wqa<CR>', { desc = '[S]ession not-save, just [W]rite-quit-all.', noremap = true, silent = true })
--- g_keymap('n', '<leader>Sw', ':wq<CR>', { desc = '[S]ession not-save, just [w]rite-quit current buffer.', noremap = true, silent = true })
--- g_keymap('n', '<leader>S!', ':qa!<CR>', { desc = '[S]ession not-save, just quit-all-[!] without saving.', noremap = true, silent = true })
 g_keymap('n', '<leader>Ssm', ':SessionSave main<CR>', { desc = '[S]ession [s]ave as [m]ain.', noremap = true, silent = true })
+g_keymap('n', '<leader>SsM', ':SessionSave main2<CR>', { desc = '[S]ession [s]ave as [m]ain2.', noremap = true, silent = true })
 g_keymap('n', '<leader>Ssc', ':SessionSave config<CR>', { desc = '[S]ession [s]ave as [c]onfig.', noremap = true, silent = true })
 g_keymap('n', '<leader>Ssl', ':SessionSave learn<CR>', { desc = '[S]ession [s]ave as [l]earn.', noremap = true, silent = true })
+g_keymap('n', '<leader>SsL', ':SessionSave learn2<CR>', { desc = '[S]ession [s]ave as [l]earn2.', noremap = true, silent = true })
 g_keymap('n', '<leader>Sst', ':SessionSave tempdir<CR>', { desc = '[S]ession [s]ave as [t]empdir.', noremap = true, silent = true })
 g_keymap('n', '<leader>Ss;', ':SessionSave ', { desc = '[S]ession [s]ave as...', noremap = true, silent = true })
 g_keymap('n', '<leader>SD', ':SessionDelete ', { desc = '[S]ession [D]elete...', noremap = true, silent = true })
@@ -122,8 +122,12 @@ g_keymap('n', '<leader>SA', ':SessionToggleAutoSave<CR>', { desc = '[S]ession to
 g_keymap('n', '<leader>SRM', ':SessionRestore main<CR>', { desc = '[S]ession [R]estore [m]ain.', noremap = true, silent = true })
 g_keymap('n', '<leader>SRC', ':SessionRestore config<CR>', { desc = '[S]ession [R]estore [c]onfig.', noremap = true, silent = true })
 g_keymap('n', '<leader>SRL', ':SessionRestore learn<CR>', { desc = '[S]ession [R]estore [l]earn.', noremap = true, silent = true })
+g_keymap('n', '<leader>SRl', ':SessionRestore learn2<CR>', { desc = '[S]ession [R]estore [l]earn2.', noremap = true, silent = true })
 g_keymap('n', '<leader>SRT', ':SessionRestore tempdir<CR>', { desc = '[S]ession [R]estore [t]empdir.', noremap = true, silent = true })
 g_keymap('n', '<leader>SP', ':SessionPurgeOrphaned<CR>', { desc = '[S]ession [P]urge orphaned.', noremap = true, silent = true })
+-- g_keymap('n', '<leader>SW', ':wqa<CR>', { desc = '[S]ession not-save, just [W]rite-quit-all.', noremap = true, silent = true })
+-- g_keymap('n', '<leader>Sw', ':wq<CR>', { desc = '[S]ession not-save, just [w]rite-quit current buffer.', noremap = true, silent = true })
+-- g_keymap('n', '<leader>S!', ':qa!<CR>', { desc = '[S]ession not-save, just quit-all-[!] without saving.', noremap = true, silent = true })
 
 -- Compiling files with specific tools.
 local gcc_flags = '-Wall -Wextra -Wshadow -Wfloat-equal -Wformat=2 -g -O2 -pedantic -std=c99'
