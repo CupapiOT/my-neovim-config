@@ -125,8 +125,7 @@ g_keymap('n', '<leader>SRL', ':SessionRestore learn<CR>', { desc = '[S]ession [R
 g_keymap('n', '<leader>SRT', ':SessionRestore tempdir<CR>', { desc = '[S]ession [R]estore [t]empdir.', noremap = true, silent = true })
 g_keymap('n', '<leader>SP', ':SessionPurgeOrphaned<CR>', { desc = '[S]ession [P]urge orphaned.', noremap = true, silent = true })
 
--- Opening files with specific apps/tools.
-g_keymap('n', '<leader>ob', [[:!brave "$(wslpath -w "$(realpath '%')")"<CR>]], { desc = '[O]pen with [b]rave browser.', noremap = true, silent = true })
+-- Compiling files with specific tools.
 local gcc_flags = '-Wall -Wextra -Wshadow -Wfloat-equal -Wformat=2 -g -O2 -pedantic -std=c99'
 g_keymap(
   'n',
@@ -144,12 +143,16 @@ g_keymap(
 g_keymap(
   'n',
   '<leader>ccn',
-  ":!nasm -f elf64 -g -o %.o % && ld -g -o %.out %.o<CR>",
+  ':!nasm -f elf64 -g -o %.o % && ld -g -o %.out %.o<CR>',
   { desc = '[C]ode [c]ompile [n]etwide assembly code (debug friendly) (output: %.out).', noremap = true, silent = true }
 )
-g_keymap('n', '<leader>oo', [[:!./%.out<CR>]], { desc = '[O]pen .[o]ut executable file.', noremap = true })
-g_keymap('n', '<leader>op', [[:!python3 %<CR>]], { desc = '[O]pen with [p]ython3.', noremap = true, silent = true })
-g_keymap('n', '<leader>otp', [[:!python3 -m unittest -v %<CR>]], { desc = '[O]pen [t]est (verbose) with [p]ython3.', noremap = true, silent = true })
+g_keymap('n', '<leader>ccj', ':!javac %<CR>', { desc = '[C]ode [c]ompile [j]ava with javac', noremap = true, silent = true })
+-- Opening files with specific apps/tools.
+g_keymap('n', '<leader>ob', [[:!brave "$(wslpath -w "$(realpath '%')")"<CR>]], { desc = '[O]pen with [b]rave browser.', noremap = true, silent = true })
+g_keymap('n', '<leader>oo', ':!./%.out<CR>', { desc = '[O]pen .[o]ut executable file.', noremap = true })
+g_keymap('n', '<leader>op', ':!python3 %<CR>', { desc = '[O]pen with [p]ython3.', noremap = true, silent = true })
+g_keymap('n', '<leader>otp', ':!python3 -m unittest -v %<CR>', { desc = '[O]pen [t]est (verbose) with [p]ython3.', noremap = true, silent = true })
+g_keymap('n', '<leader>oj', ':!java %<<CR>', { desc = '[O]pen [j]ava program.', noremap = true, silent = true })
 
 -- Make commands.
 g_keymap('n', '<leader>mm', ':!make<CR>', { desc = '[M]ake.', noremap = true })
