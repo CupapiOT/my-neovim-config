@@ -130,14 +130,27 @@ g_keymap('n', '<leader>SP', ':SessionPurgeOrphaned<CR>', { desc = '[S]ession [P]
 -- g_keymap('n', '<leader>S!', ':qa!<CR>', { desc = '[S]ession not-save, just quit-all-[!] without saving.', noremap = true, silent = true })
 
 -- Compiling files with specific tools.
-local gcc_flags = '-Wall -Wextra -Wshadow -Wfloat-equal -Wformat=2 -g -O2 -pedantic -std=c99'
+--   C-lang and C++
+local common_gcompiler_flags = '-Wall -Wextra -Wshadow -Wfloat-equal -Wformat=2 -g -O2 -pedantic'
 g_keymap(
   'n',
   '<leader>ccc',
-  ':!gcc ' .. gcc_flags .. ' % -o %.out<CR>',
+  ':!gcc -std=c99 ' .. common_gcompiler_flags .. ' % -o %.out<CR>',
   { desc = '[C]ode [c]ompile [c]-lang with gcc (output: %.out).', noremap = true, silent = true }
 )
-g_keymap('n', '<leader>ccO', ':!gcc ' .. gcc_flags .. ' % -o %.out', { desc = '[C]ode [c]ompile with gcc (specify [O]utput).', noremap = true, silent = true })
+g_keymap(
+  'n',
+  '<leader>ccO',
+  ':!gcc -std=c99 ' .. common_gcompiler_flags .. ' % -o %.out',
+  { desc = '[C]ode [c]ompile with gcc (specify [O]utput).', noremap = true, silent = true }
+)
+g_keymap(
+  'n',
+  '<leader>ccp',
+  ':!g++ -std=c++20 ' .. common_gcompiler_flags .. ' % -o %.out<CR>',
+  { desc = '[C]ode [c]ompile [c]++20 with gcc (output: %.out).', noremap = true, silent = true }
+)
+--   Assembly
 g_keymap(
   'n',
   '<leader>cca',
@@ -150,7 +163,9 @@ g_keymap(
   ':!nasm -f elf64 -g -o %.o % && ld -g -o %.out %.o<CR>',
   { desc = '[C]ode [c]ompile [n]etwide assembly code (debug friendly) (output: %.out).', noremap = true, silent = true }
 )
+--   Java
 g_keymap('n', '<leader>ccj', ':!javac %<CR>', { desc = '[C]ode [c]ompile [j]ava with javac', noremap = true, silent = true })
+
 -- Opening files with specific apps/tools.
 g_keymap('n', '<leader>ob', [[:!brave "$(wslpath -w "$(realpath '%')")"<CR>]], { desc = '[O]pen with [b]rave browser.', noremap = true, silent = true })
 g_keymap('n', '<leader>oo', ':!./%.out<CR>', { desc = '[O]pen .[o]ut executable file.', noremap = true })

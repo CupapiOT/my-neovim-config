@@ -39,6 +39,7 @@ return { -- Autocompletion
 
         ls.add_snippets('python', require 'plugins.autocompletion-snippets.python')
         ls.add_snippets('c', require 'plugins.autocompletion-snippets.c')
+        ls.add_snippets('cpp', require 'plugins.autocompletion-snippets.cpp')
         ls.add_snippets('asm', require 'plugins.autocompletion-snippets.asm')
         ls.add_snippets('html', require 'plugins.autocompletion-snippets.html')
         ls.add_snippets('javascript', require 'plugins.autocompletion-snippets.js')
