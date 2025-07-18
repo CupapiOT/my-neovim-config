@@ -45,7 +45,9 @@ return { -- Autocompletion
         ls.add_snippets('javascript', require 'plugins.autocompletion-snippets.js')
         ls.add_snippets('typescript', require 'plugins.autocompletion-snippets.js')
         ls.add_snippets('javascriptreact', require 'plugins.autocompletion-snippets.js')
+        ls.add_snippets('javascriptreact', require 'plugins.autocompletion-snippets.react')
         ls.add_snippets('typescriptreact', require 'plugins.autocompletion-snippets.js')
+        ls.add_snippets('typescriptreact', require 'plugins.autocompletion-snippets.react')
       end,
     },
     'saadparwaiz1/cmp_luasnip',
