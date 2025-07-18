@@ -120,6 +120,7 @@ g_keymap('n', '<leader>SD', ':SessionDelete ', { desc = '[S]ession [D]elete...',
 g_keymap('n', '<leader>SS', ':SessionSearch<CR>', { desc = '[S]ession [S]earch.', noremap = true, silent = true })
 g_keymap('n', '<leader>SA', ':SessionToggleAutoSave<CR>', { desc = '[S]ession toggle [A]utosave.', noremap = true, silent = true })
 g_keymap('n', '<leader>SRM', ':SessionRestore main<CR>', { desc = '[S]ession [R]estore [m]ain.', noremap = true, silent = true })
+g_keymap('n', '<leader>SRm', ':SessionRestore main2<CR>', { desc = '[S]ession [R]estore [m]ain2.', noremap = true, silent = true })
 g_keymap('n', '<leader>SRC', ':SessionRestore config<CR>', { desc = '[S]ession [R]estore [c]onfig.', noremap = true, silent = true })
 g_keymap('n', '<leader>SRL', ':SessionRestore learn<CR>', { desc = '[S]ession [R]estore [l]earn.', noremap = true, silent = true })
 g_keymap('n', '<leader>SRl', ':SessionRestore learn2<CR>', { desc = '[S]ession [R]estore [l]earn2.', noremap = true, silent = true })
@@ -287,8 +288,9 @@ g_keymap('n', '<M-z>', ':set wrap!<CR>', { desc = 'Toggle line wrap.', noremap =
 g_keymap('x', 'D', 'ygP', { desc = '[D]uplicate selected region.', noremap = true, silent = true })
 
 -- Insert-mode keymaps.
---  Append semicolon to the end of a line.
+--  Append symbols to the end of a line.
 g_keymap('i', '<M-;>', '<Esc>mQA;<Esc>`Qa', { desc = 'Append [;] to the end of a line.', noremap = true, silent = true })
+g_keymap('i', '<M-,>', '<Esc>mQA,<Esc>`Qa', { desc = 'Append [,] to the end of a line.', noremap = true, silent = true })
 --  Go to the start/end of the line in insert mode.
 g_keymap('i', '<C-s>', '<C-o>I', { desc = 'Go to [s]tart (of the first character) of the current line.', noremap = true, silent = true })
 g_keymap('i', '<C-e>', '<End>', { desc = 'Go to [e]nd of current line.', noremap = true, silent = true })
