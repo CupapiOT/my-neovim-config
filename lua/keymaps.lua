@@ -52,9 +52,9 @@ g_keymap('n', 'n', 'nzz', { desc = 'Make `n` center the cursor every time.', nor
 g_keymap('n', 'N', 'Nzz', { desc = 'Make `N` center the cursor every time.', noremap = true, silent = true })
 
 -- Keymaps for common cd commands
-g_keymap('n', '<leader>Cc', ':cd %:p:h<CR>', { desc = '[C]hange CWD to the dir of [c]urrent buffer.', noremap = true, silent = true })
-g_keymap('n', '<leader>Cu', ':cd ..<CR>', { desc = '[C]hange CWD [u]pwards to parent dir.', noremap = true, silent = true })
-g_keymap('n', '<leader>Ch', ':cd<CR>', { desc = '[C]hange CWD to the home dir.', noremap = true, silent = true })
+g_keymap('n', '<leader>CC', ':cd %:p:h<CR>', { desc = '[C]hange CWD to the dir of [c]urrent buffer.', noremap = true, silent = true })
+g_keymap('n', '<leader>CU', ':cd ..<CR>', { desc = '[C]hange CWD [u]pwards to parent dir.', noremap = true, silent = true })
+g_keymap('n', '<leader>CH', ':cd<CR>', { desc = '[C]hange CWD to the home dir.', noremap = true, silent = true })
 
 -- Tabbing keymaps.
 g_keymap('n', '<leader>TN', ':tabnew ', { desc = '[T]ab-[n]ew without carriage return.' })
@@ -83,12 +83,18 @@ g_keymap('n', '<leader>tA', ':ASToggle<CR>', { desc = '[T]oggle [A]utoSave.', no
 --  Undotree Toggle
 g_keymap('n', '<leader>tu', ':UndotreeToggle<CR>', { desc = '[T]oggle [u]ndotree.', noremap = true, silent = true })
 
--- Make it so `x` and bare `s` outputs to the underscore register so it doesn't interfere.
-g_keymap('n', 'x', '"_x', { desc = 'Delete character under cursor, outputs to underscore register.' })
-g_keymap('n', 's', '"_s', { desc = '[S]ubstitute character under cursor, outputs to underscore register.' })
+-- Make it so `x`/`X` and bare `s` outputs to the underscore register so it doesn't interfere.
+g_keymap('n', 'x', '"_x', { desc = 'Delete character under cursor, outputs to blackhole register.' })
+g_keymap('n', 'X', '"_X', { desc = 'Delete character before cursor, outputs to blackhole register.' })
+g_keymap('n', 's', '"_s', { desc = '[S]ubstitute character under cursor, outputs to blackhole register.' })
+
+-- `gy` for "Go to last `y` spot."
+g_keymap('n', 'y', 'mYy', { desc = '[Y]ank with a mark.' })
+g_keymap('n', 'gy', '`Y', { desc = '[G]o to last [y]ank spot.' })
 
 -- Session keymaps.
 g_keymap('n', '<leader>SQM', ':SessionSave main<CR>:wqa<CR>', { desc = '[S]ession save as [m]ain, then write-[Q]uit-all.', noremap = true, silent = true })
+g_keymap('n', '<leader>SQm', ':SessionSave main2<CR>:wqa<CR>', { desc = '[S]ession save as [m]ain, then write-[Q]uit-all.', noremap = true, silent = true })
 g_keymap('n', '<leader>SQC', ':SessionSave config<CR>:wqa<CR>', { desc = '[S]ession save as [c]onfig, then write-[Q]uit-all.', noremap = true, silent = true })
 g_keymap('n', '<leader>SQL', ':SessionSave learn<CR>:wqa<CR>', { desc = '[S]ession save as [l]earn, then write-[Q]uit-all.', noremap = true, silent = true })
 g_keymap('n', '<leader>SQl', ':SessionSave learn2<CR>:wqa<CR>', { desc = '[S]ession save as [l]earn2, then write-[Q]uit-all.', noremap = true, silent = true })
