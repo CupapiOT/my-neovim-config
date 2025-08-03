@@ -9,6 +9,9 @@ g_keymap('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Diagnostic keymaps
 g_keymap('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
+-- QoL Replace-Paste without losing clipboard contents.
+g_keymap('x', '<leader>p', '"_dP')
+
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
@@ -36,14 +39,13 @@ g_keymap('n', '<C-w>+', '3<C-w>+', { noremap = true, silent = true })
 g_keymap('n', '<C-w>-', '3<C-w>-', { noremap = true, silent = true })
 g_keymap('n', '<C-w>>', '5<C-w>>', { noremap = true, silent = true })
 g_keymap('n', '<C-w><', '5<C-w><', { noremap = true, silent = true })
---  Use CTRL+SHIFT+<hjkl> to in/decrease window size.
---  Use CTRL+SHIFT+E to equalize window size.
---  Uncomment below if your terminal supports CTRL+SHIFT+<char> chords.
--- g_keymap('n', '<C-S-h>', '<C-w><', { desc = 'Decrease editor width.' })
--- g_keymap('n', '<C-S-l>', '<C-w>>', { desc = 'Increase editor width.' })
--- g_keymap('n', '<C-S-j>', '<C-w>-', { desc = 'Decrease editor height.' })
--- g_keymap('n', '<C-S-k>', '<C-w>+', { desc = 'Increase editor height.' })
--- g_keymap('n', '<C-S-e>', '<C-w>=', { desc = 'Equalize editor width and height.' })
+--  Use CTRL+ALT+<hjkl> to in/decrease window size.
+--  Use CTRL+ALT+E to equalize window size.
+g_keymap('n', '<M-C-H>', '<C-w><', { desc = 'Decrease editor width.' })
+g_keymap('n', '<M-C-L>', '<C-w>>', { desc = 'Increase editor width.' })
+g_keymap('n', '<M-C-J>', '<C-w>-', { desc = 'Decrease editor height.' })
+g_keymap('n', '<M-C-K>', '<C-w>+', { desc = 'Increase editor height.' })
+g_keymap('n', '<M-C-E>', '<C-w>=', { desc = 'Equalize editor width and height.' })
 
 -- Keymaps to make C-d and C-u, n and N easier to work with; for easier code scanning.
 g_keymap('n', '<C-u>', '<C-u>zz', { desc = 'Make `<C-u>` center the cursor every time.', noremap = true, silent = true })
