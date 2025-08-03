@@ -22,22 +22,25 @@ vim.api.nvim_create_autocmd('VimEnter', {
   command = 'hi WinSeparator guibg=None guifg=#3f3f3f',
 })
 --  Easier to see Line Numbers
+local line_number_colors = '#788cbf'
 vim.api.nvim_create_autocmd('VimEnter', { -- Absolute Line Numbers
-  command = 'hi LineNr guifg=#7082b2',
+  command = 'hi LineNr guifg=' .. line_number_colors,
 })
 vim.api.nvim_create_autocmd('VimEnter', { -- Relative Line Numbers Above
-  command = 'hi LineNrAbove guifg=#7082b2',
+  command = 'hi LineNrAbove guifg=' .. line_number_colors,
 })
 vim.api.nvim_create_autocmd('VimEnter', { -- Relative Line Numbers Below
-  command = 'hi LineNrBelow guifg=#7082b2',
+  command = 'hi LineNrBelow guifg=' .. line_number_colors,
 })
 --  Easier to see Comments
+local comment_colors = '#788cbf'
 vim.api.nvim_create_autocmd('VimEnter', {
-  command = 'hi Comment guifg=#7082b2',
+  command = 'hi Comment guifg=' .. comment_colors,
 })
 --  Easier to see Unnecessary Diagnostics.
+local unnecessary_vars_color = '#707CAF'
 vim.api.nvim_create_autocmd('VimEnter', {
-  command = 'hi DiagnosticUnnecessary guifg=#6873a5',
+  command = 'hi DiagnosticUnnecessary guifg=' .. unnecessary_vars_color,
 })
 
 -- Relative line numbers on focus,...
