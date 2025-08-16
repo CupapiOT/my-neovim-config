@@ -118,9 +118,11 @@ return { -- Autocompletion
         --
         -- <c-l> will move you to the right of each of the expansion locations.
         -- <c-h> is similar, except moving you backwards.
-        ['<C-l>'] = cmp.mapping(function()
+        ['<C-l>'] = cmp.mapping(function(fallback)
           if luasnip.expand_or_locally_jumpable() then
             luasnip.expand_or_jump()
+          else
+            fallback() -- Acts as delete key (custom keymap) if there is nothing to jump to.
           end
         end, { 'i', 's' }),
         ['<C-h>'] = cmp.mapping(function(fallback)
