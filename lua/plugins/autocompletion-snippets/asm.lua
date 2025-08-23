@@ -18,12 +18,15 @@ return {
     $2
 
     section .text
-    global _start
+    global  _start
 
     _start:
             $3
 
-            ; return 0
+            jmp end
+
+    end:
+            ;   exit with code 0
             mov rax, 60
             xor rdi, rdi
             syscall
@@ -32,6 +35,7 @@ return {
   parse_snippet(
     'nasm-sys-exit',
     [[
+    ;   exit with code 0
     mov rax, 60
     xor rdi, rdi
     syscall
@@ -41,7 +45,7 @@ return {
     'nasm-sys-write',
     fmt(
       [[
-      ; write(stdout, {}, {})
+      ;   write(stdout, {}, {})
       mov rax, 1
       mov rdi, 1
       mov rsi, {}
@@ -51,8 +55,35 @@ return {
       { rep(1), rep(2), i(1, 'msg'), i(2, 'len') }
     )
   ),
+  s(
+    'nasm-sys-openfile',
+    fmt(
+      [[
+      ;   fopen({}, {}, {})
+      mov rax, 2
+      mov rdi, {}
+      mov rsi, {}
+      syscall
+      ]],
+      { rep(1), rep(2), rep(3), i(1, 'filename'), i(2, 'mode') }
+    )
+  ),
+  s(
+    'nasm-sys-readfile',
+    fmt(
+      [[
+      ;   fread({}, 1, {}, {})
+      mov rdi, {}
+      mov rax, 0
+      mov rsi, {}
+      mov rdx, {}
+      syscall
+      ]],
+      { rep(2), rep(3), rep(1), i(1, 'fd'), i(2, 'buf'), i(3, 'count') }
+    )
+  ),
 
-  -- AT&T Assembly
+  -- AT&T Syntax
   parse_snippet(
     '!at&t-default',
     [[
@@ -62,35 +93,23 @@ return {
     .section .bss
     $2
 
-    .global _start
+    .global  _start
 
     _start:
             $3
+            jmp end
 
-            // exit
+    end: 
+            //  exit with code 0
             mov \$60, %rax
             xor %rdi, %rdi
             syscall
     ]]
   ),
   parse_snippet(
-    '!at&t-intel-default',
-    [[
-    .global _start
-    .intel_syntax noprefix
-
-    _start:
-            $1
-
-            mov rax, 60
-            xor rdi, rdi
-            syscall
-    ]]
-  ),
-  parse_snippet(
     '!at&t-sys-exit',
     [[
-    // exit
+    //  exit with code 0;
     mov \$60, %rax
     xor %rdi, %rdi
     syscall

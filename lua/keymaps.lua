@@ -164,13 +164,19 @@ g_keymap(
   'n',
   '<leader>cca',
   ':!as -g -o %.o % && ld -g -o %.out %.o<CR>',
-  { desc = '[C]ode [c]ompile [a]t&t assembly code (debug friendly) (output: %.out).', noremap = true, silent = true }
+  { desc = '[C]ode [c]ompile [a]t&t-syntax netwide-assembly.', noremap = true, silent = true }
 )
 g_keymap(
   'n',
   '<leader>ccn',
   ':!nasm -f elf64 -g -o %.o % && ld -g -o %.out %.o<CR>',
-  { desc = '[C]ode [c]ompile [n]etwide assembly code (debug friendly) (output: %.out).', noremap = true, silent = true }
+  { desc = '[C]ode [c]ompile intel-syntax [n]etwide-assembly.', noremap = true, silent = true }
+)
+g_keymap(
+  'n',
+  '<leader>ccN',
+  ':!nasm -f elf64 -g -o %.o % && gcc -no-pie -z noexecstack -m64 -o %.out %.o<CR>',
+  { desc = '[C]ode [c]ompile intel-syntax [N]etwide-assembly with C-runtime.', noremap = true, silent = true }
 )
 --   Java
 g_keymap('n', '<leader>ccj', ':!javac %<CR>', { desc = '[C]ode [c]ompile [j]ava with javac', noremap = true, silent = true })
