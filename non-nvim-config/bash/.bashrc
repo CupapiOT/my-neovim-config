@@ -85,16 +85,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -116,14 +107,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# install neovim
+# Ensure NVIM is in path
 export PATH="/opt/nvim:$PATH"
-
-# neovim config
 export NVIMCFG="/home/cup/.config/nvim"
-
-# NeoVim alias.
-alias nv='nvim'
 
 # Node
 export PATH=/opt/node/bin:$PATH
@@ -133,7 +119,7 @@ if [ -z "$TMUX" ]; then # checks if currently in tmux sessiion.
     tmux new-session
 fi 
 
-# start SSH agent if not running
+# Start SSH agent if not running
 if ! pgrep -u $USER ssh-agent > /dev/null; then
     eval "$(ssh-agent -s)"
     ssh-add ~/.ssh/id_ed25519
@@ -141,25 +127,24 @@ if ! pgrep -u $USER ssh-agent > /dev/null; then
     # Cowsay and Fortune (Make sure it only runs once every session) + Lolcat
     fortune | cowsay -f `ls /usr/share/cowsay/cows/ | grep -v kiss.cow | shuf -n 1` | lolcat
 fi
-# make sure it works across panels.
+#   make sure SSH agent stays running across panels.
 if [ -n "$SSH_AUTH_SOCK" ]; then 
     export SSH_AUTH_SOCK
     export SSH_AGENT_PID
 fi
 
-# GPG agent start automatically
+# GPG agent starts automatically
 if ! pgrep -u $USER gpg-agent > /dev/null; then
     eval $(gpg-agent --daemon)
 fi
 export GPG_TTY=$(tty)
-# export the env variables if gpg agnet is running
+# Export the env variables if gpg agnet is running
 if [ -n "$GPG_AGENT_INFO" ]; then
     export GPG_AGENT_INFO
 fi
 
 # Set brave browser as the one on windows.
 export BROWSER="/mnt/c/Program\ Files/BraveSoftware/Brave-Browser/Application/brave.exe"
-alias brave="/mnt/c/Program\ Files/BraveSoftware/Brave-Browser/Application/brave.exe"
 export PATH="$PATH:/mnt/c/Program\ Files/BraveSoftware/Brave-Browser/Application/brave.exe"
 
 # Add GO to PATH
@@ -168,21 +153,19 @@ export PATH=$PATH:$(go env GOPATH)/bin
 # Quick-access, unorganized temporary folder.
 export TEMPDIR="/home/cup/TEMPorary-DIRectory"
 
+# Set the limit of `corefiles` to unlimited.
+ulimit -c unlimited
+# Changes the corefile path from `|/wsl-capture-crash %t %E %p %s` to `./core`
+# echo "./core" > /proc/sys/kernel/core_pattern # Will say "permission denied" since root permissions are needed.
+
 export XDG_CONFIG_HOME="$HOME/.config"
 
 export KANATACFG="/mnt/c/Users/dep/AppData/Roaming/kanata/kanata.kbd"
 
 export PATH="$PATH:~/.config/composer/vendor/bin"
 
+# Cargo
 . "$HOME/.cargo/env"
-
-# Convenience.
-alias aptupt="sudo apt-get update"
-alias aptupg="sudo apt-get upgrade"
-alias aptuptg="sudo apt-get update && sudo apt-get upgrade"
-
-# Projects Navigation.
-alias proj="cd ~/Projects"
 
 # Python Projects
 function gopyproj() {
@@ -206,9 +189,8 @@ function gopyproj() {
     fi
 }
 
-# Fortune + randomized coy-say + lolcat.
+# Fortune + randomized cow-say + lolcat.
 fortunecowlol() {
   cowfile=$(find /usr/share/cowsay/cows/ -name '*.cow' ! -name 'kiss.cow' | shuf -n 1)
   fortune | cowsay -f "$cowfile" | lolcat
 }
-
