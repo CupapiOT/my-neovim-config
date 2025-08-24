@@ -23,6 +23,9 @@ return { -- Gives modern and automatic code-folding.
     -- Setup UFO
     ufo.setup {
       provider_selector = function(bufnr, filetype, buftype)
+        if filetype == 'neo-tree' then
+          return '' -- disable code-folding for nvim-tree.
+        end
         return { 'lsp', 'indent' }
       end,
     }
