@@ -29,6 +29,12 @@ vim.opt.breakindent = true
 
 -- Expand tabs to spaces.
 vim.opt.expandtab = true
+--   Number of spaces a <Tab> counts for
+vim.opt.tabstop = 2
+--   Number of spaces used for each step of (auto)indent
+vim.opt.shiftwidth = 2
+--   Number of spaces for <Tab> in insert mode
+vim.opt.softtabstop = 2
 
 -- Save undo history
 vim.opt.undofile = true
