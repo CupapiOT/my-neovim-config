@@ -60,6 +60,9 @@ return {
   require 'plugins.autoformat',
 
   -- Autocompletion
+  --   Specifically for Assembly and SQL from-buffer autocompletion. It's here and not in a list of deps in `autocompletion` or else it won't work.
+  'hrsh7th/cmp-buffer',
+  --   Actual auto-completion plugins.
   require 'plugins.autocompletion',
 
   -- Colorscheme Plugin
