@@ -69,7 +69,7 @@ return {
   require 'plugins.tokyonight',
 
   -- Highlight to-do, notes, etc in comments
-  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+  require 'plugins.todo-comments',
 
   -- Collection of various small independent plugins/modules
   require 'plugins.mini',
