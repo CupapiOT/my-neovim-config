@@ -23,6 +23,7 @@ require 'keymaps.terminal'
 require 'keymaps.toggles'
 require 'keymaps.session'
 require 'keymaps.lsp'
+require 'keymaps.sql-vim-dadbod'
 -- require 'keymaps.fugitive-unused'
 
 -- The line beneath this is called `modeline`. See `:help modeline`

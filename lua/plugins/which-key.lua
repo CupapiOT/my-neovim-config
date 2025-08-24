@@ -43,7 +43,7 @@ return { -- Useful plugin to show you pending keybinds.
     spec = {
       { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
       { '<leader>cc', group = '[C]ode [c]ompile', mode = { 'n' } },
-      { '<leader>d', group = '[D]ocument' },
+      { '<leader>d', group = '[D]ocument / [D]atabase' },
       { '<leader>r', group = '[R]efactor' },
       { '<leader>rb', group = '[R]efactor extract [b]lock' },
       { '<leader>s', group = '[S]earch' },

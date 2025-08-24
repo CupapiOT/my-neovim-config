@@ -129,7 +129,10 @@ return {
   require 'plugins.move-lines',
 
   -- Gives modern and automatic code-folding.
-  require 'plugins.nvim-ufo'
+  require 'plugins.nvim-ufo',
+
+  -- SQL Plugin
+  require 'plugins.sql-vim-dadbod',
 
   -- Enables Live Server like in VS-code (Unused).
   -- {
