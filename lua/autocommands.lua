@@ -99,5 +99,16 @@ vim.api.nvim_create_autocmd('TermOpen', {
   end,
 })
 
+-- Assembly should be 8-width tabs for alignment.
+vim.api.nvim_create_autocmd({ 'BufEnter', 'WinEnter' }, {
+  pattern = '*.asm',
+  callback = function()
+    vim.bo.expandtab = false
+    vim.bo.tabstop = 8
+    vim.bo.shiftwidth = 8
+    vim.bo.softtabstop = 8
+  end,
+})
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

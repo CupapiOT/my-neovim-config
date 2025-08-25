@@ -60,8 +60,12 @@ return {
   require 'plugins.autoformat',
 
   -- Autocompletion
-  --   Specifically for Assembly and SQL from-buffer autocompletion. It's here and not in a list of deps in `autocompletion` or else it won't work.
+  --   Adds other completion capabilities.
+  --     nvim-cmp does not ship with all sources by default. They are split
+  --     into multiple repos for maintenance purposes.
   'hrsh7th/cmp-buffer',
+  'hrsh7th/cmp-path',
+  'saadparwaiz1/cmp_luasnip',
   --   Actual auto-completion plugins.
   require 'plugins.autocompletion',
 
