@@ -114,6 +114,13 @@ export NVIMCFG="/home/cup/.config/nvim"
 # Node
 export PATH=/opt/node/bin:$PATH
 
+# For react native development
+export ANDROID_HOME=$HOME/Android/Sdk
+export ANDROID_SDK_ROOT=$ANDROID_HOME
+export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
+export PATH=$ANDROID_HOME/platform-tools:$PATH
+export REACT_DEBUGGER="react-native-debugger"
+
 # Start tmux automatically.
 if [ -z "$TMUX" ]; then # checks if currently in tmux sessiion.
     tmux new-session
@@ -194,3 +201,4 @@ fortunecowlol() {
   cowfile=$(find /usr/share/cowsay/cows/ -name '*.cow' ! -name 'kiss.cow' | shuf -n 1)
   fortune | cowsay -f "$cowfile" | lolcat
 }
+
