@@ -50,4 +50,34 @@ return {
       }
     --]]
   ),
+  s(
+    'trycatchfinally',
+    fmt(
+      [[
+      try {{
+        {}
+      }} catch ({}: {}) {{
+        {}
+      }} finally {{
+        {}
+      }}
+      ]],
+      { -- Ordered from left to right.
+        i(1),
+        i(2, 'error'),
+        i(3, 'any'),
+        i(4),
+        i(0),
+      }
+    )
+    --[[
+      try {
+
+      } catch (error: any) {
+
+      } finally {
+
+      }
+    --]]
+  ),
 }

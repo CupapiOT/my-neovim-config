@@ -45,6 +45,7 @@ return { -- Autoformat
       cpp = { 'clang-format' },
       nasm = { 'asmfmt' },
       asm = { 'asmfmt' },
+      json = { 'prettier' },
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },
       --

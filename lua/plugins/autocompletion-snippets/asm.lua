@@ -93,6 +93,7 @@ return {
     .section .bss
     $2
 
+    .section .text
     .global  _start
 
     _start:
