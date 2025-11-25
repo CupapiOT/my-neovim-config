@@ -99,7 +99,7 @@ return { -- Main LSP Configuration
         --
         -- When you move your cursor, the highlights will be cleared (the second autocommand).
         local client = vim.lsp.get_client_by_id(event.data.client_id)
-        if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+        if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
           local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
           vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
             buffer = event.buf,
@@ -126,7 +126,7 @@ return { -- Main LSP Configuration
         -- code, if the language server you are using supports them
         --
         -- This may be unwanted, since they displace some of your code
-        if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+        if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
           map('<leader>th', function()
             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
           end, '[T]oggle Inlay [H]ints')
@@ -205,61 +205,8 @@ return { -- Main LSP Configuration
           -- by the server configuration above. Useful when disabling
           -- certain features of an LSP (for example, turning off formatting for ts_ls)
           server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-          require('lspconfig')[server_name].setup(server)
+          vim.lsp.config(server_name).setup(server)
         end,
-      },
-    }
-
-    -- No more harper.
-    -- require('lspconfig').harper_ls.setup {
-    --   settings = {
-    --     ['harper-ls'] = {
-    --       linters = {
-    --         -- spell_check = true,
-    --         -- spelled_numbers = false,
-    --         -- an_a = true,
-    --         sentence_capitalization = false, -- Non-default.
-    --         -- unclosed_quotes = true,
-    --         -- wrong_quotes = false,
-    --         -- long_sentences = true,
-    --         -- repeated_words = true,
-    --         spaces = false, -- Non-default.
-    --         -- matcher = true,
-    --         -- correct_number_suffix = true,
-    --         -- number_suffix_capitalization = true,
-    --         -- multiple_sequential_pronouns = true,
-    --         -- linking_verbs = false,
-    --         -- avoid_curses = true,
-    --         terminating_conjunctions = false, -- Non-default.
-    --       },
-    --     },
-    --   },
-    -- }
-
-    require('lspconfig').intelephense.setup {
-      capabilities = capabilities,
-    }
-
-    require('lspconfig').prettier.setup {
-      cli_options = {
-        arrow_parens = 'always',
-        bracket_spacing = true,
-        bracket_same_line = false,
-        embedded_language_formatting = 'auto',
-        end_of_line = 'lf',
-        html_whitespace_sensitivity = 'css',
-        -- jsx_bracket_same_line = false,
-        jsx_single_quote = false,
-        print_width = 80,
-        prose_wrap = 'preserve',
-        quote_props = 'as-needed',
-        semi = true,
-        single_attribute_per_line = false,
-        single_quote = false,
-        tab_width = 2,
-        trailing_comma = 'es5',
-        use_tabs = false,
-        vue_indent_script_and_style = false,
       },
     }
   end,
