@@ -110,5 +110,18 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'WinEnter' }, {
   end,
 })
 
+vim.api.nvim_create_autocmd("QuitPre", {
+  callback = function()
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+      if vim.api.nvim_buf_is_valid(buf) and vim.bo[buf].buftype == "terminal" then
+        local job = vim.b[buf].terminal_job_id
+        if job then
+          vim.fn.jobstop(job)
+        end
+      end
+    end
+  end,
+})
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
