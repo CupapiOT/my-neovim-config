@@ -110,6 +110,14 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'WinEnter' }, {
   end,
 })
 
+vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
+  pattern = { '*.ppm', '*.png', '*.jpg', '*.jpeg', '*.webp', '*.svg', '*.bmp', '*.gif', '*.tiff' },
+  callback = function()
+    local file = vim.fn.expand '%:p'
+    vim.fn.jobstart({ 'feh', file }, { detach = true })
+  end,
+})
+
 vim.api.nvim_create_autocmd('ExitPre', {
   callback = function()
     for _, buf in ipairs(vim.api.nvim_list_bufs()) do
