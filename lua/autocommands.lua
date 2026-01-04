@@ -110,11 +110,50 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'WinEnter' }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
+-- Auto-open images with feh
+vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
   pattern = { '*.ppm', '*.png', '*.jpg', '*.jpeg', '*.webp', '*.svg', '*.bmp', '*.gif', '*.tiff' },
   callback = function()
     local file = vim.fn.expand '%:p'
     vim.fn.jobstart({ 'feh', file }, { detach = true })
+  end,
+})
+
+-- Auto-open videos with mpv
+vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
+  pattern = {
+    '*.mp4',
+    '*.m4v',
+    '*.mov',
+    '*.mkv',
+    '*.webm',
+    '*.avi',
+    '*.flv',
+    '*.f4v',
+    '*.wmv',
+    '*.asf',
+    '*.mpg',
+    '*.mpeg',
+    '*.mpe',
+    '*.mpv',
+    '*.3gp',
+    '*.3g2',
+    '*.ts',
+    '*.m2ts',
+    '*.mts',
+    '*.vob',
+    '*.ogv',
+    '*.rm',
+    '*.rmvb',
+    '*.divx',
+    '*.xvid',
+    '*.y4m',
+    '*.ivf',
+    '*.nut',
+  },
+  callback = function()
+    local file = vim.fn.expand '%:p'
+    vim.fn.jobstart({ 'mpv', '--loop', file }, { detach = true })
   end,
 })
 

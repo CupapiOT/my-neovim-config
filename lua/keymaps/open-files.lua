@@ -17,3 +17,9 @@ end, { desc = '[O]pen image with [f]eh.', noremap = true, silent = true })
 g_keymap('n', '<leader>oF', function()
   vim.fn.jobstart({ 'feh', '--browse', '.' }, { detach = true })
 end, { desc = '[O]pen whole folder with [F]eh.', noremap = true, silent = true })
+
+-- Open videos with `mpv`
+g_keymap('n', '<leader>om', function()
+  local file = vim.fn.expand '%:p'
+  vim.fn.jobstart({ 'mpv', '--loop', file }, { detach = true })
+end, { desc = '[O]pen video with [f]eh.', noremap = true, silent = true })
