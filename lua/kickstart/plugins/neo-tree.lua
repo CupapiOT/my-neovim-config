@@ -11,7 +11,9 @@ return {
   },
   cmd = 'Neotree',
   keys = {
-    { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
+    { '\\', ':Neotree reveal float<CR>', desc = 'NeoTree reveal', silent = true },
+    { '<M-b>', ':Neotree float buffers<CR>', desc = 'NeoTree show open buffers', silent = true },
+    { '<M-g>', ':Neotree float git_status<CR>', desc = 'NeoTree show git statuses', silent = true },
   },
   opts = {
     filesystem = {
@@ -30,7 +32,6 @@ return {
       window = {
         mappings = {
           ['\\'] = 'close_window',
-          ['C'] = 'set_root', -- change root directory to the selected folder
           ['U'] = 'navigate_up',
         },
       },

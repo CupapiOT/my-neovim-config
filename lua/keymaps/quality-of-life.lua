@@ -19,8 +19,6 @@ g_keymap('n', 'N', 'Nzz', { desc = 'Make `N` center the cursor.', noremap = true
 -- Make it so `x`/`X` and bare `s` (in both normal and visual mode) outputs to
 -- the underscore register so it doesn't interfere.
 g_keymap({ 'n', 'x' }, 'x', '"_x', { desc = 'Delete character under cursor, outputs to blackhole register.' })
-g_keymap({ 'n', 'x' }, 'x', '"_x', { desc = 'Delete character under cursor, outputs to blackhole register.' })
-g_keymap({ 'n', 'x' }, 'X', '"_X', { desc = 'Delete character before cursor, outputs to blackhole register.' })
 g_keymap({ 'n', 'x' }, 'X', '"_X', { desc = 'Delete character before cursor, outputs to blackhole register.' })
 g_keymap({ 'n', 'x' }, 's', '"_s', { desc = '[S]ubstitute character under cursor, outputs to blackhole register.' })
 
