@@ -150,6 +150,13 @@ return { -- Autocompletion
       },
     })
 
+    cmp.setup.filetype({ 'make' }, {
+      sources = cmp.config.sources {
+        { name = 'buffer' },
+        { name = 'luasnip' },
+      },
+    })
+
     cmp.setup.filetype({ 'sql' }, {
       sources = {
         { name = 'vim-dadbod-completion' },

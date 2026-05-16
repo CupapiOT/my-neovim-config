@@ -101,7 +101,7 @@ vim.api.nvim_create_autocmd('TermOpen', {
 
 -- Assembly should be 8-width tabs for alignment.
 vim.api.nvim_create_autocmd({ 'BufEnter', 'WinEnter' }, {
-  pattern = '*.asm',
+  pattern = {'*.asm', 'Makefile'},
   callback = function()
     vim.bo.expandtab = false
     vim.bo.tabstop = 8
