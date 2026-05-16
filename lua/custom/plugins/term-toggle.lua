@@ -7,12 +7,22 @@
 local term_buf = nil
 local term_win = nil
 
-function TermToggle(height)
+---@param height integer
+---@param keep_open boolean
+function TermToggle(height, keep_open)
+  keep_open = keep_open or false
+
   if vim.bo.filetype == 'neo-tree' then
     vim.api.nvim_input 'q'
   end
   vim.defer_fn(function()
     if term_win and vim.api.nvim_win_is_valid(term_win) then
+      if keep_open then
+        vim.api.nvim_set_current_win(term_win)
+        vim.cmd 'startinsert!'
+        term_win = vim.api.nvim_get_current_win()
+        return
+      end
       vim.api.nvim_win_close(term_win, true) -- close the terminal window
       term_win = nil -- clear our state
       return
