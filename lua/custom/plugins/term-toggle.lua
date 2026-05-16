@@ -8,7 +8,7 @@ local term_buf = nil
 local term_win = nil
 
 ---@param height integer
----@param keep_open boolean
+---@param keep_open boolean | nil
 function TermToggle(height, keep_open)
   keep_open = keep_open or false
 
@@ -44,4 +44,22 @@ function TermToggle(height, keep_open)
       term_win = vim.api.nvim_get_current_win()
     end
   end, 0)
+end
+
+---@param command string
+---@param do_enter boolean | nil
+function KeymapCommand(command, do_enter)
+  if do_enter == nil then
+    do_enter = true
+  end
+  return function()
+    TermToggle(15, true)
+    vim.defer_fn(function()
+      if do_enter then
+        vim.api.nvim_feedkeys(command .. vim.api.nvim_replace_termcodes('<CR>', true, false, true), 'n', false)
+      else
+        vim.api.nvim_feedkeys(command, 'n', false)
+      end
+    end, 0)
+  end
 end
