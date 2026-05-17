@@ -7,14 +7,32 @@ return { -- Collection of various small independent plugins/modules
     --  - va)  - [V]isually select [A]round [)]paren
     --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
     --  - ci'  - [C]hange [I]nside [']quote
-    require('mini.ai').setup { n_lines = 500 }
+    require('mini.ai').setup {
+      custom_textobjects = {
+        -- Current line. 
+        -- `vaL` = Select around entire line (starting from first column).
+        -- `viL` = Select inside entire line (starting from first non-space character).
+        L = { '^ *().*()' },
+
+        -- Whole buffer
+        g = function()
+          local from = { line = 1, col = 1 }
+          local to = {
+            line = vim.fn.line '$',
+            col = math.max(vim.fn.getline('$'):len(), 1),
+          }
+          return { from = from, to = to }
+        end,
+      },
+      n_lines = 500,
+    }
 
     -- Add/delete/replace surroundings (brackets, quotes, etc.)
     --
     -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
     -- - sd'   - [S]urround [D]elete [']quotes
     -- - sr)'  - [S]urround [R]eplace [)] [']
-    require('mini.surround').setup()
+    require('mini.surround').setup { n_lines = 500 }
 
     -- Simple and easy statusline.
     --  You could remove this setup call if you don't like it,
