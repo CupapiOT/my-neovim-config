@@ -110,9 +110,6 @@ return {
   -- -- Adds powerful git commands.
   -- { 'tpope/vim-fugitive' },
 
-  -- Builds on top of mini.nvim's surrounding features.
-  { 'tpope/vim-surround' },
-
   -- Enables autosaving. Some features needed to be disabled for this to work
   -- without annoying the user (aka me).
   { 'pocco81/autosave.nvim' },

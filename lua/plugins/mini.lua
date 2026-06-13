@@ -9,7 +9,7 @@ return { -- Collection of various small independent plugins/modules
     --  - ci'  - [C]hange [I]nside [']quote
     require('mini.ai').setup {
       custom_textobjects = {
-        -- Current line. 
+        -- Current line.
         -- `vaL` = Select around entire line (starting from first column).
         -- `viL` = Select inside entire line (starting from first non-space character).
         L = { '^ *().*()' },
@@ -23,7 +23,58 @@ return { -- Collection of various small independent plugins/modules
           }
           return { from = from, to = to }
         end,
+
+        -- Code blocks:
+        -- 1. Inline: ```Code block```
+        -- 2. Multiline:
+        --    ```language
+        --    Code block
+        --    ```
+        c = function(ai_type)
+          local cur = vim.api.nvim_win_get_cursor(0)[1]
+          local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+
+          -- Find opening fence
+          local start_line
+          for l = cur, 1, -1 do
+            if lines[l]:match '^```' then
+              start_line = l
+              break
+            end
+          end
+
+          if not start_line then
+            return nil
+          end
+
+          -- Find closing fence
+          local end_line
+          for l = start_line + 1, #lines do
+            if lines[l]:match '^```%s*$' then
+              end_line = l
+              break
+            end
+          end
+
+          if not end_line or cur > end_line then
+            return nil
+          end
+
+          if ai_type == 'a' then
+            return {
+              from = { line = start_line, col = 1 },
+              to = { line = end_line, col = math.max(#lines[end_line], 1) },
+            }
+          end
+
+          -- inside
+          return {
+            from = { line = start_line + 1, col = 1 },
+            to = { line = end_line - 1, col = math.max(#lines[end_line - 1], 1) },
+          }
+        end,
       },
+respect_selection_type = true,
       n_lines = 500,
     }
 
@@ -32,7 +83,25 @@ return { -- Collection of various small independent plugins/modules
     -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
     -- - sd'   - [S]urround [D]elete [']quotes
     -- - sr)'  - [S]urround [R]eplace [)] [']
-    require('mini.surround').setup { n_lines = 500 }
+    require('mini.surround').setup {
+      custom_surroundings = {
+        -- ```language
+        -- Code block
+        -- ```
+        c = {
+          input = {
+            '```[%w_-]*\n().*()\n```',
+          },
+          output = function()
+            return {
+              left = '```\n',
+              right = '\n```',
+            }
+          end,
+        },
+      },
+      n_lines = 500,
+    }
 
     -- Simple and easy statusline.
     --  You could remove this setup call if you don't like it,
