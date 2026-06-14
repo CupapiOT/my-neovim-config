@@ -1,0 +1,18 @@
+[user]
+	email = 166366567+CupapiOT@users.noreply.github.com
+	name = CupapiOT
+	signingkey = 70B395A4BF7F3D9E
+[credential]
+	helper = cache
+[core]
+	editor = nvim
+[commit]
+	gpgsign = true
+[init]
+	defaultBranch = main
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential

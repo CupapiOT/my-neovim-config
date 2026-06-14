@@ -19,6 +19,10 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
 
+# Script editor for Bash's Ctrl+x Ctrl+e command.
+EDITOR=nvim
+VISUAL=nvim
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -57,6 +61,9 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
+    # No current directory.
+    # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\] \$ '
+    # With current directory.
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
@@ -126,34 +133,37 @@ if [ -z "$TMUX" ]; then # checks if currently in tmux sessiion.
     tmux new-session
 fi 
 
-# Start SSH agent if not running
-if ! pgrep -u $USER ssh-agent > /dev/null; then
-    eval "$(ssh-agent -s)"
-    ssh-add ~/.ssh/id_ed25519
+# Fortune + randomized cow-say + lolcat.
+fortunecowlol() {
+  local cowfile=$(find /usr/share/cowsay/cows/ -name '*.cow' ! -name 'kiss.cow' | shuf -n 1)
+  fortune | cowsay -f "$cowfile" | lolcat
+}
 
-    # Cowsay and Fortune (Make sure it only runs once every session) + Lolcat
-    fortune | cowsay -f `ls /usr/share/cowsay/cows/ | grep -v kiss.cow | shuf -n 1` | lolcat
-fi
-#   make sure SSH agent stays running across panels.
-if [ -n "$SSH_AUTH_SOCK" ]; then 
-    export SSH_AUTH_SOCK
-    export SSH_AGENT_PID
-fi
-
-# GPG agent starts automatically
-if ! pgrep -u $USER gpg-agent > /dev/null; then
-    eval $(gpg-agent --daemon)
-fi
+# Allow GPG pinentry to prompt in the current terminal
 export GPG_TTY=$(tty)
-# Export the env variables if gpg agnet is running
-if [ -n "$GPG_AGENT_INFO" ]; then
-    export GPG_AGENT_INFO
+
+# Get using `gpg --list-keys`
+GPG_KEYCHAIN_SETUP_FINGERPRINT='42B3CD61AB77837155CAECDB70B395A4BF7F3D9E'
+# Install with `sudo apt install keychain`. Manages GPG and SSH keys so passwords
+# only need to be entered once per setup.
+eval $(keychain --nogui --eval --agents ssh,gpg --quiet id_ed25519 "$GPG_KEYCHAIN_SETUP_FINGERPRINT")
+
+if command -v tmux >/dev/null 2>&1 && [[ -n "$TMUX" ]]; then
+    SESSION_ID="$(tmux display-message -p '#S')"
+else
+    SESSION_ID="no-tmux-$PPID"
+fi
+
+FLAG="/tmp/session-$USER-$SESSION_ID"
+
+if [[ ! -f "$FLAG" ]]; then
+    touch "$FLAG"
+    fortunecowlol
 fi
 
 # Set brave browser as the one on windows.
 export BROWSER="/mnt/c/Program\ Files/BraveSoftware/Brave-Browser/Application/brave.exe"
 export PATH="$PATH:/mnt/c/Program\ Files/BraveSoftware/Brave-Browser/Application/brave.exe"
-
 # Add GO to PATH
 export PATH=$PATH:$(go env GOPATH)/bin
 
@@ -195,10 +205,3 @@ function gopyproj() {
         echo "Project $1 not found."
     fi
 }
-
-# Fortune + randomized cow-say + lolcat.
-fortunecowlol() {
-  cowfile=$(find /usr/share/cowsay/cows/ -name '*.cow' ! -name 'kiss.cow' | shuf -n 1)
-  fortune | cowsay -f "$cowfile" | lolcat
-}
-

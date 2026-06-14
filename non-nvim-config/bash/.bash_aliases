@@ -27,3 +27,5 @@ alias aptupd="sudo apt-get update"
 alias aptupg="sudo apt-get upgrade"
 alias aptupdg="sudo apt-get update && sudo apt-get upgrade"
 alias brave="/mnt/c/Program\ Files/BraveSoftware/Brave-Browser/Application/brave.exe"
+alias ps1='PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "'
+alias ps2="PS1='$ '"
