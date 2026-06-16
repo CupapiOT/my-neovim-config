@@ -77,3 +77,7 @@ vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,
 
 -- Set colored columns for comment lengths and 80 chars.
 vim.opt.colorcolumn = '72,80'
+
+-- Set word-wise line wrapping by default
+vim.opt.wrap = true
+vim.opt.linebreak = true
