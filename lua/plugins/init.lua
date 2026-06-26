@@ -138,6 +138,9 @@ return {
   -- SQL Plugin
   require 'plugins.sql-vim-dadbod',
 
+  -- Improve viewing Markdown in Neovim
+  require 'plugins.render-markdown'
+
   -- Enables Live Server like in VS-code (Unused).
   -- {
   --   'barrett-ruth/live-server.nvim',
