@@ -5,8 +5,8 @@ meant to be used by.
 
 ## Current list with their intended directories
 
-- `kanata.kbd`: (for Windows) `C:/Users/user/AppData/Roaming/kanata/` || (for
-  Linux) `~/.config/`.
+- `kanata.kbd`: (for Windows) `C:\Users\user\AppData\Roaming\kanata\` || (for
+  Linux) `~/.config/kanata/`.
 - `gnupg`: `~/.gnupg/`
 - `gdb`: `~/.config/gdb/`
 - The rest stay in `~/`.

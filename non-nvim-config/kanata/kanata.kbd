@@ -69,7 +69,7 @@
   vGky (layer-switch gkey-modified-vimmotions)
   HOME (tap-dance 5 (C-home))
   
-  ;; Mouse movement
+  ;; Mouse movement (unused)
   mms (layer-switch mouse-movement) ;; mouse movement switch
   mu (movemouse-accel-up 3 1200 1 5) ;; mouse-x
   md (movemouse-accel-down 3 1200 1 5)
@@ -88,7 +88,7 @@
 ;; Define the new base layer.
 (deflayer default
   esc   f1   f2     f3   f4  f5     f6   f7   f8   f9   f10  f11  f12  del
-  grv   1    2      3    4   5      6    7    8    9    0    -    =    bspc   @mms
+  grv   1    2      3    4   5      6    7    8    9    0    -    =    bspc   ins
   @tvim q    w      e    r   t      y    u    i    o    p    [    ]    \      caps
   @cec  a    s      d    f   g      h    j    k    l    ;    '    @rec
   lsft  z    x      c    v   b      n    m    ,    .    /    rsft
@@ -106,7 +106,7 @@
 (deflayer modified-vimmotions
   _     _    _      _     _   _      _      _      _    _       _    _    _    _
   _     S-1  S-2    S-3   S-4 S-5    S-6    S-7    S-8  S-9     S-0  _    _    _   @mms
-  @base S-5  C-rght S-C-z S-0 A-tab  pgup   home   end  pgdn    @olb pgup pgdn _   caps
+  @base caps C-rght S-C-z S-0 A-tab  pgup   home   end  pgdn    @olb pgup pgdn _   caps
   @cec  end  @swb   bspc  C-f @vGky  left   down   up   rght    _    _    S-ret
   @vshf @sa  del    @swf  @hs C-left C-left C-down C-up C-right _    @vshf
   _     _    _               @base                 _    _       _
@@ -115,7 +115,7 @@
 (deflayer shift-modified-vimmotions
   _     _    _      _     _   _        _    _    _    _       _    _    _    _
   _     S-1  S-2    S-3   S-4 S-5      S-6  S-7  S-8  S-9     S-0  _    _    _   @mms
-  @base S-5  C-rght S-C-z S-0 S-A-tab  C-c  C-z  home @ola    C-v  pgup pgdn _   caps
+  @base caps C-rght S-C-z S-0 S-A-tab  C-c  C-z  home @ola    C-v  pgup pgdn _   caps
   @cec  end  @swb   bspc  C-f @END     left down up   rght    _    _    S-ret
   _     @sa  del    @swf  @hs C-left   XX   XX   _    rpt-any _    _
   _     _    _                @base                 _       _    _
@@ -140,7 +140,3 @@
   _     @ml   @md    @mu  @mr  mbck  @mol @mod @mou @mor   _    _
   _     _     _                @base                _      _    _
 )
-
-
-
-
