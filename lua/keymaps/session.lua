@@ -6,6 +6,8 @@ g_keymap('n', '<leader>SQm', ':AutoSession save main2<CR>:wqa<CR>', { desc = '[S
 g_keymap('n', '<leader>SQC', ':AutoSession save config<CR>:wqa<CR>', { desc = '[S]ession save as [c]onfig, w[Q]a.', noremap = true, silent = true })
 g_keymap('n', '<leader>SQL', ':AutoSession save learn<CR>:wqa<CR>', { desc = '[S]ession save as [l]earn, then w[Q]a.', noremap = true, silent = true })
 g_keymap('n', '<leader>SQl', ':AutoSession save learn2<CR>:wqa<CR>', { desc = '[S]ession save as [l]earn2, then w[Q]a.', noremap = true, silent = true })
+g_keymap('n', '<leader>SQF', ':AutoSession save freelance<CR>:wqa<CR>', { desc = '[S]ession save as [f]reelance, then w[Q]a.', noremap = true, silent = true })
+g_keymap('n', '<leader>SQf', ':AutoSession save freelance2<CR>:wqa<CR>', { desc = '[S]ession save as [f]reelance2, then w[Q]a.', noremap = true, silent = true })
 g_keymap('n', '<leader>SQT', ':AutoSession save tempdir<CR>:wqa<CR>', { desc = '[S]ession save as [t]empdir, then w[Q]a.', noremap = true, silent = true })
 g_keymap('n', '<leader>SQ;', function()
   local session_name = vim.fn.input 'Session name to quit as: '
@@ -25,6 +27,8 @@ g_keymap('n', '<leader>SSC', ':AutoSession save config<CR>', { desc = '[S]ession
 g_keymap('n', '<leader>SSL', ':AutoSession save learn<CR>', { desc = '[S]ession [s]ave as [l]earn.', noremap = true, silent = true })
 g_keymap('n', '<leader>SSl', ':AutoSession save learn2<CR>', { desc = '[S]ession [s]ave as [l]earn2.', noremap = true, silent = true })
 g_keymap('n', '<leader>SST', ':AutoSession save tempdir<CR>', { desc = '[S]ession [s]ave as [t]empdir.', noremap = true, silent = true })
+g_keymap('n', '<leader>SSF', ':AutoSession save freelance<CR>', { desc = '[S]ession save as [f]reelance, then w[Q]a.', noremap = true, silent = true })
+g_keymap('n', '<leader>SSf', ':AutoSession save freelance2<CR>', { desc = '[S]ession save as [f]reelance2, then w[Q]a.', noremap = true, silent = true })
 g_keymap('n', '<leader>SS;', ':AutoSession save ', { desc = '[S]ession [s]ave as...', noremap = true })
 g_keymap('n', '<leader>SD', ':AutoSession delete ', { desc = '[S]ession [D]elete...', noremap = true })
 
@@ -35,6 +39,8 @@ g_keymap('n', '<leader>SRC', ':AutoSession restore config<CR>', { desc = '[S]ess
 g_keymap('n', '<leader>SRL', ':AutoSession restore learn<CR>', { desc = '[S]ession [R]estore [l]earn.', noremap = true, silent = true })
 g_keymap('n', '<leader>SRl', ':AutoSession restore learn2<CR>', { desc = '[S]ession [R]estore [l]earn2.', noremap = true, silent = true })
 g_keymap('n', '<leader>SRT', ':AutoSession restore tempdir<CR>', { desc = '[S]ession [R]estore [t]empdir.', noremap = true, silent = true })
+g_keymap('n', '<leader>SRF', ':AutoSession restore freelance<CR>', { desc = '[S]ession save as [f]reelance, then w[Q]a.', noremap = true, silent = true })
+g_keymap('n', '<leader>SRf', ':AutoSession restore freelance2<CR>', { desc = '[S]ession save as [f]reelance2, then w[Q]a.', noremap = true, silent = true })
 
 -- Other commands
 g_keymap('n', '<leader>Ss', ':AutoSession search<CR>', { desc = '[S]ession [S]earch.', noremap = true, silent = true })
